@@ -39,7 +39,7 @@ public class InGameManager {
         factoryWorks();
         pickUpTruckWorks();
         wellWorks();
-        show();
+       // show();
     }
     private void moving(){
         for (DomesticatedAnimal domesticatedAnimal : GameFieldStorage.domesticatedAnimalHashSet) {
@@ -129,7 +129,7 @@ public class InGameManager {
     private void wellWorks(){
         well.getWaterWithTurns();
     }
-    private void show(){
+    public void show(){
         int [][] grassArray = makeGrassArray();
         for (int i = 0; i < 6; i++) {
             for (int i1 = 0; i1 < 6; i1++) {

@@ -5,6 +5,9 @@ import controller.InGameManager;
 import model.*;
 import model.animals.*;
 import model.commodities.Commodity;
+import model.commodities.Egg;
+import model.factories.Bakery;
+import model.factories.Factory;
 
 public class Regex {
 
@@ -128,8 +131,9 @@ public class Regex {
             if((commodity.getXCoordinate()==x_coordinate)&&(commodity.getYCoordinate()==y_coordinate))
             {
                 found=true;
-                storeroom.store(commodity);
-
+                if(storeroom.store(commodity)){
+                    break;
+                }
 
 
 
@@ -157,7 +161,7 @@ public class Regex {
         if(matcher3.find())
         {
 
-          well.getWaterWithTurns();
+          well.startGettingWater();
 
 
 
@@ -177,7 +181,7 @@ public class Regex {
 
 
 
-            Grass grass=new Grass(x_coordinate,y_coordinate);
+            well.makeGrass(x_coordinate , y_coordinate);
 
 
 
@@ -186,13 +190,12 @@ public class Regex {
 
         }
    ///////////////////////////////////
+
         if(matcher5.find())
         {
           String factoryName=matcher5.group(1);
           if(factoryName.equalsIgnoreCase("bakery"))
           {
-
-
 
           }
           else if(factoryName.equalsIgnoreCase("mill"))
@@ -227,8 +230,6 @@ public class Regex {
               System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
 
           }
-
-
 
 
 
@@ -301,9 +302,10 @@ public class Regex {
             }
             System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLUE+"                                         turn   "+ConsoleColors.CYAN_+inGameManager.turnsPassed+ConsoleColors.RESET);
-            System.out.println(ConsoleColors.BLACK+inGameManager.toString()+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLACK);
+            inGameManager.show();
+            System.out.println(ConsoleColors.RESET);
             System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
-
 
 
 
@@ -319,7 +321,7 @@ public class Regex {
        {
 
 
-        boolean found=pickUpTruck.pickUp(matcher8.group(1));
+        //   boolean found = false;
         if(!found)
         {
             System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
