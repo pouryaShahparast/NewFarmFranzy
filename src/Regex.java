@@ -1,7 +1,11 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import model.Coin;
+import model.animals.*;
 public class Regex {
+
+    Coin coin;
 
     //patterns
 
@@ -30,7 +34,11 @@ public class Regex {
     Matcher matcher9;
     Matcher matcher10;
     Matcher matcher11;
+    public Regex(){
+        coin=new Coin();
 
+
+    }
 
     public void matcher(String input) {
         //buy
@@ -75,12 +83,12 @@ public class Regex {
             }
             else if ((matcher1.group(1).equalsIgnoreCase("turkey"))) {
 
-                Turkey.turkeyBuy(coin);
+                Turkey.buyTurkey(coin);
 
             }
             else if ((matcher1.group(1).equalsIgnoreCase("dog"))) {
 
-                Dog.dogBuy(coin);
+                Dog.buyDog(coin);
 
             }
 
