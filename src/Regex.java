@@ -230,6 +230,49 @@ public class Regex {
     }
         if(matcher6.find())
         {
+            boolean found=false;
+            int x_coordinate,y_coordinate;
+            x_coordinate=Integer.parseInt(matcher6.group(1));
+            y_coordinate=Integer.parseInt(matcher6.group(2));
+            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+                return;
+
+            }
+            for (WildAnimal wildanimal :
+                    GameFieldStorage.wildAnimalHashSet) {
+                if((x_coordinate==wildanimal.getXCoordinate())&&(y_coordinate==wildanimal.getYCoordinate()))
+                {
+                    found=true;
+                  if(wildanimal instanceof Bear)
+                  {
+
+                      ((Bear) wildanimal).addCage();
+
+                  }
+                     if(wildanimal instanceof Tiger)
+                    {
+
+                        ((Tiger) wildanimal).addCage();
+
+                    }
+                    if(wildanimal instanceof Loin )
+                    {
+
+                        ((Loin) wildanimal).addCage();
+
+                    }
+
+
+                }
+
+
+            }
+
+            if(!found)
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no animal in this coordinate)"+ConsoleColors.RESET);            }
 
 
 
