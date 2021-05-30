@@ -302,15 +302,32 @@ public class Regex {
 
 
 
+        }
+        ///////////////////
+       if(matcher8.find())
+       {
+        String name=matcher8.group(1);
+
+        boolean found=pickUpTruck.pickUp(name);
+        if(!found)
+        {
+            System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
 
 
+        }
+
+
+
+       }
+       //////////////////////
+        if(matcher9.find())
+        {
 
 
 
 
 
         }
-
 
 
 
