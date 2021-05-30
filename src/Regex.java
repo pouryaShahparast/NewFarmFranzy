@@ -1,6 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import controller.InGameManager;
 import model.*;
 import model.animals.*;
 import model.commodities.Commodity;
@@ -10,6 +11,8 @@ public class Regex {
     Coin coin;
     Well well;
     PickUpTruck pickUpTruck;
+    Storeroom storeroom;
+    InGameManager inGameManager;
     //patterns
 
     Pattern pattern1;
@@ -41,6 +44,8 @@ public class Regex {
         coin=new Coin();
         well=new Well();
         pickUpTruck=new PickUpTruck();
+        storeroom=new Storeroom();
+        inGameManager=new InGameManager(storeroom,coin,well,pickUpTruck);
 
     }
 
@@ -123,7 +128,7 @@ public class Regex {
             if((commodity.getXCoordinate()==x_coordinate)&&(commodity.getYCoordinate()==y_coordinate))
             {
                 found=true;
-                pickUpTruck.pickUp(commodity);
+                storeroom.store(commodity);
 
 
 
@@ -228,6 +233,7 @@ public class Regex {
 
 
     }
+        ////////////////////////////////////////
         if(matcher6.find())
         {
             boolean found=false;
@@ -279,7 +285,31 @@ public class Regex {
 
 
         }
+        //////////////////////////////////////
+        if(matcher7.find())
+        {
 
+           int n=Integer.parseInt(matcher7.group(1));
+           if(n<=0)
+           {
+               System.out.println(ConsoleColors.RED+"INVALID INPUT (incorrect time)"+ConsoleColors.RESET);
+               return;
+           }
+            for (int i = 0; i < n; i++) {
+                inGameManager.game();
+            }
+
+
+
+
+
+
+
+
+
+
+
+        }
 
 
 
