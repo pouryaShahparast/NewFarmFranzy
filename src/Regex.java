@@ -1,12 +1,15 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import model.Coin;
+import model.*;
 import model.animals.*;
+import model.commodities.Commodity;
+
 public class Regex {
 
     Coin coin;
-
+    Well well;
+    PickUpTruck pickUpTruck;
     //patterns
 
     Pattern pattern1;
@@ -36,7 +39,8 @@ public class Regex {
     Matcher matcher11;
     public Regex(){
         coin=new Coin();
-
+        well=new Well();
+        pickUpTruck=new PickUpTruck();
 
     }
 
@@ -93,12 +97,149 @@ public class Regex {
             }
 
             else{
-                System.out.println(ConsoleColors.RED+"INVALID INPUT"+ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED+"INVALID INPUT(can't find an animal with this name)"+ConsoleColors.RESET);
 
             }
 
 
         }
+
+        ////////////////////////////////////////
+
+        if(matcher2.find())
+        {
+         int x_coordinate,y_coordinate;
+         x_coordinate=Integer.parseInt(matcher2.group(1));
+         y_coordinate=Integer.parseInt(matcher2.group(2));
+            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+                return;
+
+            }
+          boolean found=false;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+            if((commodity.getXCoordinate()==x_coordinate)&&(commodity.getYCoordinate()==y_coordinate))
+            {
+                found=true;
+                pickUpTruck.pickUp(commodity);
+
+
+
+
+            }
+
+
+
+            }
+           if(!found)
+           {
+               System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity in this coordinate)"+ConsoleColors.RESET);
+
+           }
+
+
+
+
+
+
+
+
+
+        }
+        ////////////////////////////////
+        if(matcher3.find())
+        {
+
+          well.getWaterWithTurns();
+
+
+
+        }
+        /////////////////////////////
+        if(matcher4.find())
+        {
+            int x_coordinate,y_coordinate;
+            x_coordinate=Integer.parseInt(matcher4.group(1));
+            y_coordinate=Integer.parseInt(matcher4.group(2));
+            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+                return;
+
+            }
+
+
+
+            Grass grass=new Grass(x_coordinate,y_coordinate);
+
+
+
+
+
+
+        }
+   ///////////////////////////////////
+        if(matcher5.find())
+        {
+          String factoryName=matcher5.group(1);
+          if(factoryName.equalsIgnoreCase("bakery"))
+          {
+
+
+
+          }
+          else if(factoryName.equalsIgnoreCase("mill"))
+          {
+
+
+          }
+          else if(factoryName.equalsIgnoreCase("milk pocketing production"))
+          {
+
+
+          }
+          else if(factoryName.equalsIgnoreCase("ice cream maker"))
+          {
+
+
+          }
+
+          else if(factoryName.equalsIgnoreCase("tailoring"))
+          {
+
+
+          }
+          else if(factoryName.equalsIgnoreCase("fabric production"))
+          {
+
+
+          }
+
+          else{
+
+              System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+
+          }
+
+
+
+
+
+    }
+        if(matcher6.find())
+        {
+
+
+
+
+
+        }
+
+
+
+
 
 
 
