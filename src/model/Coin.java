@@ -2,6 +2,7 @@ package model;
 
 public class Coin {
     private int coins;
+    public Coin(){}
     public Coin(int coins) {
         this.coins = coins;
     }
