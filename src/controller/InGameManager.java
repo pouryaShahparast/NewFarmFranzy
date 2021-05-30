@@ -16,6 +16,11 @@ public class InGameManager {
     Coin coin;
     Well well;
     PickUpTruck pickUpTruck;
+    //
+    public int turnsPassed=0;
+    //
+
+
 
     public InGameManager(Storeroom storeroom, Coin coin, Well well, PickUpTruck pickUpTruck) {
         this.storeroom = storeroom;

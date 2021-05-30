@@ -297,7 +297,18 @@ public class Regex {
            }
             for (int i = 0; i < n; i++) {
                 inGameManager.game();
+                inGameManager.turnsPassed+=1;
             }
+            System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLUE+"                                         turn   "+ConsoleColors.CYAN_+inGameManager.turnsPassed+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLACK+inGameManager.toString()+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
+
+
+
+
+
+
 
 
 
@@ -306,9 +317,9 @@ public class Regex {
         ///////////////////
        if(matcher8.find())
        {
-        String name=matcher8.group(1);
 
-        boolean found=pickUpTruck.pickUp(name);
+
+        boolean found=pickUpTruck.pickUp(matcher8.group(1));
         if(!found)
         {
             System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
@@ -322,15 +333,35 @@ public class Regex {
        //////////////////////
         if(matcher9.find())
         {
+            /*boolean found=pickUpTruck.smatcher9.group(1));
+            if(!found)
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
 
 
+            }
+*/
+
+
+
+        }
+//////////////////////////
+        if(matcher10.find())
+        {
+    /*boolean found=pickUpTruck.smatcher9.group(1));
+            if(!found)
+            {
+                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
+
+
+            }
+*/
 
 
 
         }
 
-
-
+////////////////////
 
 
     }
