@@ -110,7 +110,7 @@ public class Regex {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher2.group(1));
             y_coordinate = Integer.parseInt(matcher2.group(2));
-            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -148,7 +148,7 @@ public class Regex {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher4.group(1));
             y_coordinate = Integer.parseInt(matcher4.group(2));
-            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -176,7 +176,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create bakery factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
                 }
 
 
@@ -194,7 +194,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create mill" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
                 }
 
 
@@ -212,7 +212,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
                 }
 
 
@@ -229,7 +229,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
                 }
 
 
@@ -246,7 +246,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create tailoring factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
                 }
 
             } else if (factoryName.equalsIgnoreCase("fabric production")) {
@@ -262,7 +262,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create fabric production factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
                 }
 
             } else {
@@ -279,7 +279,7 @@ public class Regex {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher6.group(1));
             y_coordinate = Integer.parseInt(matcher6.group(2));
-            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -341,23 +341,20 @@ public class Regex {
         if (matcher8.find()) {
             String name = matcher8.group(1);
             if (name.equalsIgnoreCase("egg")) {
-
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Egg) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
                     }
 
-
                 }
-
                 if (!found) {
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
@@ -369,23 +366,22 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                       storeroom.commodityHashSet) {
                     if (commodity instanceof Bread) {
-                        found = true;
+                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
                     }
+                    if (!found) {
+                        System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-
-                }
-
-                if (!found) {
-                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+                    }
 
                 }
+
 
 
             } else if (name.equalsIgnoreCase("cloth")) {
@@ -393,11 +389,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                      storeroom.commodityHashSet) {
                     if (commodity instanceof Cloth) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -417,11 +413,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Fabric) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -441,11 +437,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Feather) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -465,11 +461,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Flour) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -489,11 +485,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                       storeroom.commodityHashSet) {
                     if (commodity instanceof IceCream) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -513,11 +509,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Milk) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -537,11 +533,11 @@ public class Regex {
                 boolean found = false;
 
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof PocketMilk) {
                         found = true;
                         pickUpTruck.pickUp(commodity);
-                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        storeroom.commodityHashSet.remove(commodity);
                         break;
 
 
@@ -556,7 +552,90 @@ public class Regex {
                 }
 
 
-            } else {
+            }
+
+            else if (name.equalsIgnoreCase("tiger")) {
+
+                boolean found = false;
+
+                for (WildAnimal wildAnimal :
+                        storeroom.wildAnimalHashSet) {
+                    if (wildAnimal instanceof Tiger) {
+                        found = true;
+                        pickUpTruck.pickUp(wildAnimal);
+                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            }
+
+            else if (name.equalsIgnoreCase("bear")) {
+
+                boolean found = false;
+
+                for (WildAnimal wildAnimal :
+                        storeroom.wildAnimalHashSet) {
+                    if (wildAnimal instanceof Bear) {
+                        found = true;
+                        pickUpTruck.pickUp(wildAnimal);
+                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            }
+            else if (name.equalsIgnoreCase("lion")) {
+
+                boolean found = false;
+
+                for (WildAnimal wildAnimal :
+                        storeroom.wildAnimalHashSet) {
+                    if (wildAnimal instanceof Loin) {
+                        found = true;
+                        pickUpTruck.pickUp(wildAnimal);
+                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            }
+
+
+
+
+
+            else {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
             }
 
@@ -612,7 +691,27 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
            pickUpTruck.reStorePocketMilkFromTruck(storeroom);
 
 
-        } else {
+        }
+        else if (name.equalsIgnoreCase("tiger")) {
+
+            pickUpTruck.reStoreTigerFromTruck(storeroom);
+
+
+        }
+        else if (name.equalsIgnoreCase("lion")) {
+
+            pickUpTruck.reStoreLoinFromTruck(storeroom);
+
+
+        }
+        else if (name.equalsIgnoreCase("bear")) {
+
+            pickUpTruck.reStoreBearFromTruck(storeroom);
+
+
+        }
+
+        else {
             System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
         }
 
