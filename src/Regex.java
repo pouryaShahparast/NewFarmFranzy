@@ -364,7 +364,7 @@ public class Regex {
                 }
 
 
-            } else if (name.equalsIgnoreCase("brad")) {
+            } else if (name.equalsIgnoreCase("bread")) {
 
                 boolean found = false;
 
@@ -569,7 +569,60 @@ public class Regex {
         if(matcher9.find())
 
     {
-        // TODO: 5/30/2021
+
+        String name=matcher9.group(1);
+        if (name.equalsIgnoreCase("egg")) {
+
+            pickUpTruck.reStoreEggFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("bread")) {
+
+            pickUpTruck.reStoreBreadFromTruck(storeroom);
+
+        } else if (name.equalsIgnoreCase("cloth")) {
+
+           pickUpTruck.reStoreClothFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("fabric")) {
+
+           pickUpTruck.reStoreFabricFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("feather")) {
+             pickUpTruck.reStoreFeatherFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("flour")) {
+
+           pickUpTruck.reStoreFlourFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("ice cream")) {
+         pickUpTruck.reStoreIceCreamFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("milk")) {
+pickUpTruck.reStoreMilkFromTruck(storeroom);
+
+
+        } else if (name.equalsIgnoreCase("pocket milk")) {
+
+           pickUpTruck.reStorePocketMilkFromTruck(storeroom);
+
+
+        } else {
+            System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
+        }
+
+
+
+
+
+
+
+
 
 
     }
@@ -578,7 +631,7 @@ public class Regex {
 
     {
 
-        //todo
+       pickUpTruck.startTraveling();
 
 
     }
