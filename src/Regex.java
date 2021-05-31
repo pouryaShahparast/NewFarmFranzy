@@ -27,7 +27,7 @@ public class Regex {
     Pattern pattern9;
     Pattern pattern10;
     Pattern pattern11;
-
+    Pattern pattern12;
 
     //matchers
     Matcher matcher1;
@@ -41,7 +41,7 @@ public class Regex {
     Matcher matcher9;
     Matcher matcher10;
     Matcher matcher11;
-
+    Matcher matcher12;
     public Regex() {
         coin = new Coin();
         well = new Well();
@@ -74,6 +74,8 @@ public class Regex {
         pattern10 = Pattern.compile("\\s*(?i:truck)\\s*(?i:go)\\s*$");
         ////exit
         pattern11 = Pattern.compile("\\s*(?i:exit)\\s*$");
+        ///inquiry
+        pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
 //////////////////////////
 
         if (matcher1.find()) {
@@ -743,6 +745,22 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         }
 
  /////////////////
+        if(matcher12.find())
+        {
+
+            System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLACK);
+            inGameManager.show();
+            System.out.println(ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
+
+
+
+        }
+
+
+
 
 }
 
