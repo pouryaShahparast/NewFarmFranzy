@@ -34,7 +34,10 @@ public class Chicken extends DomesticatedAnimal {
         if(coin.hasEnoughCoins(CHICKEN_PRICE)){
             coin.reduceCoin(CHICKEN_PRICE);
             GameFieldStorage.domesticatedAnimalHashSet.add(new Chicken());
+            System.out.println("Chicken was bought");
             return true;
+        }else {
+            System.err.println("you need " + (CHICKEN_PRICE - coin.getCoin()) + " more coins to buy Chicken");
         }
         return false;
     }

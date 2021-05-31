@@ -27,7 +27,6 @@ public class Buffalo extends DomesticatedAnimal{
         return turns >= BUFFALO_TURNS_NEEDED_TO_MAKE_MILK;
     }
 
-
     public Milk produce(){
         return new  Milk(xCoordinate , yCoordinate);
     }
@@ -35,7 +34,10 @@ public class Buffalo extends DomesticatedAnimal{
         if(coin.hasEnoughCoins(BUFFALO_PRICE)){
             coin.reduceCoin(BUFFALO_PRICE);
             GameFieldStorage.domesticatedAnimalHashSet.add(new Buffalo());
+            System.out.println("Buffalo was bought");
             return true;
+        }else {
+            System.err.println("you need " + (BUFFALO_PRICE - coin.getCoin()) + " more coins to buy Buffalo" );
         }
         return false;
     }

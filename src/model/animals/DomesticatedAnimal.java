@@ -51,8 +51,8 @@ public abstract class DomesticatedAnimal extends Animal {
 
     public boolean eat(Grass grass){
         if(health < 50) {
-                health = 100;
-                return true;
+            health = 100;
+            return true;
         }
         return false;
     }
@@ -124,7 +124,7 @@ public abstract class DomesticatedAnimal extends Animal {
             }
         }
     }
-     Grass findNearestGrass(HashSet<Grass> grassHashSet) {
+    Grass findNearestGrass(HashSet<Grass> grassHashSet) {
         double minDistance = -1;
         Grass grass = null;
         if(grassHashSet.isEmpty()){

@@ -27,9 +27,6 @@ public class Turkey extends DomesticatedAnimal{
         return turns >= TURKEY_TURNS_NEEDED_TO_MAKE_FEATHER;
     }
 
-    @Override
-
-
     public Feather produce(){
         return new Feather(xCoordinate,yCoordinate);
     }
@@ -37,7 +34,10 @@ public class Turkey extends DomesticatedAnimal{
         if(coin.hasEnoughCoins(TURKEY_PRICE)){
             coin.reduceCoin(TURKEY_PRICE);
             GameFieldStorage.domesticatedAnimalHashSet.add(new Turkey());
+            System.out.println("Turkey was bought");
             return true;
+        }else {
+            System.err.println("you need " + (TURKEY_PRICE - coin.getCoin()) + " more coins to buy Turkey");
         }
         return false;
     }
