@@ -112,7 +112,7 @@ public class Entrance {
         try {
             FileWriter fileWriter=new FileWriter(userNameAndPasswords,true);
             scanner=new Scanner(System.in);
-            System.out.println("Enter your password");
+            System.out.println("Enter your password (only digits)");
             password=scanner.nextLine();
             fileWriter.write(userName+"\n"+password+"\n");
             fileWriter.close();
