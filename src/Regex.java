@@ -41,12 +41,13 @@ public class Regex {
     Matcher matcher9;
     Matcher matcher10;
     Matcher matcher11;
-    public Regex(){
-        coin=new Coin();
-        well=new Well();
-        pickUpTruck=new PickUpTruck();
-        storeroom=new Storeroom();
-        inGameManager=new InGameManager(storeroom,coin,well,pickUpTruck);
+
+    public Regex() {
+        coin = new Coin();
+        well = new Well();
+        pickUpTruck = new PickUpTruck();
+        storeroom = new Storeroom();
+        inGameManager = new InGameManager(storeroom, coin, well, pickUpTruck);
 
     }
 
@@ -81,29 +82,22 @@ public class Regex {
             if ((matcher1.group(1).equalsIgnoreCase("cat"))) {
                 Cat.buyCat(coin);
 
-            }
-            else if ((matcher1.group(1).equalsIgnoreCase("buffalo"))) {
+            } else if ((matcher1.group(1).equalsIgnoreCase("buffalo"))) {
                 Buffalo.buyBuffalo(coin);
 
-            }
-
-            else if ((matcher1.group(1).equalsIgnoreCase("chicken"))) {
+            } else if ((matcher1.group(1).equalsIgnoreCase("chicken"))) {
                 Chicken.buyChicken(coin);
 
-            }
-            else if ((matcher1.group(1).equalsIgnoreCase("turkey"))) {
+            } else if ((matcher1.group(1).equalsIgnoreCase("turkey"))) {
 
                 Turkey.buyTurkey(coin);
 
-            }
-            else if ((matcher1.group(1).equalsIgnoreCase("dog"))) {
+            } else if ((matcher1.group(1).equalsIgnoreCase("dog"))) {
 
                 Dog.buyDog(coin);
 
-            }
-
-            else{
-                System.out.println(ConsoleColors.RED+"INVALID INPUT(can't find an animal with this name)"+ConsoleColors.RESET);
+            } else {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT(can't find an animal with this name)" + ConsoleColors.RESET);
 
             }
 
@@ -112,270 +106,199 @@ public class Regex {
 
         ////////////////////////////////////////
 
-        if(matcher2.find())
-        {
-         int x_coordinate,y_coordinate;
-         x_coordinate=Integer.parseInt(matcher2.group(1));
-         y_coordinate=Integer.parseInt(matcher2.group(2));
-            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+        if (matcher2.find()) {
+            int x_coordinate, y_coordinate;
+            x_coordinate = Integer.parseInt(matcher2.group(1));
+            y_coordinate = Integer.parseInt(matcher2.group(2));
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
             }
-          boolean found=false;
+            boolean found = false;
             for (Commodity commodity :
                     GameFieldStorage.commodityHashSet) {
-            if((commodity.getXCoordinate()==x_coordinate)&&(commodity.getYCoordinate()==y_coordinate))
-            {
-                found=true;
-                if(storeroom.store(commodity)){
-                    break;
+                if ((commodity.getXCoordinate() == x_coordinate) && (commodity.getYCoordinate() == y_coordinate)) {
+                    found = true;
+                    if (storeroom.store(commodity)) {
+                        break;
+                    }
+
+
                 }
 
 
+            }
+            if (!found) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity in this coordinate)" + ConsoleColors.RESET);
 
             }
-
-
-
-            }
-           if(!found)
-           {
-               System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity in this coordinate)"+ConsoleColors.RESET);
-
-           }
-
-
-
-
-
-
-
 
 
         }
         ////////////////////////////////
-        if(matcher3.find())
-        {
+        if (matcher3.find()) {
 
-          well.startGettingWater();
-
+            well.startGettingWater();
 
 
         }
         /////////////////////////////
-        if(matcher4.find())
-        {
-            int x_coordinate,y_coordinate;
-            x_coordinate=Integer.parseInt(matcher4.group(1));
-            y_coordinate=Integer.parseInt(matcher4.group(2));
-            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+        if (matcher4.find()) {
+            int x_coordinate, y_coordinate;
+            x_coordinate = Integer.parseInt(matcher4.group(1));
+            y_coordinate = Integer.parseInt(matcher4.group(2));
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
             }
 
 
-
-            well.makeGrass(x_coordinate , y_coordinate);
-
-
-
-
+            well.makeGrass(x_coordinate, y_coordinate);
 
 
         }
-   ///////////////////////////////////
+        ///////////////////////////////////
 
-        if(matcher5.find())
-        {
-          String factoryName=matcher5.group(1);
-          if(factoryName.equalsIgnoreCase("bakery"))
-          {
-              boolean found=false;
+        if (matcher5.find()) {
+            String factoryName = matcher5.group(1);
+            if (factoryName.equalsIgnoreCase("bakery")) {
+                boolean found = false;
 
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-              if(factory instanceof Bakery)
-              {
-                 found=true;
-                 factory.startWorkingOneCommodity(storeroom);
-                 break;
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Bakery) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
 
-              }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create bakery factory"+ConsoleColors.RESET);
-              }
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create bakery factory" + ConsoleColors.RESET);
+                }
 
 
+            } else if (factoryName.equalsIgnoreCase("mill")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Mill) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create mill" + ConsoleColors.RESET);
+                }
 
 
+            } else if (factoryName.equalsIgnoreCase("milk pocketing production")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof MilkPocketingProduction) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                }
 
 
+            } else if (factoryName.equalsIgnoreCase("ice cream maker")) {
+                boolean found = false;
 
-          }
-          else if(factoryName.equalsIgnoreCase("mill"))
-          {
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof IceCreamMaker) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
 
-              boolean found=false;
-
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-                  if(factory instanceof Mill)
-                  {
-                      found=true;
-                      factory.startWorkingOneCommodity(storeroom);
-                      break;
-
-                  }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create mill"+ConsoleColors.RESET);
-              }
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                }
 
 
+            } else if (factoryName.equalsIgnoreCase("tailoring")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Tailoring) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create tailoring factory" + ConsoleColors.RESET);
+                }
+
+            } else if (factoryName.equalsIgnoreCase("fabric production")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof FabricProduction) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory does't exist  first create fabric production factory" + ConsoleColors.RESET);
+                }
+
+            } else {
+
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+
+            }
 
 
-
-
-          }
-          else if(factoryName.equalsIgnoreCase("milk pocketing production"))
-          {
-
-              boolean found=false;
-
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-                  if(factory instanceof MilkPocketingProduction)
-                  {
-                      found=true;
-                      factory.startWorkingOneCommodity(storeroom);
-                      break;
-
-                  }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create milk pocketing production factory"+ConsoleColors.RESET);
-              }
-
-
-
-
-          }
-          else if(factoryName.equalsIgnoreCase("ice cream maker"))
-          {
-              boolean found=false;
-
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-                  if(factory instanceof IceCreamMaker)
-                  {
-                      found=true;
-                      factory.startWorkingOneCommodity(storeroom);
-                      break;
-
-                  }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create ice cream maker factory"+ConsoleColors.RESET);
-              }
-
-
-
-
-
-
-          }
-
-          else if(factoryName.equalsIgnoreCase("tailoring"))
-          {
-              boolean found=false;
-
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-                  if(factory instanceof Tailoring)
-                  {
-                      found=true;
-                      factory.startWorkingOneCommodity(storeroom);
-                      break;
-
-                  }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create tailoring factory"+ConsoleColors.RESET);
-              }
-
-          }
-          else if(factoryName.equalsIgnoreCase("fabric production"))
-          {
-              boolean found=false;
-
-              for (Factory factory :
-                      GameFieldStorage.factoryHashSet) {
-                  if(factory instanceof FabricProduction)
-                  {
-                      found=true;
-                      factory.startWorkingOneCommodity(storeroom);
-                      break;
-
-                  }
-              }
-              if(!found)
-              {
-                  System.out.println(ConsoleColors.RED+"factory does't exist  first create fabric production factory"+ConsoleColors.RESET);
-              }
-
-          }
-
-          else{
-
-              System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
-
-          }
-
-
-
-    }
+        }
         ////////////////////////////////////////
-        if(matcher6.find())
-        {
-            boolean found=false;
-            int x_coordinate,y_coordinate;
-            x_coordinate=Integer.parseInt(matcher6.group(1));
-            y_coordinate=Integer.parseInt(matcher6.group(2));
-            if((x_coordinate>=7)||(x_coordinate<=0)||(x_coordinate>=7)||(x_coordinate<=0))
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (coordinate out of range)"+ConsoleColors.RESET);
+        if (matcher6.find()) {
+            boolean found = false;
+            int x_coordinate, y_coordinate;
+            x_coordinate = Integer.parseInt(matcher6.group(1));
+            y_coordinate = Integer.parseInt(matcher6.group(2));
+            if ((x_coordinate >= 7) || (x_coordinate <= 0) || (x_coordinate >= 7) || (x_coordinate <= 0)) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
             }
             for (WildAnimal wildanimal :
                     GameFieldStorage.wildAnimalHashSet) {
-                if((x_coordinate==wildanimal.getXCoordinate())&&(y_coordinate==wildanimal.getYCoordinate()))
-                {
-                    found=true;
-                  if(wildanimal instanceof Bear)
-                  {
+                if ((x_coordinate == wildanimal.getXCoordinate()) && (y_coordinate == wildanimal.getYCoordinate())) {
+                    found = true;
+                    if (wildanimal instanceof Bear) {
 
-                      ((Bear) wildanimal).addCage();
+                        ((Bear) wildanimal).addCage();
 
-                  }
-                     if(wildanimal instanceof Tiger)
-                    {
+                    }
+                    if (wildanimal instanceof Tiger) {
 
                         ((Tiger) wildanimal).addCage();
 
                     }
-                    if(wildanimal instanceof Loin )
-                    {
+                    if (wildanimal instanceof Loin) {
 
                         ((Loin) wildanimal).addCage();
 
@@ -387,62 +310,47 @@ public class Regex {
 
             }
 
-            if(!found)
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no animal in this coordinate)"+ConsoleColors.RESET);            }
-
-
-
+            if (!found) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no animal in this coordinate)" + ConsoleColors.RESET);
+            }
 
 
         }
         //////////////////////////////////////
-        if(matcher7.find())
-        {
+        if (matcher7.find()) {
 
-           int n=Integer.parseInt(matcher7.group(1));
-           if(n<=0)
-           {
-               System.out.println(ConsoleColors.RED+"INVALID INPUT (incorrect time)"+ConsoleColors.RESET);
-               return;
-           }
+            int n = Integer.parseInt(matcher7.group(1));
+            if (n <= 0) {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (incorrect time)" + ConsoleColors.RESET);
+                return;
+            }
             for (int i = 0; i < n; i++) {
                 inGameManager.game();
-                inGameManager.turnsPassed+=1;
+                inGameManager.turnsPassed += 1;
             }
-            System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
-            System.out.println(ConsoleColors.BLUE+"                                         turn   "+ConsoleColors.CYAN_+inGameManager.turnsPassed+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLACK);
             inGameManager.show();
             System.out.println(ConsoleColors.RESET);
-            System.out.println(ConsoleColors.RED+"****************************************************************************************************"+ConsoleColors.RESET);
-
-
-
-
-
-
-
+            System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
 
 
         }
         ///////////////////
-       if(matcher8.find())
-       {
-String name=matcher8.group(1);
-            if(name.equalsIgnoreCase("egg"))
-            {
+        if (matcher8.find()) {
+            String name = matcher8.group(1);
+            if (name.equalsIgnoreCase("egg")) {
 
-                boolean found =false;
+                boolean found = false;
 
                 for (Commodity commodity :
                         GameFieldStorage.commodityHashSet) {
-                    if (commodity instanceof Egg)
-                    {
-                      found=true;
-                      pickUpTruck.pickUp(commodity);
-                      GameFieldStorage.commodityHashSet.remove(commodity);
-                      break;
+                    if (commodity instanceof Egg) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
 
 
                     }
@@ -450,304 +358,244 @@ String name=matcher8.group(1);
 
                 }
 
-                if(!found)
-                {
-                    System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
 
 
+            } else if (name.equalsIgnoreCase("brad")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Bread) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
 
 
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("cloth")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Cloth) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("fabric")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Fabric) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("feather")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Feather) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("flour")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Flour) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("ice cream")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof IceCream) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("milk")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Milk) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else if (name.equalsIgnoreCase("pocket milk")) {
+
+                boolean found = false;
+
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof PocketMilk) {
+                        found = true;
+                        pickUpTruck.pickUp(commodity);
+                        GameFieldStorage.commodityHashSet.remove(commodity);
+                        break;
+
+
+                    }
+
+
+                }
+
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+                }
+
+
+            } else {
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
             }
-            else  if(name.equalsIgnoreCase("brad"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Bread)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-
-
-          else if(name.equalsIgnoreCase("cloth"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Cloth)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-          else if(name.equalsIgnoreCase("fabric"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Fabric)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-            else if(name.equalsIgnoreCase("feather"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Feather)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-           else if(name.equalsIgnoreCase("flour"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Flour)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-           else if(name.equalsIgnoreCase("ice cream"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof IceCream)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-          else if(name.equalsIgnoreCase("milk"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof Milk)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-           else if(name.equalsIgnoreCase("pocket milk"))
-           {
-
-               boolean found =false;
-
-               for (Commodity commodity :
-                       GameFieldStorage.commodityHashSet) {
-                   if (commodity instanceof PocketMilk)
-                   {
-                       found=true;
-                       pickUpTruck.pickUp(commodity);
-                       GameFieldStorage.commodityHashSet.remove(commodity);
-                       break;
-
-
-                   }
-
-
-               }
-
-               if(!found)
-               {
-                   System.out.println(ConsoleColors.RED+"there is no commodity with this name"+ConsoleColors.RESET);
-
-               }
-
-
-
-
-           }
-           else{
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);            }
-
-
-       }
-
-
-
-
-       }
-       //////////////////////
-        if(matcher9.find())
-        {
-            /*boolean found=pickUpTruck.smatcher9.group(1));
-            if(!found)
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
-
-
-            }
-*/
-
 
 
         }
+
+
+
+    //////////////////////
+        if(matcher9.find())
+
+    {
+        // TODO: 5/30/2021
+
+
+    }
 //////////////////////////
         if(matcher10.find())
-        {
-    /*boolean found=pickUpTruck.smatcher9.group(1));
-            if(!found)
-            {
-                System.out.println(ConsoleColors.RED+"INVALID INPUT (there is no commodity with this name)"+ConsoleColors.RESET);
 
+    {
 
-            }
-*/
-
-
-
-        }
-
-////////////////////
+        //todo
 
 
     }
 
+////////////////////
+        if(matcher11.find())
+        {
+            Entrance.isGameRunning=false;
+
+        }
+
+ /////////////////
 
 }
+
+    }
+
+
+
 

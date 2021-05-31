@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class Entrance {
 
+    public static boolean isGameRunning=true;
+
+
+
+
     public Entrance()
     {
         System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
@@ -55,7 +60,7 @@ public class Entrance {
         System.out.println("*****************Enter your commands here*****************");
         String input="";
         Regex regex=new Regex();
-        while(true)
+        while(isGameRunning)
         {
             input=scanner.nextLine();
             regex.matcher(input);
