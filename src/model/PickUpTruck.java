@@ -15,7 +15,16 @@ public class PickUpTruck {
     boolean traveling;
     int truckSpaceTaken;
     int turns;
-
+    public boolean startTraveling(){
+        if(traveling){
+            return false;
+        }
+        if(pickUpTruckHashset.isEmpty()){
+            return false;
+        }
+        traveling = true;
+        return true;
+    }
     public PickUpTruck() {
         pickUpTruckHashset= new HashSet<>();
         truckSpaceTaken = 0;
@@ -91,6 +100,8 @@ public class PickUpTruck {
         }
         pickUpTruckHashset.clear();
     }
+
+
     private boolean sellWildAnimal(WildAnimal wildAnimal , Coin coin){
         if(wildAnimal instanceof Tiger){
             coin.addCoin(Tiger.TIGER_SELL_PRICE);
@@ -145,5 +156,103 @@ public class PickUpTruck {
     }
     public boolean canPick(int a){
         return a + truckSpaceTaken <= MAX_CAPACITY;
+    }
+
+
+    public boolean reStoreEggFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Egg){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreBreadFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Bread){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreClothFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Cloth){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreFabricFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Fabric){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreFeatherFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Feather){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreFlourFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Flour){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreIceCreamFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof IceCream){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreMilkFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Milk){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStorePocketMilkFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof PocketMilk){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreBearFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Bear){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreLoinFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Loin){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
+    }
+    public boolean reStoreTigerFromTruck(Storeroom storeroom){
+        for (Object object : pickUpTruckHashset) {
+            if(object instanceof Tiger){
+                return storeroom.reStoreFromTruck(object , this);
+            }
+        }
+        return false;
     }
 }

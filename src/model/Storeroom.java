@@ -77,6 +77,62 @@ public class Storeroom {
         return false;
     }
 
+    public boolean reStoreFromTruck(Object object , PickUpTruck pickUpTruck){
+        if(object instanceof WildAnimal){
+            return reStoreWildAnimalFromTruck((WildAnimal) object , pickUpTruck);
+        }else if(object instanceof FinalCommodity){
+            return reStoreFinalCommodityFromTruck((FinalCommodity) object , pickUpTruck);
+        }else if (object instanceof IntermediaryCommodity){
+            return reStoreIntermediaryCommodityFromTruck((IntermediaryCommodity) object , pickUpTruck);
+        }else if (object instanceof PrimitiveCommodity){
+            return reStorePrimitiveCommodityFromTruck((PrimitiveCommodity) object , pickUpTruck);
+        }
+        return false;
+    }
+    private boolean reStoreWildAnimalFromTruck(WildAnimal wildAnimal , PickUpTruck pickUpTruck){
+        if(spaceTaken + WildAnimal.WILD_ANIMAL_SIZE <= MAX_STORAGE){
+            if(pickUpTruck.pickUpTruckHashset.remove(wildAnimal)) {
+                spaceTaken += WildAnimal.WILD_ANIMAL_SIZE;
+                wildAnimal.storeWildAnimalChanges();
+                wildAnimalHashSet.add(wildAnimal);
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean reStoreFinalCommodityFromTruck(FinalCommodity finalCommodity , PickUpTruck pickUpTruck){
+        if(spaceTaken + FinalCommodity.FINAL_COMMODITY_SIZE <= MAX_STORAGE){
+            if( pickUpTruck.pickUpTruckHashset.remove(finalCommodity)){
+                spaceTaken += FinalCommodity.FINAL_COMMODITY_SIZE;
+                finalCommodity.storeCommodityChanges();
+                commodityHashSet.add(finalCommodity);
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean reStoreIntermediaryCommodityFromTruck(IntermediaryCommodity intermediaryCommodity , PickUpTruck pickUpTruck){
+        if(spaceTaken + IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE <= MAX_STORAGE){
+            if(pickUpTruck.pickUpTruckHashset.remove(intermediaryCommodity)){
+                spaceTaken += IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
+                intermediaryCommodity.storeCommodityChanges();
+                commodityHashSet.add(intermediaryCommodity);
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean reStorePrimitiveCommodityFromTruck(PrimitiveCommodity primitiveCommodity , PickUpTruck pickUpTruck){
+        if(spaceTaken + PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE <= MAX_STORAGE ){
+            if(pickUpTruck.pickUpTruckHashset.remove(primitiveCommodity)){
+                spaceTaken += PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
+                primitiveCommodity.storeCommodityChanges();
+                commodityHashSet.add(primitiveCommodity);
+                return true;
+            }
+        }
+        return false;
+    }
     public Bear takeBear(){
         for (WildAnimal wildAnimal : wildAnimalHashSet) {
             if(wildAnimal instanceof Bear){
