@@ -6,8 +6,7 @@ import model.*;
 import model.animals.*;
 import model.commodities.Commodity;
 import model.commodities.Egg;
-import model.factories.Bakery;
-import model.factories.Factory;
+import model.factories.*;
 
 public class Regex {
 
@@ -196,32 +195,144 @@ public class Regex {
           String factoryName=matcher5.group(1);
           if(factoryName.equalsIgnoreCase("bakery"))
           {
+              boolean found=false;
+
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+              if(factory instanceof Bakery)
+              {
+                 found=true;
+                 factory.startWorkingOneCommodity(storeroom);
+                 break;
+
+              }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create bakery factory"+ConsoleColors.RESET);
+              }
+
+
+
+
+
+
 
           }
           else if(factoryName.equalsIgnoreCase("mill"))
           {
+
+              boolean found=false;
+
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+                  if(factory instanceof Mill)
+                  {
+                      found=true;
+                      factory.startWorkingOneCommodity(storeroom);
+                      break;
+
+                  }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create mill"+ConsoleColors.RESET);
+              }
+
+
+
+
 
 
           }
           else if(factoryName.equalsIgnoreCase("milk pocketing production"))
           {
 
+              boolean found=false;
+
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+                  if(factory instanceof MilkPocketingProduction)
+                  {
+                      found=true;
+                      factory.startWorkingOneCommodity(storeroom);
+                      break;
+
+                  }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create milk pocketing production factory"+ConsoleColors.RESET);
+              }
+
+
+
 
           }
           else if(factoryName.equalsIgnoreCase("ice cream maker"))
           {
+              boolean found=false;
+
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+                  if(factory instanceof IceCreamMaker)
+                  {
+                      found=true;
+                      factory.startWorkingOneCommodity(storeroom);
+                      break;
+
+                  }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create ice cream maker factory"+ConsoleColors.RESET);
+              }
+
+
+
+
 
 
           }
 
           else if(factoryName.equalsIgnoreCase("tailoring"))
           {
+              boolean found=false;
 
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+                  if(factory instanceof Tailoring)
+                  {
+                      found=true;
+                      factory.startWorkingOneCommodity(storeroom);
+                      break;
+
+                  }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create tailoring factory"+ConsoleColors.RESET);
+              }
 
           }
           else if(factoryName.equalsIgnoreCase("fabric production"))
           {
+              boolean found=false;
 
+              for (Factory factory :
+                      GameFieldStorage.factoryHashSet) {
+                  if(factory instanceof FabricProduction)
+                  {
+                      found=true;
+                      factory.startWorkingOneCommodity(storeroom);
+                      break;
+
+                  }
+              }
+              if(!found)
+              {
+                  System.out.println(ConsoleColors.RED+"factory does't exist  first create fabric production factory"+ConsoleColors.RESET);
+              }
 
           }
 
