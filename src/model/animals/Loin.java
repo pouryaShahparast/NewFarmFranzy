@@ -17,10 +17,14 @@ public class Loin extends WildAnimal {
             currentCageNumber++;
             if(currentCageNumber >= LOIN_CAGES_NEEDED){
                 isCaged = true;
+                System.out.println("the " + animalName + " got caged");
             }
             isCagedInThisRound = true;
             return true;
+        }else {
+            System.err.println("this " + animalName +" is already caged");
         }
+
         return false;
     }
 
