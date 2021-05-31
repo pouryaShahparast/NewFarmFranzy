@@ -176,7 +176,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create bakery factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
                 }
 
 
@@ -194,7 +194,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create mill" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
                 }
 
 
@@ -212,7 +212,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
                 }
 
 
@@ -229,7 +229,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
                 }
 
 
@@ -246,7 +246,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create tailoring factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
                 }
 
             } else if (factoryName.equalsIgnoreCase("fabric production")) {
@@ -262,7 +262,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
-                    System.out.println(ConsoleColors.RED + "factory does't exist  first create fabric production factory" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
                 }
 
             } else {
