@@ -20,7 +20,10 @@ public class Dog extends Animal{
         if(coin.hasEnoughCoins(DOG_PRICE)){
             coin.reduceCoin(DOG_PRICE);
             GameFieldStorage.dogHashSet.add(new Dog());
+            System.out.println("Dog was bought");
             return true;
+        }else {
+            System.err.println("you need " + (DOG_PRICE - coin.getCoin()) + " more coins to buy Dog");
         }
         return false;
     }
@@ -61,7 +64,7 @@ public class Dog extends Animal{
 
     @Override
     public String toString() {
-            return animalName + " " + "[" + (xCoordinate + 1) + " " + (yCoordinate + 1) +"]";
+        return animalName + " " + "[" + (xCoordinate + 1) + " " + (yCoordinate + 1) +"]";
     }
 
     public Dog() {

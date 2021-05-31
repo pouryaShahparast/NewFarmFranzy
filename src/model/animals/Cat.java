@@ -59,7 +59,7 @@ public class Cat extends Animal{
             storeroom.store(removedCommodity);
         }
     }
-//    public boolean pickupCommodity(Storeroom storeroom){
+    //    public boolean pickupCommodity(Storeroom storeroom){
 //        for (Commodity commodity : GameFieldStorage.commodityHashSet) {
 //            if((commodity.getXCoordinate() == xCoordinate ) && (commodity.getYCoordinate() == yCoordinate)){
 //                if(storeroom.store(commodity)){
@@ -74,7 +74,10 @@ public class Cat extends Animal{
         if(coin.hasEnoughCoins(CAT_PRICE)){
             coin.reduceCoin(CAT_PRICE);
             GameFieldStorage.catHashSet.add(new Cat());
+            System.out.println("Cat was bought");
             return true;
+        }else {
+            System.err.println("you need " + (CAT_PRICE - coin.getCoin()) + " more coins to buy Cat");
         }
         return false;
     }
