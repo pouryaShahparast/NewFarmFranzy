@@ -18,10 +18,14 @@ public class IceCreamMaker extends SecondaryFactory{
         if(coin.hasEnoughCoins(ICE_CREAM_MAKER_CONSTRUCTION_PRICE)){
             coin.reduceCoin(ICE_CREAM_MAKER_CONSTRUCTION_PRICE);
             GameFieldStorage.factoryHashSet.add(new IceCreamMaker());
+            System.out.println("IceCreamMaker was bought");
             return true;
+        }else {
+            System.err.println("you need " + (ICE_CREAM_MAKER_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build IceCreamMaker");
         }
         return false;
     }
+
     @Override
     public boolean upgrade(Coin coin) {
         if (!upgraded) {
@@ -31,8 +35,13 @@ public class IceCreamMaker extends SecondaryFactory{
                 if(working){
                     workingWhileUpgrade = true;
                 }
+                System.out.println(factoryName + " was upgraded");
                 return true;
+            }else {
+                System.err.println("you need " + (ICE_CREAM_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
             }
+        }else {
+            System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
@@ -49,23 +58,37 @@ public class IceCreamMaker extends SecondaryFactory{
             if (pocketMilk != null) {
                 working = true;
                 workingOneCommodity = true;
+                System.out.println(factoryName + " started to work");
                 return true;
+            }else {
+                System.err.println("there isn't any pocketMilk in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
-        if (!working && upgraded) {
+        if(!upgraded){
+            System.err.println("you can't make two IceCreams at the same time because " + factoryName + " is not upgraded");
+            return false;
+        }
+        if (!working) {
             if (storeroom.numberOfPocketMilks() >= 2) {
                 PocketMilk pocketMilk1 = storeroom.takePocketMilk();
                 PocketMilk pocketMilk2 = storeroom.takePocketMilk();
                 if (pocketMilk1 != null && pocketMilk2 != null) {
                     working = true;
                     workingTwoCommodity = true;
+                    System.out.println(factoryName + " started to work with two pocketMilks");
                     return true;
                 }
+            }else {
+                System.err.println("there aren't enough pocketMilks in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }

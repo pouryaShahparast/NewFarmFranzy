@@ -18,7 +18,10 @@ public class Tailoring extends SecondaryFactory{
         if(coin.hasEnoughCoins(TAILORING_CONSTRUCTION_PRICE)){
             coin.reduceCoin(TAILORING_CONSTRUCTION_PRICE);
             GameFieldStorage.factoryHashSet.add(new Tailoring());
+            System.out.println("Tailoring was bought");
             return true;
+        }else {
+            System.err.println("you need " + (TAILORING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Tailoring");
         }
         return false;
     }
@@ -32,8 +35,13 @@ public class Tailoring extends SecondaryFactory{
                 if(working){
                     workingWhileUpgrade = true;
                 }
+                System.out.println(factoryName + " was upgraded");
                 return true;
+            }else {
+                System.err.println("you need " + (TAILORING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
             }
+        }else {
+            System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
@@ -50,23 +58,37 @@ public class Tailoring extends SecondaryFactory{
             if (fabric != null) {
                 working = true;
                 workingOneCommodity = true;
+                System.out.println(factoryName + " started to work");
                 return true;
+            }else {
+                System.err.println("there isn't any fabric in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
-        if (!working && upgraded) {
-            if (storeroom.numberOfFlours() >= 2) {
+        if(!upgraded){
+            System.err.println("you can't make two cloth at the same time because " + factoryName + " is not upgraded");
+            return false;
+        }
+        if (!working) {
+            if (storeroom.numberOfFabrics() >= 2) {
                 Fabric fabric1 = storeroom.takeFabric();
                 Fabric fabric2 = storeroom.takeFabric();
                 if (fabric1 != null && fabric2 != null) {
                     working = true;
                     workingTwoCommodity = true;
+                    System.out.println(factoryName + " started to work with two fabrics");
                     return true;
                 }
+            }else {
+                System.err.println("there aren't enough fabrics in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }

@@ -18,7 +18,10 @@ public class Bakery extends SecondaryFactory{
         if(coin.hasEnoughCoins(BAKERY_CONSTRUCTION_PRICE)){
             coin.reduceCoin(BAKERY_CONSTRUCTION_PRICE);
             GameFieldStorage.factoryHashSet.add(new Bakery());
+            System.out.println("Bakery was bought");
             return true;
+        }else {
+            System.err.println("you need " + (BAKERY_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery");
         }
         return false;
     }
@@ -32,8 +35,13 @@ public class Bakery extends SecondaryFactory{
                 if(working){
                     workingWhileUpgrade = true;
                 }
+                System.out.println("Bakery was upgraded");
                 return true;
+            }else {
+                System.err.println("you need " + (BAKERY_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery");
             }
+        }else {
+            System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
@@ -50,23 +58,37 @@ public class Bakery extends SecondaryFactory{
             if (flour != null) {
                 working = true;
                 workingOneCommodity = true;
+                System.out.println(factoryName + " started to work");
                 return true;
+            }else {
+                System.err.println("there isn't any flour in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
-        if (!working && upgraded) {
+        if(!upgraded){
+            System.err.println("you can't make two Breads at the same time because " + factoryName + " is not upgraded");
+            return false;
+        }
+        if (!working) {
             if (storeroom.numberOfFlours() >= 2) {
                 Flour flour1 = storeroom.takeFlour();
                 Flour flour2 = storeroom.takeFlour();
                 if (flour1 != null && flour2 != null) {
                     working = true;
                     workingTwoCommodity = true;
+                    System.out.println(factoryName + " started to work with two flours");
                     return true;
                 }
+            }else {
+                System.err.println("there aren't enough flours in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }

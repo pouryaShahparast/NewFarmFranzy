@@ -18,7 +18,10 @@ public class Mill extends PrimitiveFactory{
         if(coin.hasEnoughCoins(MILL_CONSTRUCTION_PRICE)){
             coin.reduceCoin(MILL_CONSTRUCTION_PRICE);
             GameFieldStorage.factoryHashSet.add(new Mill());
+            System.out.println("Mill was bought");
             return true;
+        }else {
+            System.err.println("you need " + (MILL_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Mill");
         }
         return false;
     }
@@ -32,8 +35,13 @@ public class Mill extends PrimitiveFactory{
                 if(working){
                     workingWhileUpgrade = true;
                 }
+                System.out.println(factoryName + " was upgraded");
                 return true;
+            }else {
+                System.err.println("you need " + (MILL_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
             }
+        }else {
+            System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
@@ -50,23 +58,37 @@ public class Mill extends PrimitiveFactory{
             if (egg != null) {
                 working = true;
                 workingOneCommodity = true;
+                System.out.println(factoryName + " started to work");
                 return true;
+            }else {
+                System.err.println("there isn't any eggs in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
-        if (!working && upgraded) {
+        if(!upgraded){
+            System.err.println("you can't make two Flours at the same time because " + factoryName + " is not upgraded");
+            return false;
+        }
+        if (!working) {
             if (storeroom.numberOfEggs() >= 2) {
                 Egg egg1 = storeroom.takeEgg();
                 Egg egg2 = storeroom.takeEgg();
                 if (egg1 != null && egg2 != null) {
                     working = true;
                     workingTwoCommodity = true;
+                    System.out.println(factoryName + " started to work with two eggs");
                     return true;
                 }
+            }else {
+                System.err.println("there aren't enough eggs in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
@@ -83,7 +105,7 @@ public class Mill extends PrimitiveFactory{
     }
 
     public Mill() {
-         super();
-         factoryName = "Mill";
+        super();
+        factoryName = "Mill";
     }
 }

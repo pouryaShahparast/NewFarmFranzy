@@ -29,6 +29,7 @@ public abstract class Factory {
                 if(checkIfTurnsReachedUpgraded()){
                     make();
                     workFinishedChanges();
+                    System.out.println(factoryName + "finished working");
                 }else {
                     addTurns();
                 }
@@ -36,6 +37,7 @@ public abstract class Factory {
                 if(checkIfTurnsReachedNotUpgraded()){
                     make();
                     workFinishedChanges();
+                    System.out.println(factoryName + "finished working");
                 }else {
                     addTurns();
                 }
@@ -49,6 +51,7 @@ public abstract class Factory {
                     make();
                     make();
                     workFinishedChanges();
+                    System.out.println(factoryName + "finished working");
                 }else {
                     addTurns();
                 }
@@ -72,6 +75,7 @@ public abstract class Factory {
         workingOneCommodity = false;
         workingTwoCommodity = false;
         turns = 1;
+
     }
 
     @Override

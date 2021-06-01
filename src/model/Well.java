@@ -11,9 +11,11 @@ public class Well {
     }
     public boolean startGettingWater(){
         if(gettingWater){
+            System.err.println("well is already getting water");
             return false;
         }else {
             gettingWater = true;
+            System.out.println("well started to get water");
             return true;
         }
     }
@@ -22,6 +24,7 @@ public class Well {
             if(checkIfTurnsReached()){
                 getWater();
                 finishGettingWater();
+                System.out.println("water is added");
                 return true;
             }else {
                 addTurn();
@@ -43,8 +46,13 @@ public class Well {
             if (bucketWater > 0) {
                 bucketWater--;
                 GameFieldStorage.grassHashSet.add(new Grass(xLocation , yLocation));
+                System.out.println("grass added , remaining water = " + bucketWater);
                 return true;
+            }else {
+                System.err.println("you dont have enough water to make grass");
             }
+        }else {
+            System.err.println("Coordinates are not valid ");
         }
         return false;
     }
