@@ -48,7 +48,7 @@ public class Regex {
     Matcher matcher14;
     public Regex(Task task) {
         this.task=task;
-        coin = new Coin();
+        coin = new Coin(Entrance.userInitialCoins);
         well = new Well();
         pickUpTruck = new PickUpTruck();
         storeroom = new Storeroom();

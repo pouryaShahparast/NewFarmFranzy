@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Task {
     public int level;
-    public HashMap<String,Integer>animalsAppearing=new HashMap<>();
+    public HashMap<String, ArrayList<Integer>>animalsAppearing=new HashMap<>();
     public HashMap<String,Integer>neededCommodity=new HashMap<>();
     public int firstStandardTime;
     public int secondStandardTime;
