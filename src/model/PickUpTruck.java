@@ -17,12 +17,15 @@ public class PickUpTruck {
     int turns;
     public boolean startTraveling(){
         if(traveling){
+            System.err.println("Truck is already traveling");
             return false;
         }
         if(pickUpTruckHashset.isEmpty()){
+            System.err.println("Truck is empty");
             return false;
         }
         traveling = true;
+        System.out.println("Truck started traveling");
         return true;
     }
     public PickUpTruck() {
@@ -83,6 +86,8 @@ public class PickUpTruck {
                     return true;
                 }
             }
+        }else {
+            System.err.println("can't pickup because Truck is currently traveling");
         }
         return false;
     }
@@ -99,6 +104,7 @@ public class PickUpTruck {
             }
         }
         pickUpTruckHashset.clear();
+        System.out.println("sold");
     }
 
 
@@ -160,6 +166,10 @@ public class PickUpTruck {
 
 
     public boolean reStoreEggFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Egg){
                 return storeroom.reStoreFromTruck(object , this);
@@ -168,6 +178,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreBreadFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Bread){
                 return storeroom.reStoreFromTruck(object , this);
@@ -176,6 +190,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreClothFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Cloth){
                 return storeroom.reStoreFromTruck(object , this);
@@ -184,6 +202,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreFabricFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Fabric){
                 return storeroom.reStoreFromTruck(object , this);
@@ -192,6 +214,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreFeatherFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Feather){
                 return storeroom.reStoreFromTruck(object , this);
@@ -200,6 +226,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreFlourFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Flour){
                 return storeroom.reStoreFromTruck(object , this);
@@ -208,6 +238,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreIceCreamFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof IceCream){
                 return storeroom.reStoreFromTruck(object , this);
@@ -216,6 +250,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreMilkFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Milk){
                 return storeroom.reStoreFromTruck(object , this);
@@ -224,6 +262,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStorePocketMilkFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof PocketMilk){
                 return storeroom.reStoreFromTruck(object , this);
@@ -232,6 +274,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreBearFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Bear){
                 return storeroom.reStoreFromTruck(object , this);
@@ -240,6 +286,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreLoinFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Loin){
                 return storeroom.reStoreFromTruck(object , this);
@@ -248,6 +298,10 @@ public class PickUpTruck {
         return false;
     }
     public boolean reStoreTigerFromTruck(Storeroom storeroom){
+        if(traveling){
+            System.err.println("Truck is traveling");
+            return false;
+        }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Tiger){
                 return storeroom.reStoreFromTruck(object , this);
