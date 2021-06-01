@@ -51,30 +51,7 @@ public class Entrance {
         }
 
 
-
-
-        initializeUserLevelAndCoins(userName);
-        initializeTasks();
-
-
-
-        //start playing  Game
-
-
-        System.out.println("*****************Enter your commands here*****************");
-        String input="";
-        Regex regex=new Regex(taskOfLevel1);
-        while(isGameRunning)
-        {
-            input=scanner.nextLine();
-            regex.matcher(input);
-        }
-
-
-
-
-
-        //
+        startPlayingGame(userName);
 
 
 
@@ -289,7 +266,7 @@ initializing tasks of levels
         taskOfLevel3.neededCommodity.put("bread",5);
         taskOfLevel3.neededCommodity.put("cow",3);
         taskOfLevel3.neededCommodity.put("milk",5);
-        taskOfLevel3.neededCommodity.put("icevream",5);
+        taskOfLevel3.neededCommodity.put("ice cream",5);
         //level4
         taskOfLevel4=new Task(4,110,150,800,850,500);
         taskOfLevel4.animalsAppearing.put("bear",5);
@@ -305,7 +282,7 @@ initializing tasks of levels
         taskOfLevel4.neededCommodity.put("bread",5);
         taskOfLevel4.neededCommodity.put("cow",5);
         taskOfLevel4.neededCommodity.put("milk",5);
-        taskOfLevel4.neededCommodity.put("icevream",5);
+        taskOfLevel4.neededCommodity.put("ice cream",5);
         taskOfLevel4.neededCommodity.put("wool",5);
         //level5
         taskOfLevel5=new Task(5,150,200,1000,850,750);
@@ -325,7 +302,7 @@ initializing tasks of levels
         taskOfLevel5.neededCommodity.put("bread",5);
         taskOfLevel5.neededCommodity.put("cow",5);
         taskOfLevel5.neededCommodity.put("milk",5);
-        taskOfLevel5.neededCommodity.put("icevream",5);
+        taskOfLevel5.neededCommodity.put("ice cream",5);
         taskOfLevel5.neededCommodity.put("wool",5);
         taskOfLevel5.neededCommodity.put("flour",10);
         taskOfLevel5.neededCommodity.put("feather",10);
@@ -371,6 +348,107 @@ initializing tasks of levels
 
 
     }
+    public void startPlayingGame(String userName)
+    {
+        Scanner scanner=new Scanner(System.in);
+        initializeUserLevelAndCoins(userName);
+        initializeTasks();
+        int level=askingWhichLevelToPlay();
+
+
+                //start playing  Game  level 1
+        if(level==1) {
+
+            System.out.println("*****************Enter your commands here*****************");
+            String input = "";
+            Regex regex = new Regex(taskOfLevel1);
+            while (isGameRunning) {
+                input = scanner.nextLine();
+                regex.matcher(input);
+            }
+
+        }
+        //start playing  Game  level 2
+        if(level==2) {
+
+            System.out.println("*****************Enter your commands here*****************");
+            String input = "";
+            Regex regex = new Regex(taskOfLevel2);
+            while (isGameRunning) {
+                input = scanner.nextLine();
+                regex.matcher(input);
+            }
+
+        }
+        //start playing  Game  level 3
+        if(level==3) {
+
+            System.out.println("*****************Enter your commands here*****************");
+            String input = "";
+            Regex regex = new Regex(taskOfLevel3);
+            while (isGameRunning) {
+                input = scanner.nextLine();
+                regex.matcher(input);
+            }
+
+        }
+        //start playing  Game  level 4
+        if(level==4) {
+
+            System.out.println("*****************Enter your commands here*****************");
+            String input = "";
+            Regex regex = new Regex(taskOfLevel4);
+            while (isGameRunning) {
+                input = scanner.nextLine();
+                regex.matcher(input);
+            }
+
+        }
+        //start playing  Game  level 5
+        if(level==5) {
+
+            System.out.println("*****************Enter your commands here*****************");
+            String input = "";
+            Regex regex = new Regex(taskOfLevel5);
+            while (isGameRunning) {
+                input = scanner.nextLine();
+                regex.matcher(input);
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
+    public int askingWhichLevelToPlay()
+    {   Scanner scanner=new Scanner(System.in);
+        System.out.println(ConsoleColors.BLUE+"Which level would you like to play ?"+ConsoleColors.RESET);
+        int level=scanner.nextInt();
+        if(level>levelOfUser)
+        {
+            System.out.println(ConsoleColors.RED+"you cant play this level"+ConsoleColors.RESET);
+
+
+        }
+        if(level<=0)
+        {
+            System.out.println(ConsoleColors.RED+"INVALID INPUT (number out of range)"+ConsoleColors.RESET);
+        }
+
+
+            return level;
+
+
+
+
+       }
+
+
 
 
 
