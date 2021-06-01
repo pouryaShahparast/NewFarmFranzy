@@ -18,7 +18,10 @@ public class MilkPocketingProduction extends PrimitiveFactory{
         if(coin.hasEnoughCoins(MILK_POCKETING_PRODUCTION_CONSTRUCTION_PRICE)){
             coin.reduceCoin(MILK_POCKETING_PRODUCTION_CONSTRUCTION_PRICE);
             GameFieldStorage.factoryHashSet.add(new MilkPocketingProduction());
+            System.out.println("MilkPocketingProduction was bought");
             return true;
+        }else {
+            System.err.println("you need " + (MILK_POCKETING_PRODUCTION_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build MilkPocketingProduction");
         }
         return false;
     }
@@ -32,8 +35,13 @@ public class MilkPocketingProduction extends PrimitiveFactory{
                 if(working){
                     workingWhileUpgrade = true;
                 }
+                System.out.println(factoryName + " was upgraded");
                 return true;
+            }else {
+                System.err.println("you need " + (MILK_POCKETING_PRODUCTION_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
             }
+        }else {
+            System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
@@ -50,23 +58,37 @@ public class MilkPocketingProduction extends PrimitiveFactory{
             if (milk != null) {
                 working = true;
                 workingOneCommodity = true;
+                System.out.println(factoryName + " started to work");
                 return true;
+            }else {
+                System.err.println("there isn't any milk in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
-        if (!working && upgraded) {
+        if(!upgraded){
+            System.err.println("you can't make two PocketMilks at the same time because " + factoryName + " is not upgraded");
+            return false;
+        }
+        if (!working) {
             if (storeroom.numberOfMilks() >= 2) {
                 Milk milk1 = storeroom.takeMilk();
                 Milk milk2 = storeroom.takeMilk();
                 if (milk1 != null && milk2 != null) {
                     working = true;
                     workingTwoCommodity = true;
+                    System.out.println(factoryName + " started to work with two milk");
                     return true;
                 }
+            }else {
+                System.err.println("there isn't enough milk in storeroom");
             }
+        }else {
+            System.err.println(factoryName + " is already working");
         }
         return false;
     }
