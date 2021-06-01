@@ -14,6 +14,7 @@ public class Regex {
     PickUpTruck pickUpTruck;
     Storeroom storeroom;
     InGameManager inGameManager;
+    Task task;
     //patterns
 
     Pattern pattern1;
@@ -28,7 +29,8 @@ public class Regex {
     Pattern pattern10;
     Pattern pattern11;
     Pattern pattern12;
-
+    Pattern pattern13;
+    Pattern pattern14;
     //matchers
     Matcher matcher1;
     Matcher matcher2;
@@ -42,7 +44,10 @@ public class Regex {
     Matcher matcher10;
     Matcher matcher11;
     Matcher matcher12;
-    public Regex() {
+    Matcher matcher13;
+    Matcher matcher14;
+    public Regex(Task task) {
+        this.task=task;
         coin = new Coin();
         well = new Well();
         pickUpTruck = new PickUpTruck();
@@ -76,6 +81,10 @@ public class Regex {
         pattern11 = Pattern.compile("\\s*(?i:exit)\\s*$");
         ///inquiry
         pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
+        ///upgrade
+        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*$");
+        ///build factory
+        pattern14 = Pattern.compile("\\s*(?i:build)\\s*(\\w+)\\s*$");
 //////////////////////////
 
         if (matcher1.find()) {
@@ -758,6 +767,125 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
         }
+        ////////////////////////
+        if(matcher14.find())
+        {
+            String factoryName=matcher14.group(1);
+            if (factoryName.equalsIgnoreCase("bakery")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Bakery) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("mill")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Mill) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("milk pocketing production")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof MilkPocketingProduction) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("ice cream maker")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof IceCreamMaker) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("tailoring")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Tailoring) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
+                }
+
+            } else if (factoryName.equalsIgnoreCase("fabric production")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof FabricProduction) {
+                        found = true;
+                        factory.startWorkingOneCommodity(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
+                }
+
+            } else {
+
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+
+            }
+
+
+
+
+
+        }
+
+
 
 
 
