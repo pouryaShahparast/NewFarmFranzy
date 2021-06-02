@@ -509,6 +509,15 @@ initializing tasks of levels
     {
 
 
+        try {
+            FileWriter fileWriter=new FileWriter("E:\\"+userName+".txt");
+            fileWriter.write(levelOfUser);
+            fileWriter.write("\\n");
+            fileWriter.write(userInitialCoins);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
