@@ -362,7 +362,7 @@ public class Regex {
 
 
 
-
+                addWildAnimals(i);
                 inGameManager.game();
                 inGameManager.turnsPassed += 1;
 
@@ -1040,5 +1040,65 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
 }
+
+public void addWildAnimals(int n)
+{
+
+    for (String string :
+            task.animalsAppearing.keySet()) {
+        if(string.equalsIgnoreCase("tiger"))
+        {
+            for (Integer integer :
+                    task.animalsAppearing.get("tiger")) {
+                if(n==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Tiger());
+                }
+            }   
+            
+            
+        }
+
+
+        if(string.equalsIgnoreCase("lion"))
+        {
+            for (Integer integer :
+                    task.animalsAppearing.get("lion")) {
+                if(n==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Loin());
+                }
+            }
+
+
+        }
+        if(string.equalsIgnoreCase("bear"))
+        {
+            for (Integer integer :
+                    task.animalsAppearing.get("bear")) {
+                if(n==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Bear());
+                }
+            }
+
+
+        }
+
+
+    }
+
+
+    
+    
+    
+}
+
+
+
+
 
     }
