@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Task {
+public class Task1 {
     public int level;
     public HashMap<String, ArrayList<Integer>>animalsAppearing=new HashMap<>();
     public HashMap<String,Integer>neededCommodity=new HashMap<>();
@@ -12,7 +13,7 @@ public class Task {
     public int initialCoin;
 
 
-    public Task(int level, int firstStandardTime, int secondStandardTime, int firstBonus, int secondBonus, int initialCoin) {
+    public Task1(int level, int firstStandardTime, int secondStandardTime, int firstBonus, int secondBonus, int initialCoin) {
         this.level = level;
         this.firstStandardTime = firstStandardTime;
         this.secondStandardTime = secondStandardTime;

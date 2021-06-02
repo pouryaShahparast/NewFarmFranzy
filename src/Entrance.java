@@ -9,7 +9,7 @@ public class Entrance {
     public static boolean isGameRunning=true;
     public static boolean quitGame=true;
     public static int levelOfUser,userInitialCoins;
-    public Task taskOfLevel1, taskOfLevel2, taskOfLevel3, taskOfLevel4, taskOfLevel5;
+    public Task1 taskOfLevel1, taskOfLevel2, taskOfLevel3, taskOfLevel4, taskOfLevel5;
 
     public Entrance()
     {
@@ -237,7 +237,7 @@ initializing tasks of levels
 
         /////////////////////////////////////////////////////////////
         //level1
-        taskOfLevel1=new Task(1,50,60,400,300,200);
+        taskOfLevel1=new Task1(1,50,60,400,300,200);
         ArrayList<Integer>bearTimes1=new ArrayList<>();
         bearTimes1.add(10);
         bearTimes1.add(35);
@@ -247,7 +247,7 @@ initializing tasks of levels
         taskOfLevel1.neededCommodity.put("turkey",2);
 
         //level2
-        taskOfLevel2=new Task(2,70,90,500,300,350);
+        taskOfLevel2=new Task1(2,70,90,500,300,350);
 
         ArrayList<Integer>bearTimes2=new ArrayList<>();
         bearTimes2.add(10);
@@ -263,7 +263,7 @@ initializing tasks of levels
         taskOfLevel2.neededCommodity.put("cow",2);
         taskOfLevel2.neededCommodity.put("milk",2);
         //level3
-        taskOfLevel3=new Task(3,90,110,600,700,400);
+        taskOfLevel3=new Task1(3,90,110,600,700,400);
         ArrayList<Integer>bearTimes3=new ArrayList<>();
         bearTimes3.add(15);
         bearTimes3.add(40);
@@ -281,7 +281,7 @@ initializing tasks of levels
         taskOfLevel3.neededCommodity.put("milk",5);
         taskOfLevel3.neededCommodity.put("ice cream",5);
         //level4
-        taskOfLevel4=new Task(4,110,150,800,850,500);
+        taskOfLevel4=new Task1(4,110,150,800,850,500);
         ArrayList<Integer>bearTimes4=new ArrayList<>();
         bearTimes4.add(5);
         bearTimes4.add(40);
@@ -307,7 +307,7 @@ initializing tasks of levels
         taskOfLevel4.neededCommodity.put("ice cream",5);
         taskOfLevel4.neededCommodity.put("wool",5);
         //level5
-        taskOfLevel5=new Task(5,150,200,1000,850,750);
+        taskOfLevel5=new Task1(5,150,200,1000,850,750);
 
         ArrayList<Integer>bearTimes5=new ArrayList<>();
         bearTimes5.add(5);

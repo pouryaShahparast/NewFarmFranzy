@@ -14,7 +14,7 @@ public class Regex {
     PickUpTruck pickUpTruck;
     Storeroom storeroom;
     InGameManager inGameManager;
-    Task task;
+    Task1 task;
     //patterns
 
     Pattern pattern1;
@@ -50,17 +50,7 @@ public class Regex {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    public Regex(Task task) {
+    public Regex(Task1 task) {
         this.task=task;
         coin = new Coin(Entrance.userInitialCoins);
         well = new Well();
@@ -366,8 +356,21 @@ public class Regex {
                 return;
             }
             for (int i = 0; i < n; i++) {
+
+
+
+
+
+
+
                 inGameManager.game();
                 inGameManager.turnsPassed += 1;
+
+
+
+
+
+
             }
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
