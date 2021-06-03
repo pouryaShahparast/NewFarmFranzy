@@ -1218,7 +1218,166 @@ public void addWildAnimals(int n)
     
     
 }
+public boolean checkIfNeededIsPrepared()
+{
+    boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true,f8=true,f9=true,f10=true;
+    for (String string :
+            task.neededCommodity.keySet()) {
+        if (string.equalsIgnoreCase("braed")) {
+            f1 = true;
+            int amountNeeded = task.neededCommodity.get("bread");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Bread)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Bread is complete");
+                System.out.println("Bread " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f1 = true;
+            } else {
+                System.out.println("Bread " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f1 = false;
 
+            }
+
+        }
+
+
+        if (string.equalsIgnoreCase("cloth")) {
+            f2 = true;
+            int amountNeeded = task.neededCommodity.get("cloth");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Cloth)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Cloth is complete");
+                System.out.println("Cloth " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = true;
+            } else {
+                System.out.println("Cloth "+ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = false;
+
+            }
+
+        }
+        if (string.equalsIgnoreCase("egg")) {
+            f2 = true;
+            int amountNeeded = task.neededCommodity.get("egg");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Egg)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Egg is complete");
+                System.out.println("Egg " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = true;
+            } else {
+                System.out.println("Egg " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("fabric")) {
+            f3 = true;
+            int amountNeeded = task.neededCommodity.get("fabric");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Fabric)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Fabric is complete");
+                System.out.println("Fabric " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = true;
+            } else {
+                System.out.println("Fabric " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = false;
+
+            }
+        }
+
+        if (string.equalsIgnoreCase("feather")) {
+            f3 = true;
+            int amountNeeded = task.neededCommodity.get("feather");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Feather)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Feather is complete");
+                System.out.println("Feather " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = true;
+            } else {
+                System.out.println("Feather " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("flour")) {
+            f4 = true;
+            int amountNeeded = task.neededCommodity.get("flour");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Flour)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Flour is complete");
+                System.out.println("Flour " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f4 = true;
+            } else {
+                System.out.println("Flour " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f4 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("fabric")) {
+            f3 = true;
+            int amountNeeded = task.neededCommodity.get("fabric");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Fabric)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Fabric is complete");
+                System.out.println("Fabric " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = true;
+            } else {
+                System.out.println("Fabric " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = false;
+
+            }
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+}
 
 
 
