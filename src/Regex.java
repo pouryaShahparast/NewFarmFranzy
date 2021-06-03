@@ -1220,7 +1220,7 @@ public void addWildAnimals(int n)
 }
 public boolean checkIfNeededIsPrepared()
 {
-    boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true,f8=true,f9=true,f10=true;
+    boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
     for (String string :
             task.neededCommodity.keySet()) {
         if (string.equalsIgnoreCase("braed")) {
@@ -1342,35 +1342,68 @@ public boolean checkIfNeededIsPrepared()
 
             }
         }
-        if (string.equalsIgnoreCase("fabric")) {
-            f3 = true;
-            int amountNeeded = task.neededCommodity.get("fabric");
+        if (string.equalsIgnoreCase("ice cream")) {
+            f5 = true;
+            int amountNeeded = task.neededCommodity.get("ice cream");
             int amountExisting = 0;
             for (Commodity commodity :
                     GameFieldStorage.commodityHashSet) {
-                if (commodity instanceof Fabric)
+                if (commodity instanceof IceCream)
                     amountExisting++;
             }
             if (amountExisting >= amountNeeded) {
-                System.out.println("amount of Fabric is complete");
-                System.out.println("Fabric " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                f3 = true;
+                System.out.println("amount of ice cream is complete");
+                System.out.println("ice cream " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f5 = true;
             } else {
-                System.out.println("Fabric " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                f3 = false;
+                System.out.println("ice cream " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f5 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("milk")) {
+            f6 = true;
+            int amountNeeded = task.neededCommodity.get("Milk");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Milk)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Milk is complete");
+                System.out.println("Milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f6 = true;
+            } else {
+                System.out.println("Milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f6 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("pocket milk")) {
+            f7 = true;
+            int amountNeeded = task.neededCommodity.get("pocket milk");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof PocketMilk)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Pocket milk is complete");
+                System.out.println("Pocket milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f7 = true;
+            } else {
+                System.out.println("Pocket milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f7 = false;
 
             }
         }
 
 
-
-
-
-
-
     }
 
-
+return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
 
 
 
