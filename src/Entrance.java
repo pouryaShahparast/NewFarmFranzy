@@ -388,10 +388,12 @@ initializing tasks of levels
 
         while(quitGame)
         {
+            isGameRunning=true;
             int level=askingWhichLevelToPlay();
             if(level==0)
             {
                 saveUserInfo(userName);
+                return;
 
             }
 
@@ -409,6 +411,7 @@ initializing tasks of levels
                     input = scanner.nextLine();
                     regex.matcher(input);
                 }
+                continue;
 
             }
             //start playing  Game  level 2
@@ -421,7 +424,7 @@ initializing tasks of levels
                     input = scanner.nextLine();
                     regex.matcher(input);
                 }
-
+              continue;
             }
             //start playing  Game  level 3
             else if(level==3) {
@@ -433,7 +436,7 @@ initializing tasks of levels
                     input = scanner.nextLine();
                     regex.matcher(input);
                 }
-
+                continue;
             }
             //start playing  Game  level 4
             else if(level==4) {
@@ -445,7 +448,7 @@ initializing tasks of levels
                     input = scanner.nextLine();
                     regex.matcher(input);
                 }
-
+               continue;
             }
             //start playing  Game  level 5
            else  if(level==5) {
@@ -457,7 +460,7 @@ initializing tasks of levels
                     input = scanner.nextLine();
                     regex.matcher(input);
                 }
-
+                continue;
             }
 
 

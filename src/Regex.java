@@ -383,7 +383,11 @@ public class Regex {
             checkIfNeededIsPrepared();
             System.out.println(ConsoleColors.RESET);
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
-
+            if(!checkIfNeededIsPreparedReturnBoolean())
+            {
+                Entrance.isGameRunning=false;
+                return;
+            }
 
         }
         ///////////////////
