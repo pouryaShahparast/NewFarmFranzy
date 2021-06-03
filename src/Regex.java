@@ -31,6 +31,7 @@ public class Regex {
     Pattern pattern12;
     Pattern pattern13;
     Pattern pattern14;
+    Pattern pattern15;
     //matchers
     Matcher matcher1;
     Matcher matcher2;
@@ -46,7 +47,7 @@ public class Regex {
     Matcher matcher12;
     Matcher matcher13;
     Matcher matcher14;
-    //
+    Matcher matcher15;
 
 
 
@@ -86,9 +87,11 @@ public class Regex {
         ///inquiry
         pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
         ///upgrade
-        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*$");
+        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*(\\w+)\\s*$");
         ///build factory
         pattern14 = Pattern.compile("\\s*(?i:build)\\s*(\\w+)\\s*$");
+        ///work with two commodity
+        pattern15 = Pattern.compile("\\s*(?i:work+)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
         matcher1 = pattern1.matcher(input);
         matcher2 = pattern2.matcher(input);
@@ -104,7 +107,7 @@ public class Regex {
         matcher12 = pattern4.matcher(input);
         matcher13 = pattern1.matcher(input);
         matcher14 = pattern2.matcher(input);
-
+        matcher15 = pattern2.matcher(input);
 //////////////////////////
 
         if (matcher1.find()) {
@@ -928,7 +931,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Bakery) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -946,7 +949,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Mill) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -964,7 +967,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof MilkPocketingProduction) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -981,7 +984,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof IceCreamMaker) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -998,7 +1001,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Tailoring) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -1014,7 +1017,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof FabricProduction) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -1036,10 +1039,129 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
         }
+        if(matcher15.find())
+        {
+            String factoryName = matcher15.group(1);
+            if (factoryName.equalsIgnoreCase("bakery")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Bakery) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("mill")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Mill) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("milk pocketing production")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof MilkPocketingProduction) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("ice cream maker")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof IceCreamMaker) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("tailoring")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Tailoring) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
+                }
+
+            } else if (factoryName.equalsIgnoreCase("fabric production")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof FabricProduction) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
+                }
+
+            } else {
+
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+
+            }
 
 
 
-}
+
+
+
+
+        }
+
+
+
+
+    }
 
 public void addWildAnimals(int n)
 {
