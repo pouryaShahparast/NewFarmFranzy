@@ -34,6 +34,10 @@ public class LoggingToFile {
          {
              logger.config(message);
          }
+        if(flag.equalsIgnoreCase("severe"))
+        {
+            logger.severe(message);
+        }
 
 
     }

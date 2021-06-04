@@ -22,13 +22,22 @@ public class Entrance {
         Scanner scanner=new Scanner(System.in);
         int input=scanner.nextInt();
         if(input==1)
+        {
+            LoggingToFile.logToFile("user logged in","info");
             logIn();
-        if(input==2)
-            signUp();
-        else
-            System.out.println("wrong input");
-        menu();
+        }
 
+        if(input==2)
+        {
+            LoggingToFile.logToFile("user signed up","info");
+            signUp();
+        }
+
+        else {
+            System.out.println("wrong input");
+            LoggingToFile.logToFile("wrong input in menu", "warning");
+            menu();
+        }
     }
     public void logIn() {
         System.out.println("logging in........Enter your USERNAME ");
@@ -39,6 +48,7 @@ public class Entrance {
 
         if (!checkIfUserExists(userName)) {
             System.out.println(ConsoleColors.RED + "you are not in the list ,please sign up first" + ConsoleColors.RESET);
+            LoggingToFile.logToFile("user is not in the list of usernames and passwords","warning");
             menu();
             return;
 
@@ -69,12 +79,13 @@ public class Entrance {
         if(checkIfUserExists(userName))
         {
             System.out.println(ConsoleColors.RED+"Already Taken"+ConsoleColors.RESET);
+            LoggingToFile.logToFile("username has already been token","warning");
             signUp();
 
         }
 
 
-        File userNameAndPasswords=new File("E:\\password.txt");
+        File userNameAndPasswords=new File("password.txt");
         if(!userNameAndPasswords.exists())
         {
 
@@ -82,6 +93,7 @@ public class Entrance {
                 userNameAndPasswords.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
+                LoggingToFile.logToFile("error in creating file of usernames and passwords",);
             }
 
         }
@@ -100,7 +112,7 @@ public class Entrance {
             fileWriter.write(userName+"\n"+password+"\n");
             fileWriter.close();
             //create a file with username name
-            File userFile=new File("E:\\"+userName+".txt");
+            File userFile=new File(userName+".txt");
             userFile.createNewFile();
             FileWriter userFileWriter=new FileWriter(userFile);
             /*file format:
