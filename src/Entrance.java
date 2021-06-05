@@ -93,7 +93,7 @@ public class Entrance {
                 userNameAndPasswords.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
-                LoggingToFile.logToFile("error in creating file of usernames and passwords",);
+                LoggingToFile.logToFile("error in creating file of usernames and passwords","severe");
             }
 
         }
@@ -102,19 +102,27 @@ public class Entrance {
         try {
             scanner=new Scanner(userNameAndPasswords);
         } catch (FileNotFoundException e) {
+            LoggingToFile.logToFile("can't find password.txt(signUp)","severe");
             e.printStackTrace();
         }
         try {
             FileWriter fileWriter=new FileWriter(userNameAndPasswords,true);
             scanner=new Scanner(System.in);
-            System.out.println("Enter your password (only digits)");
+            System.out.println("Enter your password ");
             password=scanner.nextLine();
-            fileWriter.write(userName+"\n"+password+"\n");
+            fileWriter.write("_"+userName+"\n"+password+"\n");
             fileWriter.close();
-            //create a file with username name
-            File userFile=new File(userName+".txt");
-            userFile.createNewFile();
-            FileWriter userFileWriter=new FileWriter(userFile);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+//create a file with username name
+            File userFile = new File(userName + ".txt");
+            if (!userFile.exists()) {
+                userFile.createNewFile();
+            }
+            FileWriter userFileWriter = new FileWriter(userFile);
             /*file format:
 
               int level:
@@ -125,22 +133,12 @@ public class Entrance {
 
             userFileWriter.write("1\\n\\200");
             userFileWriter.close();
-
-
-
-
-
-
-
-
-
-
-
-        } catch (IOException e) {
+        }
+        catch (Exception e)
+        {
+            LoggingToFile.logToFile("problem in creating file "+userName+".txt","severe");
             e.printStackTrace();
         }
-
-
 
         logIn();
 
@@ -149,7 +147,7 @@ public class Entrance {
 
     public boolean checkIfUserExists(String userName)
     {
-        File userNameAndPasswords=new File("E:\\password.txt");
+        File userNameAndPasswords=new File("password.txt");
         if(!userNameAndPasswords.exists())
         {
 
@@ -157,7 +155,8 @@ public class Entrance {
                 userNameAndPasswords.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("problem in creating");
+                LoggingToFile.logToFile("problem in creating password file to check if user exits","severe");
+
             }
 
         }
@@ -166,16 +165,22 @@ public class Entrance {
         try {
             scanner=new Scanner(userNameAndPasswords);
         } catch (FileNotFoundException e) {
+            LoggingToFile.logToFile("file password.txt not found_(checkIfUserExists)","severe");
             e.printStackTrace();
         }
         String temp1="";
         while(scanner.hasNextLine())
         {
             temp1=scanner.nextLine();
-            if(temp1.equals(userName))
+            if(temp1.charAt(0)=='_')
             {
-                return true;
+                temp1=temp1.substring(1);
+                if(temp1.equals(userName))
+                {
+                    return true;
+                }
             }
+
 
 
 
@@ -193,13 +198,14 @@ public class Entrance {
     }
     public boolean checkIfPasswordIsCorrect(String userName,String password)
     {
-        File userNameAndPasswords=new File("E:\\password.txt");
+        File userNameAndPasswords=new File("password.txt");
         if(!userNameAndPasswords.exists())
         {
 
             try {
                 userNameAndPasswords.createNewFile();
             } catch (IOException e) {
+                LoggingToFile.logToFile("problem in creating password file to check if password is correct","severe");
                 e.printStackTrace();
             }
 
@@ -209,6 +215,7 @@ public class Entrance {
         try {
             scanner=new Scanner(userNameAndPasswords);
         } catch (FileNotFoundException e) {
+            LoggingToFile.logToFile("file password.txt not found_(checkIfPasswordIsCorrect)","severe");
             e.printStackTrace();
         }
 
@@ -216,19 +223,19 @@ public class Entrance {
         while(scanner.hasNextLine())
         {
             temp1=scanner.nextLine();
-            if(temp1.equals(userName))
-            {
-                temp1=scanner.nextLine();
-                if(temp1.equals(password))
-                {
-                    return true;
+            if(temp1.charAt(0)=='_') {
+                temp1=temp1.substring(1);
+                if (temp1.equals(userName)) {
+                    temp1 = scanner.nextLine();
+                    if (temp1.equals(password)) {
+                        return true;
+                    }
+
+
                 }
-
-
-
             }
-
         }
+        LoggingToFile.logToFile("password is incorrect","info");
         System.out.println(ConsoleColors.RED+"Wrong"+ConsoleColors.RESET);
         return false;
 
@@ -366,7 +373,20 @@ initializing tasks of levels
     public void initializeUserLevelAndCoins(String userName)
     {
         Scanner scanner;
-        File userFile=new File("E:\\"+userName+".txt");
+        File userFile=new File(userName+".txt");
+        if(!userFile.exists())
+        {
+            try {
+                userFile.createNewFile();
+            } catch (IOException e) {
+                LoggingToFile.logToFile("problem in creating "+userName+".txt (initializeUserLevelAndCoins)","severe");
+                e.printStackTrace();
+            }
+
+
+        }
+
+
 
         try {
             scanner=new Scanner(userFile);
@@ -380,6 +400,7 @@ initializing tasks of levels
 
 
         } catch (FileNotFoundException e) {
+            LoggingToFile.logToFile("can't find "+userName+".txt","severe");
             e.printStackTrace();
         }
 
@@ -525,11 +546,12 @@ initializing tasks of levels
 
 
         try {
-            FileWriter fileWriter=new FileWriter("E:\\"+userName+".txt");
+            FileWriter fileWriter=new FileWriter(userName+".txt");
             fileWriter.write(levelOfUser);
             fileWriter.write("\\n");
             fileWriter.write(userInitialCoins);
         } catch (IOException e) {
+            LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
             e.printStackTrace();
         }
 
