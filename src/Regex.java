@@ -31,6 +31,7 @@ public class Regex {
     Pattern pattern12;
     Pattern pattern13;
     Pattern pattern14;
+    Pattern pattern15;
     //matchers
     Matcher matcher1;
     Matcher matcher2;
@@ -46,7 +47,7 @@ public class Regex {
     Matcher matcher12;
     Matcher matcher13;
     Matcher matcher14;
-    //
+    Matcher matcher15;
 
 
 
@@ -86,9 +87,11 @@ public class Regex {
         ///inquiry
         pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
         ///upgrade
-        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*$");
+        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*(\\w+)\\s*$");
         ///build factory
         pattern14 = Pattern.compile("\\s*(?i:build)\\s*(\\w+)\\s*$");
+        ///work with two commodity
+        pattern15 = Pattern.compile("\\s*(?i:work+)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
         matcher1 = pattern1.matcher(input);
         matcher2 = pattern2.matcher(input);
@@ -104,7 +107,7 @@ public class Regex {
         matcher12 = pattern4.matcher(input);
         matcher13 = pattern1.matcher(input);
         matcher14 = pattern2.matcher(input);
-
+        matcher15 = pattern2.matcher(input);
 //////////////////////////
 
         if (matcher1.find()) {
@@ -355,7 +358,7 @@ public class Regex {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (incorrect time)" + ConsoleColors.RESET);
                 return;
             }
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; (i < n)&&(!checkIfNeededIsPreparedReturnBoolean()); i++) {
 
 
 
@@ -371,14 +374,20 @@ public class Regex {
 
 
 
+
             }
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLACK);
             inGameManager.show();
+            checkIfNeededIsPrepared();
             System.out.println(ConsoleColors.RESET);
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
-
+            if(!checkIfNeededIsPreparedReturnBoolean())
+            {
+                Entrance.isGameRunning=false;
+                return;
+            }
 
         }
         ///////////////////
@@ -928,7 +937,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Bakery) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -946,7 +955,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Mill) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -964,7 +973,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof MilkPocketingProduction) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -981,7 +990,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof IceCreamMaker) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -998,7 +1007,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof Tailoring) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -1014,7 +1023,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                             GameFieldStorage.factoryHashSet) {
                         if (factory instanceof FabricProduction) {
                             found = true;
-                            factory.startWorkingTwoCommodities(storeroom);
+                            factory.upgrade(coin);
                             break;
 
                         }
@@ -1036,10 +1045,129 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
         }
+        if(matcher15.find())
+        {
+            String factoryName = matcher15.group(1);
+            if (factoryName.equalsIgnoreCase("bakery")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Bakery) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("mill")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Mill) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("milk pocketing production")) {
+
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof MilkPocketingProduction) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("ice cream maker")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof IceCreamMaker) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
+                }
+
+
+            } else if (factoryName.equalsIgnoreCase("tailoring")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof Tailoring) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
+                }
+
+            } else if (factoryName.equalsIgnoreCase("fabric production")) {
+                boolean found = false;
+
+                for (Factory factory :
+                        GameFieldStorage.factoryHashSet) {
+                    if (factory instanceof FabricProduction) {
+                        found = true;
+                        factory.startWorkingTwoCommodities(storeroom);
+                        break;
+
+                    }
+                }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
+                }
+
+            } else {
+
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+
+            }
 
 
 
-}
+
+
+
+
+        }
+
+
+
+
+    }
 
 public void addWildAnimals(int n)
 {
@@ -1096,9 +1224,384 @@ public void addWildAnimals(int n)
     
     
 }
+public boolean checkIfNeededIsPrepared()
+{
+    boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
+    for (String string :
+            task.neededCommodity.keySet()) {
+        if (string.equalsIgnoreCase("braed")) {
+            f1 = true;
+            int amountNeeded = task.neededCommodity.get("bread");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Bread)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Bread is complete");
+                System.out.println("Bread " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f1 = true;
+            } else {
+                System.out.println("Bread " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f1 = false;
+
+            }
+
+        }
+
+
+        if (string.equalsIgnoreCase("cloth")) {
+            f2 = true;
+            int amountNeeded = task.neededCommodity.get("cloth");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Cloth)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Cloth is complete");
+                System.out.println("Cloth " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = true;
+            } else {
+                System.out.println("Cloth "+ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = false;
+
+            }
+
+        }
+        if (string.equalsIgnoreCase("egg")) {
+            f2 = true;
+            int amountNeeded = task.neededCommodity.get("egg");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Egg)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Egg is complete");
+                System.out.println("Egg " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = true;
+            } else {
+                System.out.println("Egg " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f2 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("fabric")) {
+            f3 = true;
+            int amountNeeded = task.neededCommodity.get("fabric");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Fabric)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Fabric is complete");
+                System.out.println("Fabric " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = true;
+            } else {
+                System.out.println("Fabric " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = false;
+
+            }
+        }
+
+        if (string.equalsIgnoreCase("feather")) {
+            f3 = true;
+            int amountNeeded = task.neededCommodity.get("feather");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Feather)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Feather is complete");
+                System.out.println("Feather " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = true;
+            } else {
+                System.out.println("Feather " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f3 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("flour")) {
+            f4 = true;
+            int amountNeeded = task.neededCommodity.get("flour");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Flour)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Flour is complete");
+                System.out.println("Flour " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f4 = true;
+            } else {
+                System.out.println("Flour " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f4 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("ice cream")) {
+            f5 = true;
+            int amountNeeded = task.neededCommodity.get("ice cream");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof IceCream)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of ice cream is complete");
+                System.out.println("ice cream " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f5 = true;
+            } else {
+                System.out.println("ice cream " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f5 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("milk")) {
+            f6 = true;
+            int amountNeeded = task.neededCommodity.get("Milk");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof Milk)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Milk is complete");
+                System.out.println("Milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f6 = true;
+            } else {
+                System.out.println("Milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f6 = false;
+
+            }
+        }
+        if (string.equalsIgnoreCase("pocket milk")) {
+            f7 = true;
+            int amountNeeded = task.neededCommodity.get("pocket milk");
+            int amountExisting = 0;
+            for (Commodity commodity :
+                    GameFieldStorage.commodityHashSet) {
+                if (commodity instanceof PocketMilk)
+                    amountExisting++;
+            }
+            if (amountExisting >= amountNeeded) {
+                System.out.println("amount of Pocket milk is complete");
+                System.out.println("Pocket milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f7 = true;
+            } else {
+                System.out.println("Pocket milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                f7 = false;
+
+            }
+        }
+
+
+    }
+
+return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
 
 
 
+
+
+
+}
+
+    public boolean checkIfNeededIsPreparedReturnBoolean()
+    {
+        boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
+        for (String string :
+                task.neededCommodity.keySet()) {
+            if (string.equalsIgnoreCase("braed")) {
+                f1 = true;
+                int amountNeeded = task.neededCommodity.get("bread");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Bread)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f1 = true;
+                } else {
+
+                    f1 = false;
+
+                }
+
+            }
+
+
+            if (string.equalsIgnoreCase("cloth")) {
+                f2 = true;
+                int amountNeeded = task.neededCommodity.get("cloth");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Cloth)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f2 = true;
+                } else {
+
+                    f2 = false;
+
+                }
+
+            }
+            if (string.equalsIgnoreCase("egg")) {
+                f2 = true;
+                int amountNeeded = task.neededCommodity.get("egg");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Egg)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f2 = true;
+                } else {
+
+                    f2 = false;
+
+                }
+            }
+            if (string.equalsIgnoreCase("fabric")) {
+                f3 = true;
+                int amountNeeded = task.neededCommodity.get("fabric");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Fabric)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f3 = true;
+                } else {
+
+                    f3 = false;
+
+                }
+            }
+
+            if (string.equalsIgnoreCase("feather")) {
+                f3 = true;
+                int amountNeeded = task.neededCommodity.get("feather");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Feather)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f3 = true;
+                } else {
+
+                    f3 = false;
+
+                }
+            }
+            if (string.equalsIgnoreCase("flour")) {
+                f4 = true;
+                int amountNeeded = task.neededCommodity.get("flour");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Flour)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f4 = true;
+                } else {
+
+                    f4 = false;
+
+                }
+            }
+            if (string.equalsIgnoreCase("ice cream")) {
+                f5 = true;
+                int amountNeeded = task.neededCommodity.get("ice cream");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof IceCream)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f5 = true;
+                } else {
+
+                    f5 = false;
+
+                }
+            }
+            if (string.equalsIgnoreCase("milk")) {
+                f6 = true;
+                int amountNeeded = task.neededCommodity.get("Milk");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof Milk)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f6 = true;
+                } else {
+
+                    f6 = false;
+
+                }
+            }
+            if (string.equalsIgnoreCase("pocket milk")) {
+                f7 = true;
+                int amountNeeded = task.neededCommodity.get("pocket milk");
+                int amountExisting = 0;
+                for (Commodity commodity :
+                        GameFieldStorage.commodityHashSet) {
+                    if (commodity instanceof PocketMilk)
+                        amountExisting++;
+                }
+                if (amountExisting >= amountNeeded) {
+
+                    f7 = true;
+                } else {
+
+                    f7 = false;
+
+                }
+            }
+
+
+        }
+
+        return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
+
+
+
+
+
+
+    }
 
 
     }
