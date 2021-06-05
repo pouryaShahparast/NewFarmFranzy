@@ -78,10 +78,18 @@ public class Tiger extends WildAnimal{
     public void attackDomesticatedAnimals(){
         normalAttackDomesticatedAnimals();
         switch (lastMoveDirection) {
-            case UP -> normalAttackDomesticatedAnimalsUp();
-            case DOWN -> normalAttackDomesticatedAnimalsDown();
-            case LEFT -> normalAttackDomesticatedAnimalsLeft();
-            case RIGHT -> normalAttackDomesticatedAnimalsRight();
+            case UP:
+                normalAttackDomesticatedAnimalsUp();
+                break;
+            case DOWN:
+                normalAttackDomesticatedAnimalsDown();
+                break;
+            case LEFT:
+                normalAttackDomesticatedAnimalsLeft();
+                break;
+            case RIGHT:
+                normalAttackDomesticatedAnimalsRight();
+                break;
         }
     }
 
