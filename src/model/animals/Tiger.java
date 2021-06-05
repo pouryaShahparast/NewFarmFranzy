@@ -152,10 +152,18 @@ public class Tiger extends WildAnimal{
     public void attackCommodities(){
         normalAttackCommodities();
         switch (lastMoveDirection) {
-            case RIGHT -> normalAttackCommoditiesRight();
-            case LEFT -> normalAttackCommoditiesLeft();
-            case DOWN -> normalAttackCommoditiesDown();
-            case UP -> normalAttackCommoditiesUp();
+            case RIGHT:
+                normalAttackCommoditiesRight();
+                break;
+            case LEFT:
+                normalAttackCommoditiesLeft();
+                break;
+            case DOWN:
+                normalAttackCommoditiesDown();
+                break;
+            case UP:
+                normalAttackCommoditiesUp();
+                break;
         }
     }
 
