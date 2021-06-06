@@ -519,10 +519,10 @@ initializing tasks of levels
         boolean flag = true;
         int level=0;
         while (flag) {
-            System.out.println(ConsoleColors.BLUE + "Which level would you like to play ?  Enter number for level or type (0) to exit game" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLUE + "Which level would you like to play ?  \nEnter number for level or type (0) to exit game" + ConsoleColors.RESET);
             level = scanner.nextInt();
             if (level > levelOfUser) {
-                System.out.println(ConsoleColors.RED + "you cant play this level" + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "you can't play this level" + ConsoleColors.RESET);
 
 
             }
@@ -548,7 +548,7 @@ initializing tasks of levels
         try {
             FileWriter fileWriter=new FileWriter(userName+".txt");
             fileWriter.write(levelOfUser);
-            fileWriter.write("\\n");
+            fileWriter.write("\n");
             fileWriter.write(userInitialCoins);
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
