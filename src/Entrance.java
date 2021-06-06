@@ -450,10 +450,10 @@ initializing tasks of levels
                     System.out.print("-");
                     input = scanner.next();
                     regex.matcher(input);
-                    System.out.println(input.length());
-                    System.out.println("input="+input);
+
+
                 }
-                System.out.println('G');
+
                 continue;
 
             }
@@ -490,7 +490,8 @@ initializing tasks of levels
                 String input;
                 Regex regex = new Regex(taskOfLevel4);
                 while (isGameRunning) {
-                    input = scanner.nextLine();
+                    System.out.print("-");
+                    input = scanner.next();
                     regex.matcher(input);
                 }
                continue;
@@ -502,7 +503,8 @@ initializing tasks of levels
                 String input;
                 Regex regex = new Regex(taskOfLevel5);
                 while (isGameRunning) {
-                    input = scanner.nextLine();
+                    System.out.print("-");
+                    input = scanner.next();
                     regex.matcher(input);
                 }
                 continue;
@@ -559,9 +561,11 @@ initializing tasks of levels
 
         try {
             FileWriter fileWriter=new FileWriter(userName+".txt");
-            fileWriter.write(levelOfUser);
+            String level=Integer.toString(levelOfUser);
+            String coins=Integer.toString(userInitialCoins);
+            fileWriter.write(level);
             fileWriter.write("\n");
-            fileWriter.write(userInitialCoins);
+            fileWriter.write(coins);
             fileWriter.close();
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
