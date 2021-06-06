@@ -448,7 +448,7 @@ initializing tasks of levels
 
                 while (isGameRunning) {
                     System.out.print("-");
-                    input = scanner.next();
+                    input = scanner.nextLine();
                     regex.matcher(input);
 
 
@@ -465,7 +465,7 @@ initializing tasks of levels
                 Regex regex = new Regex(taskOfLevel2);
                 while (isGameRunning) {
                     System.out.print("-");
-                    input = scanner.next();
+                    input = scanner.nextLine();
                     regex.matcher(input);
                 }
               continue;
@@ -478,7 +478,7 @@ initializing tasks of levels
                 Regex regex = new Regex(taskOfLevel3);
                 while (isGameRunning) {
                     System.out.print("-");
-                    input = scanner.next();
+                    input = scanner.nextLine();
                     regex.matcher(input);
                 }
                 continue;
@@ -491,7 +491,7 @@ initializing tasks of levels
                 Regex regex = new Regex(taskOfLevel4);
                 while (isGameRunning) {
                     System.out.print("-");
-                    input = scanner.next();
+                    input = scanner.nextLine();
                     regex.matcher(input);
                 }
                continue;
@@ -504,7 +504,7 @@ initializing tasks of levels
                 Regex regex = new Regex(taskOfLevel5);
                 while (isGameRunning) {
                     System.out.print("-");
-                    input = scanner.next();
+                    input = scanner.nextLine();
                     regex.matcher(input);
                 }
                 continue;
