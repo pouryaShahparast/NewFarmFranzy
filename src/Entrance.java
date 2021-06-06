@@ -131,7 +131,7 @@ public class Entrance {
 
             */
 
-            userFileWriter.write("1\\n\\200");
+            userFileWriter.write("1\n200");
             userFileWriter.close();
         }
         catch (Exception e)
