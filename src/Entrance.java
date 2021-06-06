@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Entrance {
 
     public static boolean isGameRunning=true;
-    public static boolean quitGame=true;
+    public static boolean quitGame=false;
     public static int levelOfUser,userInitialCoins;
     public Task1 taskOfLevel1, taskOfLevel2, taskOfLevel3, taskOfLevel4, taskOfLevel5;
 
@@ -64,7 +64,7 @@ public class Entrance {
 
 
         startPlayingGame(userName);
-
+return;
 
 
 
@@ -131,7 +131,7 @@ public class Entrance {
 
             */
 
-            userFileWriter.write("1\\n\\200");
+            userFileWriter.write("1\n200");
             userFileWriter.close();
         }
         catch (Exception e)
@@ -141,7 +141,7 @@ public class Entrance {
         }
 
         logIn();
-
+        return;
 
     }
 
@@ -419,13 +419,14 @@ initializing tasks of levels
         initializeTasks();
 
 
-        while(quitGame)
+        while(!quitGame)
         {
             isGameRunning=true;
             int level=askingWhichLevelToPlay();
             if(level==0)
             {
                 saveUserInfo(userName);
+                quitGame=true;
                 return;
 
             }
@@ -519,10 +520,10 @@ initializing tasks of levels
         boolean flag = true;
         int level=0;
         while (flag) {
-            System.out.println(ConsoleColors.BLUE + "Which level would you like to play ?  Enter number for level or type (0) to exit game" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.BLUE + "Which level would you like to play ?  \nEnter number for level or type (0) to exit game" + ConsoleColors.RESET);
             level = scanner.nextInt();
             if (level > levelOfUser) {
-                System.out.println(ConsoleColors.RED + "you cant play this level" + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "you can't play this level" + ConsoleColors.RESET);
 
 
             }
@@ -548,7 +549,7 @@ initializing tasks of levels
         try {
             FileWriter fileWriter=new FileWriter(userName+".txt");
             fileWriter.write(levelOfUser);
-            fileWriter.write("\\n");
+            fileWriter.write("\n");
             fileWriter.write(userInitialCoins);
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");

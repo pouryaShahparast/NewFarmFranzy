@@ -1,21 +1,28 @@
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class LoggingToFile {
 
     public  static FileHandler fileHandler;
 
-    {
-        try {
-            fileHandler = new FileHandler("logger.log",true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public static void logToFile(String message,String flag) {
+        {
+            try {
+                fileHandler = new FileHandler("logger.txt",true);
+            } catch (IOException e) {
+                System.out.println("ggg");
+                e.printStackTrace();
+            }
+        }
+
+
+
+        SimpleFormatter formatter = new SimpleFormatter();
+        fileHandler.setFormatter(formatter);
 
         Logger logger = Logger.getLogger("gamelogger");
         logger.addHandler(fileHandler);
