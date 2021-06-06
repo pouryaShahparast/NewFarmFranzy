@@ -25,18 +25,21 @@ public class Entrance {
         {
             LoggingToFile.logToFile("user logged in","info");
             logIn();
+            return;
         }
 
         if(input==2)
         {
             LoggingToFile.logToFile("user signed up","info");
             signUp();
+            return;
         }
 
         else {
             System.out.println("wrong input");
             LoggingToFile.logToFile("wrong input in menu", "warning");
             menu();
+            return;
         }
     }
     public void logIn() {
@@ -81,6 +84,7 @@ return;
             System.out.println(ConsoleColors.RED+"Already Taken"+ConsoleColors.RESET);
             LoggingToFile.logToFile("username has already been token","warning");
             signUp();
+            return;
 
         }
 

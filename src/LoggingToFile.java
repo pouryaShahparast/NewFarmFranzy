@@ -6,15 +6,19 @@ import java.util.logging.SimpleFormatter;
 public class LoggingToFile {
 
     public  static FileHandler fileHandler;
-
+    private  static int flag1=0;
 
 
     public static void logToFile(String message,String flag) {
+        if(flag1<=5)
+               flag1++;
+
+        if(flag1==1)
         {
             try {
+
                 fileHandler = new FileHandler("logger.txt",true);
             } catch (IOException e) {
-                System.out.println("ggg");
                 e.printStackTrace();
             }
         }
