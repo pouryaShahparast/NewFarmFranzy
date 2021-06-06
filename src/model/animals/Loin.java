@@ -5,10 +5,12 @@ import java.util.Random;
 public class Loin extends WildAnimal {
     public static final int LOIN_CAGES_NEEDED = 3;
     public static final int LOIN_SELL_PRICE = 300;
+    public static int loinNumber = 0;
 
     public Loin() {
         super();
-        animalName = "Loin";
+        loinNumber++;
+        animalName = "Loin" + loinNumber;
     }
 
     @Override

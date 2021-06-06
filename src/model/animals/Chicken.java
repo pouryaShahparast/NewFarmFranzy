@@ -7,10 +7,12 @@ import model.commodities.Egg;
 public class Chicken extends DomesticatedAnimal {
     public static final int CHICKEN_PRICE = 100;
     public static final int CHICKEN_TURNS_NEEDED_TO_MAKE_EGG = 2;
+    public static int chickenNumber = 0;
 
     public Chicken() {
         super();
-        animalName = "Chicken";
+        chickenNumber++;
+        animalName = "Chicken" + chickenNumber;
     }
 
     @Override
