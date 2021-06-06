@@ -6,10 +6,12 @@ import java.util.Random;
 public class Bear extends WildAnimal {
     public static final int BEAR_CAGES_NEEDED = 4;
     public static final int BEAR_SELL_PRICE = 400;
+    public static int bearNumber = 0;
 
     public Bear() {
         super();
-        animalName = "Bear";
+        bearNumber++;
+        animalName = "Bear" + bearNumber;
     }
 
     @Override

@@ -10,10 +10,14 @@ import java.util.Random;
 public class Tiger extends WildAnimal{
     public static final int TIGER_CAGES_NEEDED = 4;
     public static final int TIGER_SELL_PRICE = 500;
+    public static int tigerNumber = 0;
+
     public MOVE_DIRECTIONS lastMoveDirection;
+
     public Tiger() {
         super();
-        animalName = "Tiger";
+        tigerNumber++;
+        animalName = "Tiger" + tigerNumber;
     }
 
     @Override

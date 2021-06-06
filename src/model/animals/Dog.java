@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Dog extends Animal{
     public static final int DOG_PRICE = 100;
+    public static int dogNumber = 0;
     public boolean attackWildAnimal(){
         for (WildAnimal wildAnimal : GameFieldStorage.wildAnimalHashSet) {
             if((xCoordinate == wildAnimal.getXCoordinate()) && (yCoordinate == wildAnimal.getYCoordinate())){
@@ -69,6 +70,7 @@ public class Dog extends Animal{
 
     public Dog() {
         super();
-        animalName = "Dog";
+        dogNumber++;
+        animalName = "Dog" + dogNumber;
     }
 }

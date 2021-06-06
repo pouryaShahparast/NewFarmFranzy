@@ -10,6 +10,7 @@ import java.util.Random;
 
 public class Cat extends Animal{
     public static final int CAT_PRICE = 150;
+    public static int catNumber = 0;
     private void normalMove(){
         Random random = new Random();
         boolean canMove = false;
@@ -46,7 +47,8 @@ public class Cat extends Animal{
 
     public Cat() {
         super();
-        animalName = "Cat";
+        catNumber++;
+        animalName = "Cat" + catNumber;
     }
     public void pickupCommodity(Storeroom storeroom){
         HashSet<Commodity> removedCommodities = new HashSet<>();

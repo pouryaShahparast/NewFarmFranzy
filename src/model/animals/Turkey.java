@@ -7,10 +7,12 @@ import model.commodities.Feather;
 public class Turkey extends DomesticatedAnimal{
     public static final int TURKEY_PRICE = 200;
     public static final int TURKEY_TURNS_NEEDED_TO_MAKE_FEATHER = 3;
+    public static int turkeyNumber = 0;
 
     public Turkey() {
         super();
-        animalName = "Turkey";
+        turkeyNumber++;
+        animalName = "Turkey" + turkeyNumber;
     }
 
     @Override
