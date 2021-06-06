@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Entrance {
 
     public static boolean isGameRunning=true;
-    public static boolean quitGame=true;
+    public static boolean quitGame=false;
     public static int levelOfUser,userInitialCoins;
     public Task1 taskOfLevel1, taskOfLevel2, taskOfLevel3, taskOfLevel4, taskOfLevel5;
 
@@ -64,7 +64,7 @@ public class Entrance {
 
 
         startPlayingGame(userName);
-
+return;
 
 
 
@@ -141,7 +141,7 @@ public class Entrance {
         }
 
         logIn();
-
+        return;
 
     }
 
@@ -419,13 +419,14 @@ initializing tasks of levels
         initializeTasks();
 
 
-        while(quitGame)
+        while(!quitGame)
         {
             isGameRunning=true;
             int level=askingWhichLevelToPlay();
             if(level==0)
             {
                 saveUserInfo(userName);
+                quitGame=true;
                 return;
 
             }
