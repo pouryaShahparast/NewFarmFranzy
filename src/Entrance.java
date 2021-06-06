@@ -137,6 +137,7 @@ return;
 
             userFileWriter.write("1\n200");
             userFileWriter.close();
+
         }
         catch (Exception e)
         {
@@ -555,6 +556,7 @@ initializing tasks of levels
             fileWriter.write(levelOfUser);
             fileWriter.write("\n");
             fileWriter.write(userInitialCoins);
+            fileWriter.close();
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
             e.printStackTrace();
@@ -562,7 +564,6 @@ initializing tasks of levels
 
 
     }
-
 
 
 
