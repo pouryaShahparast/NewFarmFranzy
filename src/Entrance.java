@@ -447,9 +447,13 @@ initializing tasks of levels
                 Regex regex = new Regex(taskOfLevel1);
 
                 while (isGameRunning) {
-                    input = scanner.nextLine();
+                    System.out.print("-");
+                    input = scanner.next();
                     regex.matcher(input);
+                    System.out.println(input.length());
+                    System.out.println("input="+input);
                 }
+                System.out.println('G');
                 continue;
 
             }
@@ -460,7 +464,8 @@ initializing tasks of levels
                 String input;
                 Regex regex = new Regex(taskOfLevel2);
                 while (isGameRunning) {
-                    input = scanner.nextLine();
+                    System.out.print("-");
+                    input = scanner.next();
                     regex.matcher(input);
                 }
               continue;
@@ -472,7 +477,8 @@ initializing tasks of levels
                 String input;
                 Regex regex = new Regex(taskOfLevel3);
                 while (isGameRunning) {
-                    input = scanner.nextLine();
+                    System.out.print("-");
+                    input = scanner.next();
                     regex.matcher(input);
                 }
                 continue;

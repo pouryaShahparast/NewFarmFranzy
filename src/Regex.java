@@ -97,17 +97,17 @@ public class Regex {
         matcher2 = pattern2.matcher(input);
         matcher3 = pattern3.matcher(input);
         matcher4 = pattern4.matcher(input);
-        matcher5 = pattern1.matcher(input);
-        matcher6 = pattern2.matcher(input);
-        matcher7 = pattern3.matcher(input);
-        matcher8 = pattern4.matcher(input);
-        matcher9 = pattern1.matcher(input);
-        matcher10 = pattern2.matcher(input);
-        matcher11 = pattern3.matcher(input);
-        matcher12 = pattern4.matcher(input);
-        matcher13 = pattern1.matcher(input);
-        matcher14 = pattern2.matcher(input);
-        matcher15 = pattern2.matcher(input);
+        matcher5 = pattern5.matcher(input);
+        matcher6 = pattern6.matcher(input);
+        matcher7 = pattern7.matcher(input);
+        matcher8 = pattern8.matcher(input);
+        matcher9 = pattern9.matcher(input);
+        matcher10 = pattern10.matcher(input);
+        matcher11 = pattern11.matcher(input);
+        matcher12 = pattern12.matcher(input);
+        matcher13 = pattern13.matcher(input);
+        matcher14 = pattern14.matcher(input);
+        matcher15 = pattern15.matcher(input);
 //////////////////////////
 
         if (matcher1.find()) {
@@ -792,6 +792,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         if(matcher11.find())
         {
             Entrance.isGameRunning=false;
+            return;
 
         }
 
