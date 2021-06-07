@@ -62,7 +62,7 @@ public class Regex {
     }
 
     public void matcher(String input) {
-        Entrance.userInitialCoins=coin.getCoin();
+
         //buy
         pattern1 = Pattern.compile("\\s*(?i:buy)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         //pickup
