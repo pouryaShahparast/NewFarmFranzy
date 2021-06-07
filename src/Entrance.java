@@ -572,6 +572,7 @@ initializing tasks of levels
             level = scanner.nextInt();
             if (level > levelOfUser) {
                 System.out.println(ConsoleColors.RED + "you can't play this level" + ConsoleColors.RESET);
+                continue;
 
 
             }
