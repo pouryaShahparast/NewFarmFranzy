@@ -1,4 +1,8 @@
+import com.google.gson.Gson;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,6 +18,37 @@ public class Entrance {
     public Entrance()
     {
         System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
+
+
+        File file=new File("levels.txt");
+        Level level=new Level();
+
+        if(!file.exists()) {
+            Gson gson = new Gson();
+            try (Writer w = Files.newBufferedWriter(Paths.get("levels.txt"))) {
+
+
+                gson.toJson(level, w);
+                w.close();
+            } catch (IOException e) {
+                LoggingToFile.logToFile("error working with gson", "severe");
+                e.printStackTrace();
+            }
+        }
+        Gson gson1=new Gson();
+        try(Reader r=new FileReader("levels.txt")){
+
+            level=gson1.fromJson(r,Level.class);
+
+
+        } catch (FileNotFoundException e) {
+            LoggingToFile.logToFile("error opening levels.txt","severe");
+            e.printStackTrace();
+        } catch (IOException e) {
+            LoggingToFile.logToFile("error opening levels.txt","severe");
+            e.printStackTrace();
+        }
+
 
     }
     public void menu()
