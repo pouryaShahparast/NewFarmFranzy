@@ -141,7 +141,7 @@ public class Regex {
 
         ////////////////////////////////////////
 
-        if (matcher2.find()) {
+        else if (matcher2.find()) {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher2.group(1));
             y_coordinate = Integer.parseInt(matcher2.group(2));
@@ -172,14 +172,14 @@ public class Regex {
 
         }
         ////////////////////////////////
-        if (matcher3.find()) {
+        else if (matcher3.find()) {
 
             well.startGettingWater();
 
 
         }
         /////////////////////////////
-        if (matcher4.find()) {
+       else if (matcher4.find()) {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher4.group(1));
             y_coordinate = Integer.parseInt(matcher4.group(2));
@@ -196,7 +196,7 @@ public class Regex {
         }
         ///////////////////////////////////
 
-        if (matcher5.find()) {
+        else if (matcher5.find()) {
             String factoryName = matcher5.group(1);
             if (factoryName.equalsIgnoreCase("bakery")) {
                 boolean found = false;
@@ -309,7 +309,7 @@ public class Regex {
 
         }
         ////////////////////////////////////////
-        if (matcher6.find()) {
+       else if (matcher6.find()) {
             boolean found = false;
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher6.group(1));
@@ -352,7 +352,7 @@ public class Regex {
 
         }
         //////////////////////////////////////
-        if (matcher7.find()) {
+        else if (matcher7.find()) {
 
             int n = Integer.parseInt(matcher7.group(1));
             if (n <= 0) {
@@ -392,7 +392,7 @@ public class Regex {
 
         }
         ///////////////////
-        if (matcher8.find()) {
+       else  if (matcher8.find()) {
             String name = matcher8.group(1);
             if (name.equalsIgnoreCase("egg")) {
                 boolean found = false;
@@ -699,7 +699,7 @@ public class Regex {
 
 
     //////////////////////
-        if(matcher9.find())
+        else if(matcher9.find())
 
     {
 
@@ -780,7 +780,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
     }
 //////////////////////////
-        if(matcher10.find())
+      else if(matcher10.find())
 
     {
 
@@ -790,7 +790,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
     }
 
 ////////////////////
-        if(matcher11.find())
+       else if(matcher11.find())
         {
             Entrance.isGameRunning=false;
             return;
@@ -798,7 +798,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         }
 
  /////////////////
-        if(matcher12.find())
+       else if(matcher12.find())
         {
 
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
@@ -812,7 +812,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
         }
         ////////////////////////
-        if(matcher14.find())
+       else if(matcher14.find())
         {
             String factoryName=matcher14.group(1);
             if (factoryName.equalsIgnoreCase("bakery")) {
@@ -929,7 +929,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
         }
 
-        if(matcher13.find())
+       else if(matcher13.find())
         {
                 String factoryName = matcher13.group(1);
                 if (factoryName.equalsIgnoreCase("bakery")) {
@@ -1047,7 +1047,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
         }
-        if(matcher15.find())
+       else if(matcher15.find())
         {
             String factoryName = matcher15.group(1);
             if (factoryName.equalsIgnoreCase("bakery")) {
@@ -1165,7 +1165,10 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
 
 
         }
-
+       else
+        {
+            System.out.println(ConsoleColors.RED+"INVALID"+ConsoleColors.RESET);
+        }
 
 
 
