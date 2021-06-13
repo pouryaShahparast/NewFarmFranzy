@@ -63,6 +63,10 @@ public class Regex {
 
     public void matcher(String input) {
 
+
+
+
+        Entrance.userInitialCoins=coin.getCoin();
         //buy
         pattern1 = Pattern.compile("\\s*(?i:buy)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         //pickup
@@ -365,7 +369,7 @@ public class Regex {
 
 
 
-
+                Entrance.userInitialCoins= coin.getCoin();
                 addWildAnimals(inGameManager.turnsPassed);
                 inGameManager.game();
                 inGameManager.turnsPassed += 1;
