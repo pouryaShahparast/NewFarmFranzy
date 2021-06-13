@@ -194,7 +194,7 @@ public class Regex {
             }
 
 
-            well.makeGrass(x_coordinate, y_coordinate);
+            well.makeGrass(x_coordinate-1, y_coordinate-1);
 
 
         }
