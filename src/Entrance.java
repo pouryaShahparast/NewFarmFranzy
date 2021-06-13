@@ -14,14 +14,14 @@ public class Entrance {
     public static boolean quitGame=false;
     public static int levelOfUser,userInitialCoins;
     public Task1 taskOfLevel1, taskOfLevel2, taskOfLevel3, taskOfLevel4, taskOfLevel5;
-
+    public Level level;
     public Entrance()
     {
         System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
 
 
         File file=new File("levels.txt");
-        Level level=new Level();
+         level=new Level();
 
         if(!file.exists()) {
             Gson gson = new Gson();
@@ -39,8 +39,11 @@ public class Entrance {
         try(Reader r=new FileReader("levels.txt")){
 
             level=gson1.fromJson(r,Level.class);
-
-
+            taskOfLevel1=level.taskOfLevel1;
+            taskOfLevel2=level.taskOfLevel2;
+            taskOfLevel3=level.taskOfLevel3;
+            taskOfLevel4=level.taskOfLevel4;
+            taskOfLevel5=level.taskOfLevel5;
         } catch (FileNotFoundException e) {
             LoggingToFile.logToFile("error opening levels.txt","severe");
             e.printStackTrace();
@@ -456,7 +459,7 @@ initializing tasks of levels
     {
         Scanner scanner=new Scanner(System.in);
         initializeUserLevelAndCoins(userName);
-        initializeTasks();
+        //initializeTasks();
 
 
         while(!quitGame)
@@ -567,9 +570,21 @@ initializing tasks of levels
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         int level=0;
+        String levelString="";
         while (flag) {
             System.out.println(ConsoleColors.BLUE + "Which level would you like to play ?  \nEnter number for level or type (0) to exit game" + ConsoleColors.RESET);
-            level = scanner.nextInt();
+
+            levelString=scanner.next();
+            try{
+             level=Integer.parseInt(levelString);
+            }
+           catch (Exception e)
+           {
+               System.out.println(ConsoleColors.RED+"INVALID"+ConsoleColors.RESET);
+               continue;
+           }
+
+
             if (level > levelOfUser) {
                 System.out.println(ConsoleColors.RED + "you can't play this level" + ConsoleColors.RESET);
                 continue;

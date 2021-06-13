@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Level {
 
     //level1
-    Task1 taskOfLevel1,taskOfLevel2,taskOfLevel3,taskOfLevel4,taskOfLevel5;
+   public  Task1 taskOfLevel1,taskOfLevel2,taskOfLevel3,taskOfLevel4,taskOfLevel5;
 
 
 

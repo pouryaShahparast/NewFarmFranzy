@@ -354,6 +354,16 @@ public class Regex {
         //////////////////////////////////////
         else if (matcher7.find()) {
 
+            for (String string :
+                    task.animalsAppearing.keySet()) {
+                System.out.println(string);
+                System.out.println(task.animalsAppearing.get(string));
+            }
+
+
+
+
+
             int n = Integer.parseInt(matcher7.group(1));
             if (n <= 0) {
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (incorrect time)" + ConsoleColors.RESET);
@@ -362,10 +372,7 @@ public class Regex {
             for (int i = 0; (i < n)&&(!checkIfNeededIsPreparedReturnBoolean()); i++) {
 
 
-
-
-
-
+                //System.out.println("hey");
                 addWildAnimals(i);
                 inGameManager.game();
                 inGameManager.turnsPassed += 1;
