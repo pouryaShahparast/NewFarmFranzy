@@ -391,6 +391,7 @@ public class Regex {
             if(checkIfNeededIsPreparedReturnBoolean())
             {
                 Entrance.isGameRunning=false;
+                Entrance.levelOfUser++;
                 return;
             }
 
