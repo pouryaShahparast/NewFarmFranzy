@@ -1239,7 +1239,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("bread");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof Bread)
                     amountExisting++;
             }
@@ -1261,7 +1261,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("cloth");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof Cloth)
                     amountExisting++;
             }
@@ -1281,7 +1281,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("egg");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof Egg)
                     amountExisting++;
             }
@@ -1300,7 +1300,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("fabric");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                   storeroom.commodityHashSet) {
                 if (commodity instanceof Fabric)
                     amountExisting++;
             }
@@ -1320,7 +1320,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("feather");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof Feather)
                     amountExisting++;
             }
@@ -1339,7 +1339,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("flour");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                   storeroom.commodityHashSet) {
                 if (commodity instanceof Flour)
                     amountExisting++;
             }
@@ -1358,7 +1358,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("ice cream");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof IceCream)
                     amountExisting++;
             }
@@ -1377,7 +1377,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("Milk");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof Milk)
                     amountExisting++;
             }
@@ -1396,7 +1396,7 @@ public boolean checkIfNeededIsPrepared()
             int amountNeeded = task.neededCommodity.get("pocket milk");
             int amountExisting = 0;
             for (Commodity commodity :
-                    GameFieldStorage.commodityHashSet) {
+                    storeroom.commodityHashSet) {
                 if (commodity instanceof PocketMilk)
                     amountExisting++;
             }
@@ -1433,7 +1433,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("bread");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Bread)
                         amountExisting++;
                 }
@@ -1454,7 +1454,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("cloth");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Cloth)
                         amountExisting++;
                 }
@@ -1473,7 +1473,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("egg");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Egg)
                         amountExisting++;
                 }
@@ -1491,7 +1491,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("fabric");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                       storeroom.commodityHashSet) {
                     if (commodity instanceof Fabric)
                         amountExisting++;
                 }
@@ -1510,7 +1510,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("feather");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                       storeroom.commodityHashSet) {
                     if (commodity instanceof Feather)
                         amountExisting++;
                 }
@@ -1528,7 +1528,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("flour");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                      storeroom.commodityHashSet) {
                     if (commodity instanceof Flour)
                         amountExisting++;
                 }
@@ -1546,7 +1546,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("ice cream");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof IceCream)
                         amountExisting++;
                 }
@@ -1564,7 +1564,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("Milk");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof Milk)
                         amountExisting++;
                 }
@@ -1582,7 +1582,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
                 int amountNeeded = task.neededCommodity.get("pocket milk");
                 int amountExisting = 0;
                 for (Commodity commodity :
-                        GameFieldStorage.commodityHashSet) {
+                        storeroom.commodityHashSet) {
                     if (commodity instanceof PocketMilk)
                         amountExisting++;
                 }
