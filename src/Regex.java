@@ -366,7 +366,7 @@ public class Regex {
 
 
 
-                addWildAnimals(i);
+                addWildAnimals(inGameManager.turnsPassed);
                 inGameManager.game();
                 inGameManager.turnsPassed += 1;
 
@@ -429,13 +429,13 @@ public class Regex {
 
 
                     }
-                    if (!found) {
-                        System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-                    }
 
                 }
+                if (!found) {
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+                }
 
 
             } else if (name.equalsIgnoreCase("cloth")) {
