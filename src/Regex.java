@@ -157,7 +157,7 @@ public class Regex {
             boolean found = false;
             for (Commodity commodity :
                     GameFieldStorage.commodityHashSet) {
-                if ((commodity.getXCoordinate() == x_coordinate) && (commodity.getYCoordinate() == y_coordinate)) {
+                if ((commodity.getXCoordinate() == x_coordinate-1) && (commodity.getYCoordinate() == y_coordinate-1)) {
                     found = true;
                     if (storeroom.store(commodity)) {
                         break;
