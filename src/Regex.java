@@ -98,15 +98,15 @@ public class Regex {
         ///work with two commodity
         pattern15 = Pattern.compile("\\s*(?i:work+)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
-        matcher1 = pattern1.matcher(input);
-        matcher2 = pattern2.matcher(input);
-        matcher3 = pattern3.matcher(input);
-        matcher4 = pattern4.matcher(input);
-        matcher5 = pattern5.matcher(input);
-        matcher6 = pattern6.matcher(input);
-        matcher7 = pattern7.matcher(input);
-        matcher8 = pattern8.matcher(input);
-        matcher9 = pattern9.matcher(input);
+        matcher1 =  pattern1.matcher(input);
+        matcher2 =  pattern2.matcher(input);
+        matcher3 =  pattern3.matcher(input);
+        matcher4 =  pattern4.matcher(input);
+        matcher5 =  pattern5.matcher(input);
+        matcher6 =  pattern6.matcher(input);
+        matcher7 =  pattern7.matcher(input);
+        matcher8 =  pattern8.matcher(input);
+        matcher9 =  pattern9.matcher(input);
         matcher10 = pattern10.matcher(input);
         matcher11 = pattern11.matcher(input);
         matcher12 = pattern12.matcher(input);
