@@ -1234,7 +1234,7 @@ public boolean checkIfNeededIsPrepared()
     boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
     for (String string :
             task.neededCommodity.keySet()) {
-        if (string.equalsIgnoreCase("braed")) {
+        if (string.equalsIgnoreCase("bread")) {
             f1 = true;
             int amountNeeded = task.neededCommodity.get("bread");
             int amountExisting = 0;
@@ -1428,7 +1428,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
         boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
         for (String string :
                 task.neededCommodity.keySet()) {
-            if (string.equalsIgnoreCase("braed")) {
+            if (string.equalsIgnoreCase("bread")) {
                 f1 = true;
                 int amountNeeded = task.neededCommodity.get("bread");
                 int amountExisting = 0;
