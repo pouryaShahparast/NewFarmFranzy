@@ -327,23 +327,7 @@ public class Regex {
                     GameFieldStorage.wildAnimalHashSet) {
                 if ((x_coordinate == wildanimal.getXCoordinate()) && (y_coordinate == wildanimal.getYCoordinate())) {
                     found = true;
-                    if (wildanimal instanceof Bear) {
-
-                        ((Bear) wildanimal).addCage();
-
-                    }
-                    if (wildanimal instanceof Tiger) {
-
-                        ((Tiger) wildanimal).addCage();
-
-                    }
-                    if (wildanimal instanceof Loin) {
-
-                        ((Loin) wildanimal).addCage();
-
-                    }
-
-
+                    wildanimal.addCage();
                 }
 
 

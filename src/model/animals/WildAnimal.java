@@ -55,7 +55,7 @@ public abstract class WildAnimal extends Animal {
         this.currentCageNumber =0;
         this.turnsAfterCaged = 0;
     }
-    abstract boolean addCage();
+    public abstract boolean addCage();
     public boolean removeCage(){
         if(!isCaged && !isCagedInThisRound) {
             if (currentCageNumber > 0) {
