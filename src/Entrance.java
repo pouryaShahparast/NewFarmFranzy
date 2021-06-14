@@ -483,7 +483,7 @@ initializing tasks of levels
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 Regex regex = new Regex(taskOfLevel1);
-
+                userInitialCoins+=taskOfLevel1.initialCoin;
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -501,6 +501,7 @@ initializing tasks of levels
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 Regex regex = new Regex(taskOfLevel2);
+                userInitialCoins+=taskOfLevel2.initialCoin;
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -514,6 +515,7 @@ initializing tasks of levels
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 Regex regex = new Regex(taskOfLevel3);
+                userInitialCoins+=taskOfLevel3.initialCoin;
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -527,6 +529,7 @@ initializing tasks of levels
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 Regex regex = new Regex(taskOfLevel4);
+                userInitialCoins+=taskOfLevel4.initialCoin;
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -540,6 +543,7 @@ initializing tasks of levels
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 Regex regex = new Regex(taskOfLevel5);
+                userInitialCoins+=taskOfLevel5.initialCoin;
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();

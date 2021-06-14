@@ -375,6 +375,11 @@ public class Regex {
             if(checkIfNeededIsPreparedReturnBoolean())
             {
                 Entrance.isGameRunning=false;
+                if(n<=task.firstStandardTime)
+                        Entrance.userInitialCoins += task.firstBonus;
+                else if(n<=task.secondStandardTime)
+                        Entrance.userInitialCoins += task.secondBonus;
+
                 Entrance.levelOfUser++;
                 return;
             }
