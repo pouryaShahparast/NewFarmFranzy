@@ -24,7 +24,7 @@ public class Loin extends WildAnimal {
             isCagedInThisRound = true;
             return true;
         }else {
-            System.err.println("this " + animalName +" is already caged");
+            System.err.println(animalName +" is already caged");
         }
 
         return false;
