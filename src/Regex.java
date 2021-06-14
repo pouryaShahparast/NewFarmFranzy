@@ -383,7 +383,7 @@ public class Regex {
             }
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.BLACK);
+            System.out.print(ConsoleColors.BLACK);
             inGameManager.show();
             checkIfNeededIsPrepared();
             System.out.println(ConsoleColors.RESET);

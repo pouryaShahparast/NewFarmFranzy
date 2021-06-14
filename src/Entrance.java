@@ -581,6 +581,7 @@ initializing tasks of levels
            catch (Exception e)
            {
                System.out.println(ConsoleColors.RED+"INVALID"+ConsoleColors.RESET);
+
                continue;
            }
 
@@ -618,6 +619,7 @@ initializing tasks of levels
             fileWriter.write("\n");
             fileWriter.write(coins);
             fileWriter.close();
+            LoggingToFile.logToFile(userName+"info saved ","info");
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
             e.printStackTrace();
