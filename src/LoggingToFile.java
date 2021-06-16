@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -10,6 +13,36 @@ public class LoggingToFile {
 
 
     public static void logToFile(String message,String flag) {
+        if(flag1==0)
+        {
+
+            File file=new File("logger.txt");
+            if(!file.exists())
+            {
+                Date date=new Date();
+
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                try {
+                    FileWriter fileWriter=new FileWriter(file);
+                    fileWriter.write("created at "+date.toString()+"\n\n");
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+
+        }
+
+
         if(flag1<=5)
                flag1++;
 
@@ -17,7 +50,9 @@ public class LoggingToFile {
         {
             try {
 
+
                 fileHandler = new FileHandler("logger.txt",true);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -52,7 +87,7 @@ public class LoggingToFile {
 
         else
         {
-          logger.warning(message);
+
         }
 
 

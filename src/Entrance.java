@@ -19,7 +19,6 @@ public class Entrance {
     {
         System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
 
-
         File file=new File("levels.txt");
          level=new Level();
 
@@ -459,9 +458,6 @@ initializing tasks of levels
     {
         Scanner scanner=new Scanner(System.in);
         initializeUserLevelAndCoins(userName);
-        //initializeTasks();
-
-
         while(!quitGame)
         {
             isGameRunning=true;
@@ -623,7 +619,7 @@ initializing tasks of levels
             fileWriter.write("\n");
             fileWriter.write(coins);
             fileWriter.close();
-            LoggingToFile.logToFile(userName+"info saved ","info");
+            LoggingToFile.logToFile(userName+" info saved ","info");
         } catch (IOException e) {
             LoggingToFile.logToFile("problem in opening "+userName+".txt (saveUserInfo)","severe");
             e.printStackTrace();
