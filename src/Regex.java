@@ -54,8 +54,6 @@ public class Regex {
     public Regex(Task1 task) {
         this.task=task;
         coin = new Coin(Entrance.userInitialCoins);
-        System.out.println("cons   "+coin.getCoin());
-        System.out.println("user "+Entrance.userInitialCoins);
         well = new Well();
         pickUpTruck = new PickUpTruck();
         storeroom = new Storeroom();
@@ -837,6 +835,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
        else if(matcher11.find())
         {
             Entrance.isGameRunning=false;
+            Entrance.userInitialCoins-=task.initialCoin;
             return;
 
         }

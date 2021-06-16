@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import model.GameFieldStorage;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -475,6 +476,13 @@ initializing tasks of levels
 
             //start playing  Game  level 1
             else if(level==1) {
+                GameFieldStorage.commodityHashSet.clear();
+                GameFieldStorage.wildAnimalHashSet.clear();
+                GameFieldStorage.factoryHashSet.clear();
+                GameFieldStorage.grassHashSet.clear();
+                GameFieldStorage.catHashSet.clear();
+                GameFieldStorage.domesticatedAnimalHashSet.clear();
+                GameFieldStorage.dogHashSet.clear();
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
@@ -495,6 +503,17 @@ initializing tasks of levels
             //start playing  Game  level 2
             else if(level==2) {
 
+                GameFieldStorage.commodityHashSet.clear();
+                GameFieldStorage.wildAnimalHashSet.clear();
+                GameFieldStorage.factoryHashSet.clear();
+                GameFieldStorage.grassHashSet.clear();
+                GameFieldStorage.catHashSet.clear();
+                GameFieldStorage.domesticatedAnimalHashSet.clear();
+                GameFieldStorage.dogHashSet.clear();
+
+
+
+
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 userInitialCoins+=taskOfLevel2.initialCoin;
@@ -510,6 +529,14 @@ initializing tasks of levels
             //start playing  Game  level 3
             else if(level==3) {
 
+                GameFieldStorage.commodityHashSet.clear();
+                GameFieldStorage.wildAnimalHashSet.clear();
+                GameFieldStorage.factoryHashSet.clear();
+                GameFieldStorage.grassHashSet.clear();
+                GameFieldStorage.catHashSet.clear();
+                GameFieldStorage.domesticatedAnimalHashSet.clear();
+                GameFieldStorage.dogHashSet.clear();
+
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
                 userInitialCoins+=taskOfLevel3.initialCoin;
@@ -524,6 +551,14 @@ initializing tasks of levels
             }
             //start playing  Game  level 4
             else if(level==4) {
+                GameFieldStorage.commodityHashSet.clear();
+                GameFieldStorage.wildAnimalHashSet.clear();
+                GameFieldStorage.factoryHashSet.clear();
+                GameFieldStorage.grassHashSet.clear();
+                GameFieldStorage.catHashSet.clear();
+                GameFieldStorage.domesticatedAnimalHashSet.clear();
+                GameFieldStorage.dogHashSet.clear();
+
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
@@ -539,6 +574,14 @@ initializing tasks of levels
             }
             //start playing  Game  level 5
            else  if(level==5) {
+                GameFieldStorage.commodityHashSet.clear();
+                GameFieldStorage.wildAnimalHashSet.clear();
+                GameFieldStorage.factoryHashSet.clear();
+                GameFieldStorage.grassHashSet.clear();
+                GameFieldStorage.catHashSet.clear();
+                GameFieldStorage.domesticatedAnimalHashSet.clear();
+                GameFieldStorage.dogHashSet.clear();
+
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
