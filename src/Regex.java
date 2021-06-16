@@ -54,6 +54,8 @@ public class Regex {
     public Regex(Task1 task) {
         this.task=task;
         coin = new Coin(Entrance.userInitialCoins);
+        System.out.println("cons   "+coin.getCoin());
+        System.out.println("user "+Entrance.userInitialCoins);
         well = new Well();
         pickUpTruck = new PickUpTruck();
         storeroom = new Storeroom();
@@ -383,8 +385,6 @@ public class Regex {
 
 
 
-
-
                 Entrance.userInitialCoins= coin.getCoin();
                 addWildAnimals(inGameManager.turnsPassed);
                 inGameManager.game();
@@ -397,6 +397,7 @@ public class Regex {
 
 
             }
+            //System.out.println(GameFieldStorage.wildAnimalHashSet.size());
             System.out.println(ConsoleColors.RED + "****************************************************************************************************" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.BLUE + "                                         turn   " + ConsoleColors.CYAN_ + inGameManager.turnsPassed + ConsoleColors.RESET);
             System.out.print(ConsoleColors.BLACK);
@@ -412,7 +413,10 @@ public class Regex {
                 else if(n<=task.secondStandardTime)
                         Entrance.userInitialCoins += task.secondBonus;
 
-                Entrance.levelOfUser++;
+
+
+                if(task.level>=Entrance.levelOfUser)
+                            Entrance.levelOfUser++;
                 return;
             }
 

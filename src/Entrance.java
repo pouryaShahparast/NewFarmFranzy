@@ -478,8 +478,9 @@ initializing tasks of levels
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
-                Regex regex = new Regex(taskOfLevel1);
                 userInitialCoins+=taskOfLevel1.initialCoin;
+                Regex regex = new Regex(taskOfLevel1);
+
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -496,8 +497,9 @@ initializing tasks of levels
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
-                Regex regex = new Regex(taskOfLevel2);
                 userInitialCoins+=taskOfLevel2.initialCoin;
+                Regex regex = new Regex(taskOfLevel2);
+
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -510,8 +512,9 @@ initializing tasks of levels
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
-                Regex regex = new Regex(taskOfLevel3);
                 userInitialCoins+=taskOfLevel3.initialCoin;
+                Regex regex = new Regex(taskOfLevel3);
+
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -524,8 +527,9 @@ initializing tasks of levels
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
-                Regex regex = new Regex(taskOfLevel4);
                 userInitialCoins+=taskOfLevel4.initialCoin;
+                Regex regex = new Regex(taskOfLevel4);
+
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
@@ -538,8 +542,9 @@ initializing tasks of levels
 
                 System.out.println("*****************Enter your commands here*****************");
                 String input;
-                Regex regex = new Regex(taskOfLevel5);
                 userInitialCoins+=taskOfLevel5.initialCoin;
+                Regex regex = new Regex(taskOfLevel5);
+
                 while (isGameRunning) {
                     System.out.print("-");
                     input = scanner.nextLine();
