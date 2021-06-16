@@ -1280,7 +1280,7 @@ public boolean checkIfNeededIsPrepared()
 {
     if(GameFieldStorage.grassHashSet.size()<=0)
     {
-        System.out.println(ConsoleColors.RED+"There is no grass in the field ,plant some grass ");
+        System.out.println(ConsoleColors.RED+"There is no grass in the field ,plant some grass "+ConsoleColors.RESET);
     }
 
 
