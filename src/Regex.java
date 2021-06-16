@@ -1278,6 +1278,18 @@ public void addWildAnimals(int n)
 }
 public boolean checkIfNeededIsPrepared()
 {
+    if(GameFieldStorage.grassHashSet.size()<=0)
+    {
+        System.out.println(ConsoleColors.RED+"There is no grass in the field ,plant some grass ");
+    }
+
+
+
+
+
+
+
+
     boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
     for (String string :
             task.neededCommodity.keySet()) {
