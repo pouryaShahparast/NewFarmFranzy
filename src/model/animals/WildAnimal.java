@@ -13,6 +13,14 @@ public abstract class WildAnimal extends Animal {
     int currentCageNumber;
     int turnsAfterCaged;
 
+    public boolean isCaged() {
+        return isCaged;
+    }
+
+    public boolean isCagedInThisRound() {
+        return isCagedInThisRound;
+    }
+
     public void storeWildAnimalChanges(){
         xCoordinate = -1;
         yCoordinate = -1;
