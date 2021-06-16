@@ -170,9 +170,25 @@ public class Regex {
 
 
             }
+            for (WildAnimal wildAnimal :
+                    GameFieldStorage.wildAnimalHashSet) {
+                if ((wildAnimal.getXCoordinate() == x_coordinate-1) && (wildAnimal.getYCoordinate() == y_coordinate-1)) {
+                    found = true;
+                    if (storeroom.store(wildAnimal)) {
+                        break;
+                    }
+
+
+                }
+
+
+
+            }
+
+
             if (!found) {
-                LoggingToFile.logToFile("INVALID INPUT (there is no commodity in this coordinate)","info");
-                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity in this coordinate)" + ConsoleColors.RESET);
+                LoggingToFile.logToFile("INVALID INPUT (there is no commodity or animal in this coordinate)","info");
+                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity or animal in this coordinate)" + ConsoleColors.RESET);
 
             }
 
