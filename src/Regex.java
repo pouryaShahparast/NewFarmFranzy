@@ -328,12 +328,15 @@ public class Regex {
             int x_coordinate, y_coordinate;
             x_coordinate = Integer.parseInt(matcher6.group(1));
             y_coordinate = Integer.parseInt(matcher6.group(2));
+
             if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
                 LoggingToFile.logToFile( "INVALID INPUT (coordinate out of range)_matcher6","info" );
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
             }
+            x_coordinate--;
+            y_coordinate--;
             for (WildAnimal wildanimal :
                     GameFieldStorage.wildAnimalHashSet) {
                 if ((x_coordinate == wildanimal.getXCoordinate()) && (y_coordinate == wildanimal.getYCoordinate())) {
