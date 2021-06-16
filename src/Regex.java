@@ -1405,7 +1405,7 @@ public boolean checkIfNeededIsPrepared()
         }
         if (string.equalsIgnoreCase("milk")) {
             f6 = true;
-            int amountNeeded = task.neededCommodity.get("Milk");
+            int amountNeeded = task.neededCommodity.get("milk");
             int amountExisting = 0;
             for (Commodity commodity :
                     storeroom.commodityHashSet) {
@@ -1592,7 +1592,7 @@ return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
             }
             if (string.equalsIgnoreCase("milk")) {
                 f6 = true;
-                int amountNeeded = task.neededCommodity.get("Milk");
+                int amountNeeded = task.neededCommodity.get("milk");
                 int amountExisting = 0;
                 for (Commodity commodity :
                         storeroom.commodityHashSet) {
