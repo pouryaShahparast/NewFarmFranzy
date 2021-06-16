@@ -50,6 +50,11 @@ public class LoggingToFile {
             logger.severe(message);
         }
 
+        else
+        {
+          logger.warning(message);
+        }
+
 
     }
 

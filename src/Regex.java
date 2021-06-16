@@ -172,7 +172,7 @@ public class Regex {
             }
             for (WildAnimal wildAnimal :
                     GameFieldStorage.wildAnimalHashSet) {
-                if ((wildAnimal.getXCoordinate() == x_coordinate-1) && (wildAnimal.getYCoordinate() == y_coordinate-1)) {
+                if ((wildAnimal.getXCoordinate() == x_coordinate-1) && (wildAnimal.getYCoordinate() == y_coordinate-1)&&(wildAnimal.)) {
                     found = true;
                     if (storeroom.store(wildAnimal)) {
                         break;
