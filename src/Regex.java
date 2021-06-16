@@ -136,6 +136,7 @@ public class Regex {
                 Dog.buyDog(coin);
 
             } else {
+                LoggingToFile.logToFile("INVALID INPUT(can't find an animal with this name)_matcher1","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT(can't find an animal with this name)" + ConsoleColors.RESET);
 
             }
@@ -150,6 +151,7 @@ public class Regex {
             x_coordinate = Integer.parseInt(matcher2.group(1));
             y_coordinate = Integer.parseInt(matcher2.group(2));
             if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
+                LoggingToFile.logToFile("INVALID INPUT (coordinate out of range)_matcher2","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -169,6 +171,7 @@ public class Regex {
 
             }
             if (!found) {
+                LoggingToFile.logToFile("INVALID INPUT (there is no commodity in this coordinate)","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity in this coordinate)" + ConsoleColors.RESET);
 
             }
@@ -188,6 +191,7 @@ public class Regex {
             x_coordinate = Integer.parseInt(matcher4.group(1));
             y_coordinate = Integer.parseInt(matcher4.group(2));
             if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
+                LoggingToFile.logToFile("INVALID INPUT (coordinate out of range)","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -215,6 +219,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile("factory doesn't exist  first create bakery factory","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
                 }
 
@@ -233,6 +238,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile("factory doesn't exist  first create mill","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
                 }
 
@@ -251,6 +257,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile("factory doesn't exist  first create milk pocketing production factory","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
                 }
 
@@ -268,6 +275,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile( "factory doesn't exist  first create ice cream maker factory","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
                 }
 
@@ -285,6 +293,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile( "factory doesn't exist  first create ice tailoring factory","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
                 }
 
@@ -301,6 +310,7 @@ public class Regex {
                     }
                 }
                 if (!found) {
+                    LoggingToFile.logToFile( "factory doesn't exist  first create fabric production factory","info");
                     System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
                 }
 
@@ -319,6 +329,7 @@ public class Regex {
             x_coordinate = Integer.parseInt(matcher6.group(1));
             y_coordinate = Integer.parseInt(matcher6.group(2));
             if ((x_coordinate >= 7) || (x_coordinate <= 0) || (y_coordinate >= 7) || (y_coordinate <= 0)) {
+                LoggingToFile.logToFile( "INVALID INPUT (coordinate out of range)_matcher6","info" );
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
                 return;
 
@@ -334,6 +345,7 @@ public class Regex {
             }
 
             if (!found) {
+                LoggingToFile.logToFile("INVALID INPUT (there is no animal in this coordinate)_matcher6","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no animal in this coordinate)" + ConsoleColors.RESET);
             }
 
@@ -344,6 +356,7 @@ public class Regex {
 
             int n = Integer.parseInt(matcher7.group(1));
             if (n <= 0) {
+                LoggingToFile.logToFile("INVALID INPUT (incorrect time)_matcher7","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (incorrect time)" + ConsoleColors.RESET);
                 return;
             }
@@ -404,6 +417,7 @@ public class Regex {
 
                 }
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -427,6 +441,7 @@ public class Regex {
 
                 }
                 if (!found) {
+                    LoggingToFile.logToFile( "there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -451,6 +466,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile( "there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -475,6 +491,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -499,6 +516,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -523,6 +541,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -547,6 +566,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -571,6 +591,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -595,6 +616,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
                 }
@@ -621,6 +643,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
 
                 }
@@ -647,6 +670,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
 
                 }
@@ -672,6 +696,7 @@ public class Regex {
                 }
 
                 if (!found) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
                     System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
 
                 }
@@ -684,6 +709,7 @@ public class Regex {
 
 
             else {
+                LoggingToFile.logToFile("INVALID INPUT (there is no commodity with this name)_matcher 8","info");
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
             }
 
@@ -760,6 +786,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         }
 
         else {
+            LoggingToFile.logToFile( "INVALID INPUT (there is no commodity with this name)_matcher 9" ,"info");
             System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
         }
 
@@ -912,7 +939,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                 }
 
             } else {
-
+                LoggingToFile.logToFile( "INVALID INPUT (there is no factory with this name)_matcher 14","info" );
                 System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no factory with this name)" + ConsoleColors.RESET);
 
             }
@@ -939,6 +966,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile("factory doesn't exist  first create bakery factory_matcher 13","info" );
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create bakery factory" + ConsoleColors.RESET);
                     }
 
@@ -957,6 +985,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile("factory doesn't exist  first create mill_matcher 13" ,"info");
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create mill" + ConsoleColors.RESET);
                     }
 
@@ -975,6 +1004,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile("factory doesn't exist  first create milk pocketing production factory","info");
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create milk pocketing production factory" + ConsoleColors.RESET);
                     }
 
@@ -992,6 +1022,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile("factory doesn't exist  first create ice cream maker factory","info");
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create ice cream maker factory" + ConsoleColors.RESET);
                     }
 
@@ -1009,6 +1040,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile( "factory doesn't exist  first create tailoring factory","info");
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create tailoring factory" + ConsoleColors.RESET);
                     }
 
@@ -1025,12 +1057,13 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                         }
                     }
                     if (!found) {
+                        LoggingToFile.logToFile("factory doesn't exist  first create fabric production factory","info");
                         System.out.println(ConsoleColors.RED + "factory doesn't exist  first create fabric production factory" + ConsoleColors.RESET);
                     }
 
                 } else {
-
-                    System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+                    LoggingToFile.logToFile("INVALID INPUT ","info");
+                    System.out.println(ConsoleColors.RED + "INVALID INPUT " + ConsoleColors.RESET);
 
                 }
 
@@ -1147,8 +1180,8 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
                 }
 
             } else {
-
-                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+               LoggingToFile.logToFile("INVALID INPUT ","info");
+                System.out.println(ConsoleColors.RED + "INVALID INPUT " + ConsoleColors.RESET);
 
             }
 
@@ -1161,6 +1194,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         }
        else
         {
+            LoggingToFile.logToFile("INVALID_REGEX","info");
             System.out.println(ConsoleColors.RED+"INVALID"+ConsoleColors.RESET);
         }
 
