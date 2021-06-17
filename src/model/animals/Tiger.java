@@ -37,6 +37,9 @@ public class Tiger extends WildAnimal{
     }
     @Override
     public void move() {
+        if(isCaged){
+            return;
+        }
         Random random = new Random();
         boolean canMove = false;
         while (!canMove){

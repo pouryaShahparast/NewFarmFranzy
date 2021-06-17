@@ -31,6 +31,9 @@ public class Bear extends WildAnimal {
     }
 
     public void move() {
+        if(isCaged){
+            return;
+        }
         Random random = new Random();
         boolean canMove = false;
         while (!canMove){

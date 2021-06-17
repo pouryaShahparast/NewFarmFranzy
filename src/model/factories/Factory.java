@@ -80,6 +80,6 @@ public abstract class Factory {
 
     @Override
     public String toString() {
-        return factoryName + " upgraded = " + upgraded + " working = " + working + " turns working = " + turns;
+        return factoryName + " upgraded = " + upgraded + " working = " + working;
     }
 }
