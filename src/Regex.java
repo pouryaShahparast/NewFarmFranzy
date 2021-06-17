@@ -410,11 +410,11 @@ public class Regex {
                         Entrance.userInitialCoins += task.firstBonus;
                 else if(n<=task.secondStandardTime)
                         Entrance.userInitialCoins += task.secondBonus;
-
+                System.out.println(ConsoleColors.CYAN_+"                you have completed level "+task.level+ConsoleColors.RESET);
 
 
                 if(task.level>=Entrance.levelOfUser)
-                            Entrance.levelOfUser++;
+                                 Entrance.levelOfUser++;
                 return;
             }
 
