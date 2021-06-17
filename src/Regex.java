@@ -96,7 +96,7 @@ public class Regex {
         ///build factory
         pattern14 = Pattern.compile("\\s*(?i:build)\\s*(\\w+)\\s*$");
         ///work with two commodity
-        pattern15 = Pattern.compile("\\s*(?i:work+)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
+        pattern15 = Pattern.compile("\\s*(?i:work\\s*upgraded)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
         matcher1 =  pattern1.matcher(input);
         matcher2 =  pattern2.matcher(input);
@@ -429,11 +429,11 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof Egg) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
-
-
                     }
 
                 }
@@ -452,8 +452,10 @@ public class Regex {
                        storeroom.commodityHashSet) {
                     if (commodity instanceof Bread) {
                          found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -476,8 +478,10 @@ public class Regex {
                       storeroom.commodityHashSet) {
                     if (commodity instanceof Cloth) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -501,8 +505,10 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof Fabric) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -526,8 +532,10 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof Feather) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -551,8 +559,10 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof Flour) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -576,8 +586,10 @@ public class Regex {
                        storeroom.commodityHashSet) {
                     if (commodity instanceof IceCream) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -601,8 +613,10 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof Milk) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
+
+                        }
                         break;
 
 
@@ -626,10 +640,11 @@ public class Regex {
                         storeroom.commodityHashSet) {
                     if (commodity instanceof PocketMilk) {
                         found = true;
-                        pickUpTruck.pickUp(commodity);
-                        storeroom.commodityHashSet.remove(commodity);
-                        break;
+                        if(pickUpTruck.pickUp(commodity)) {
+                            storeroom.commodityHashSet.remove(commodity);
 
+                        }
+                        break;
 
                     }
 
@@ -653,8 +668,9 @@ public class Regex {
                         storeroom.wildAnimalHashSet) {
                     if (wildAnimal instanceof Tiger) {
                         found = true;
-                        pickUpTruck.pickUp(wildAnimal);
-                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        if(pickUpTruck.pickUp(wildAnimal)) {
+                            storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        }
                         break;
 
 
@@ -680,8 +696,9 @@ public class Regex {
                         storeroom.wildAnimalHashSet) {
                     if (wildAnimal instanceof Bear) {
                         found = true;
-                        pickUpTruck.pickUp(wildAnimal);
-                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        if(pickUpTruck.pickUp(wildAnimal)) {
+                            storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        }
                         break;
 
 
@@ -706,8 +723,9 @@ public class Regex {
                         storeroom.wildAnimalHashSet) {
                     if (wildAnimal instanceof Loin) {
                         found = true;
-                        pickUpTruck.pickUp(wildAnimal);
-                        storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        if(pickUpTruck.pickUp(wildAnimal)) {
+                            storeroom.wildAnimalHashSet.remove(wildAnimal);
+                        }
                         break;
 
 
