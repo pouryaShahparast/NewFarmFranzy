@@ -67,7 +67,7 @@ public class PickUpTruck {
                     truckSpaceTaken += WildAnimal.WILD_ANIMAL_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println(truckSpaceTaken);
+                    System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -77,7 +77,7 @@ public class PickUpTruck {
                     truckSpaceTaken += PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println(truckSpaceTaken);
+                    System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -87,7 +87,7 @@ public class PickUpTruck {
                     truckSpaceTaken += IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println(truckSpaceTaken);
+                    System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -97,7 +97,7 @@ public class PickUpTruck {
                     truckSpaceTaken += FinalCommodity.FINAL_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println(truckSpaceTaken);
+                    System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
