@@ -58,7 +58,15 @@ public class Entrance {
     {
         System.out.println(ConsoleColors.RED+"1-LOG IN\n2-SIGNUP\n"+ConsoleColors.RESET);
         Scanner scanner=new Scanner(System.in);
-        int input=scanner.nextInt();
+
+        int input=0;
+        try {
+            input = scanner.nextInt();
+        }
+        catch (Exception e)
+        {
+            input=0;
+        }
         if(input==1)
         {
             LoggingToFile.logToFile("user logged in","info");

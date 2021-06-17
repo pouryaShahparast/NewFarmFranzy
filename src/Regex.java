@@ -76,7 +76,7 @@ public class Regex {
         //plant x y
         pattern4 = Pattern.compile("\\s*(?i:plant)\\s*\\[?\\s*(\\d+)\\s+(\\d+)\\s*\\]?\\s*$");
         //work
-        pattern5 = Pattern.compile("\\s*(?i:work)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w*)\\s*\\]?\\s*$");
+        pattern5 = Pattern.compile("^\\s*(?i:work)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w*)\\s*\\]?\\s*$");
         //cage x y
         pattern6 = Pattern.compile("\\s*(?i:cage)\\s*\\[?\\s*(\\d+)\\s+(\\d+)\\s*\\]?\\s*$");
         //turn
@@ -92,11 +92,11 @@ public class Regex {
         ///inquiry
         pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
         ///upgrade
-        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*(.*)\\s*$");
+        pattern13 = Pattern.compile("^\\s*(?i:upgrade)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
         ///build factory
         pattern14 = Pattern.compile("\\s*(?i:build)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
         ///work with two commodity
-        pattern15 = Pattern.compile("\\s*(?i:work\\s*upgraded)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
+        pattern15 = Pattern.compile("\\s*(?i:double_work)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
         matcher1 =  pattern1.matcher(input);
         matcher2 =  pattern2.matcher(input);
@@ -113,6 +113,7 @@ public class Regex {
         matcher13 = pattern13.matcher(input);
         matcher14 = pattern14.matcher(input);
         matcher15 = pattern15.matcher(input);
+
 //////////////////////////
 
         if (matcher1.find()) {
@@ -222,6 +223,7 @@ public class Regex {
 
         else if (matcher5.find()) {
             String factoryName = matcher5.group(1);
+
             if (factoryName.equalsIgnoreCase("bakery")) {
                 boolean found = false;
 
@@ -950,6 +952,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
         }
        else if(matcher15.find())
         {
+
             String factoryName = matcher15.group(1);
             if (factoryName.equalsIgnoreCase("bakery")) {
                 boolean found = false;
