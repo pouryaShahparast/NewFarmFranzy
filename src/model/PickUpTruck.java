@@ -54,6 +54,7 @@ public class PickUpTruck {
     }
     void finishTravel() {
         traveling = false;
+        truckSpaceTaken = 0;
         turns = 1;
     }
     public boolean checkIfTurnsReached(){
@@ -68,6 +69,8 @@ public class PickUpTruck {
                     System.out.println("loaded");
                     System.out.println(truckSpaceTaken);
                     return true;
+                }else {
+                    System.err.println("there is not enough room");
                 }
             } else if (object instanceof PrimitiveCommodity) {
                 if (canPick(PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE)) {
@@ -76,6 +79,8 @@ public class PickUpTruck {
                     System.out.println("loaded");
                     System.out.println(truckSpaceTaken);
                     return true;
+                }else {
+                    System.err.println("there is not enough room");
                 }
             } else if (object instanceof IntermediaryCommodity) {
                 if (canPick(IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE)) {
@@ -84,6 +89,8 @@ public class PickUpTruck {
                     System.out.println("loaded");
                     System.out.println(truckSpaceTaken);
                     return true;
+                }else {
+                    System.err.println("there is not enough room");
                 }
             } else if (object instanceof FinalCommodity) {
                 if (canPick(FinalCommodity.FINAL_COMMODITY_SIZE)) {
@@ -92,9 +99,9 @@ public class PickUpTruck {
                     System.out.println("loaded");
                     System.out.println(truckSpaceTaken);
                     return true;
+                }else {
+                    System.err.println("there is not enough room");
                 }
-            }else{
-                System.err.println("there is not enough room");
             }
         }else {
             System.err.println("can't pickup because Truck is currently traveling");
@@ -182,7 +189,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Egg){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -194,7 +205,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Bread){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= FinalCommodity.FINAL_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -206,7 +221,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Cloth){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= FinalCommodity.FINAL_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -218,7 +237,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Fabric){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -230,7 +253,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Feather){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -242,7 +269,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Flour){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -254,7 +285,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof IceCream){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= FinalCommodity.FINAL_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -266,7 +301,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Milk){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -278,7 +317,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof PocketMilk){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -290,7 +333,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Bear){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= WildAnimal.WILD_ANIMAL_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -302,7 +349,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Loin){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= WildAnimal.WILD_ANIMAL_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
@@ -314,7 +365,11 @@ public class PickUpTruck {
         }
         for (Object object : pickUpTruckHashset) {
             if(object instanceof Tiger){
-                return storeroom.reStoreFromTruck(object , this);
+                boolean reStored = storeroom.reStoreFromTruck(object , this);
+                if(reStored){
+                    truckSpaceTaken -= WildAnimal.WILD_ANIMAL_SIZE;
+                }
+                return reStored;
             }
         }
         return false;
