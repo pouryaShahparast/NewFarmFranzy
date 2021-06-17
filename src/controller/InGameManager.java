@@ -169,6 +169,7 @@ public class InGameManager {
             System.out.println(wildAnimal.toString());
         }
         System.out.println();
+        System.out.println("coins = " + coin.getCoin());
     }
     private int[][] makeGrassArray(){
         int [][] grassArray = new int[6][6];
