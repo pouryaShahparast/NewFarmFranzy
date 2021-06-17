@@ -423,339 +423,172 @@ public class Regex {
        else  if (matcher8.find()) {
             String name = matcher8.group(1);
             if (name.equalsIgnoreCase("egg")) {
-                boolean found = false;
 
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof Egg) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
 
-                        }
-                        break;
-                    }
+                Egg egg = storeroom.takeEgg();
 
-                }
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
+                if (egg == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(egg);
                 }
 
 
             } else if (name.equalsIgnoreCase("bread")) {
 
-                boolean found = false;
-
-                for (Commodity commodity :
-                       storeroom.commodityHashSet) {
-                    if (commodity instanceof Bread) {
-                         found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-                if (!found) {
-                    LoggingToFile.logToFile( "there is no commodity with this name_matcher 8","info");
+                Bread bread = storeroom.takeBread();
+                if (bread == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(bread);
                 }
 
 
             } else if (name.equalsIgnoreCase("cloth")) {
 
-                boolean found = false;
 
-                for (Commodity commodity :
-                      storeroom.commodityHashSet) {
-                    if (commodity instanceof Cloth) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile( "there is no commodity with this name_matcher 8","info");
+                Cloth cloth = storeroom.takeCloth();
+                if (cloth == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(cloth);
                 }
 
 
             } else if (name.equalsIgnoreCase("fabric")) {
 
-                boolean found = false;
-
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof Fabric) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                Fabric fabric = storeroom.takeFabric();
+                if (fabric == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(fabric);
                 }
 
 
             } else if (name.equalsIgnoreCase("feather")) {
 
-                boolean found = false;
 
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof Feather) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                Feather feather = storeroom.takeFeather();
+                if (feather == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(feather);
+
+
                 }
-
-
             } else if (name.equalsIgnoreCase("flour")) {
 
-                boolean found = false;
-
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof Flour) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                Flour flour = storeroom.takeFlour();
+                if (flour == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(flour);
                 }
 
 
             } else if (name.equalsIgnoreCase("ice cream")) {
-
-                boolean found = false;
-
-                for (Commodity commodity :
-                       storeroom.commodityHashSet) {
-                    if (commodity instanceof IceCream) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                IceCream iceCream = storeroom.takeIceCream();
+                if (iceCream == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-                }
 
+                } else {
+
+                    pickUpTruck.pickUp(iceCream);
+                }
 
             } else if (name.equalsIgnoreCase("milk")) {
 
-                boolean found = false;
+                Milk milk = storeroom.takeMilk();
 
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof Milk) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                if (milk == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-                }
 
+                } else {
+
+                    pickUpTruck.pickUp(milk);
+                }
 
             } else if (name.equalsIgnoreCase("pocket milk")) {
-
-                boolean found = false;
-
-                for (Commodity commodity :
-                        storeroom.commodityHashSet) {
-                    if (commodity instanceof PocketMilk) {
-                        found = true;
-                        if(pickUpTruck.pickUp(commodity)) {
-                            storeroom.commodityHashSet.remove(commodity);
-
-                        }
-                        break;
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
+                PocketMilk pocketMilk = storeroom.takePocketMilk();
+                if (pocketMilk == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
                     System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+                } else {
+
+                    pickUpTruck.pickUp(pocketMilk);
+                }
+            } else if (name.equalsIgnoreCase("tiger")) {
+                Tiger tiger = storeroom.takeTiger();
+                if (tiger == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+
+                } else {
+
+                    pickUpTruck.pickUp(tiger);
                 }
 
+            } else if (name.equalsIgnoreCase("bear")) {
+                Bear bear = storeroom.takeBear();
+                if (bear == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+
+                } else {
+
+                    pickUpTruck.pickUp(bear);
+                }
+
+            } else if (name.equalsIgnoreCase("lion")) {
+
+                Loin loin = storeroom.takeLoin();
+
+
+                if (loin == null) {
+                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+                    System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+
+
+                } else {
+
+                    pickUpTruck.pickUp(loin);
+                }
 
             }
-
-            else if (name.equalsIgnoreCase("tiger")) {
-
-                boolean found = false;
-
-                for (WildAnimal wildAnimal :
-                        storeroom.wildAnimalHashSet) {
-                    if (wildAnimal instanceof Tiger) {
-                        found = true;
-                        if(pickUpTruck.pickUp(wildAnimal)) {
-                            storeroom.wildAnimalHashSet.remove(wildAnimal);
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
-                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
-
-                }
-
-
-            }
-
-            else if (name.equalsIgnoreCase("bear")) {
-
-                boolean found = false;
-
-                for (WildAnimal wildAnimal :
-                        storeroom.wildAnimalHashSet) {
-                    if (wildAnimal instanceof Bear) {
-                        found = true;
-                        if(pickUpTruck.pickUp(wildAnimal)) {
-                            storeroom.wildAnimalHashSet.remove(wildAnimal);
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
-                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
-
-                }
-
-
-            }
-            else if (name.equalsIgnoreCase("lion")) {
-
-                boolean found = false;
-
-                for (WildAnimal wildAnimal :
-                        storeroom.wildAnimalHashSet) {
-                    if (wildAnimal instanceof Loin) {
-                        found = true;
-                        if(pickUpTruck.pickUp(wildAnimal)) {
-                            storeroom.wildAnimalHashSet.remove(wildAnimal);
-                        }
-                        break;
-
-
-                    }
-
-
-                }
-
-                if (!found) {
-                    LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
-                    System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
-
-                }
-
-
-            }
-
-
-
-
-
-            else {
-                LoggingToFile.logToFile("INVALID INPUT (there is no commodity with this name)_matcher 8","info");
-                System.out.println(ConsoleColors.RED + "INVALID INPUT (there is no commodity with this name)" + ConsoleColors.RESET);
-            }
-
 
         }
-
-
 
     //////////////////////
         else if(matcher9.find())
