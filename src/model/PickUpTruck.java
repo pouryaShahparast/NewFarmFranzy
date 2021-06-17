@@ -65,26 +65,36 @@ public class PickUpTruck {
                 if (canPick(WildAnimal.WILD_ANIMAL_SIZE)) {
                     truckSpaceTaken += WildAnimal.WILD_ANIMAL_SIZE;
                     pickUpTruckHashset.add(object);
+                    System.out.println("loaded");
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }
             } else if (object instanceof PrimitiveCommodity) {
                 if (canPick(PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE)) {
                     truckSpaceTaken += PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
+                    System.out.println("loaded");
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }
             } else if (object instanceof IntermediaryCommodity) {
                 if (canPick(IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE)) {
                     truckSpaceTaken += IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
+                    System.out.println("loaded");
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }
             } else if (object instanceof FinalCommodity) {
                 if (canPick(FinalCommodity.FINAL_COMMODITY_SIZE)) {
                     truckSpaceTaken += FinalCommodity.FINAL_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
+                    System.out.println("loaded");
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }
+            }else{
+                System.err.println("there is not enough room");
             }
         }else {
             System.err.println("can't pickup because Truck is currently traveling");

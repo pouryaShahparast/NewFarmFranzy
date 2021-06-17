@@ -95,6 +95,7 @@ public class Storeroom {
                 spaceTaken += WildAnimal.WILD_ANIMAL_SIZE;
                 wildAnimal.storeWildAnimalChanges();
                 wildAnimalHashSet.add(wildAnimal);
+                System.out.println("restored");
                 return true;
             }
         }
@@ -106,6 +107,7 @@ public class Storeroom {
                 spaceTaken += FinalCommodity.FINAL_COMMODITY_SIZE;
                 finalCommodity.storeCommodityChanges();
                 commodityHashSet.add(finalCommodity);
+                System.out.println("restored");
                 return true;
             }
         }
@@ -117,6 +119,7 @@ public class Storeroom {
                 spaceTaken += IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
                 intermediaryCommodity.storeCommodityChanges();
                 commodityHashSet.add(intermediaryCommodity);
+                System.out.println("restored");
                 return true;
             }
         }
@@ -128,6 +131,7 @@ public class Storeroom {
                 spaceTaken += PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
                 primitiveCommodity.storeCommodityChanges();
                 commodityHashSet.add(primitiveCommodity);
+                System.out.println("restored");
                 return true;
             }
         }

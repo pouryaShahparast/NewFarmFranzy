@@ -164,6 +164,11 @@ public class InGameManager {
         for (Commodity commodity : storeroom.commodityHashSet) {
             System.out.println(commodity.toString());
         }
+        System.out.println();
+        for (WildAnimal wildAnimal : storeroom.wildAnimalHashSet) {
+            System.out.println(wildAnimal.toString());
+        }
+        System.out.println();
     }
     private int[][] makeGrassArray(){
         int [][] grassArray = new int[6][6];
