@@ -76,15 +76,15 @@ public class Regex {
         //plant x y
         pattern4 = Pattern.compile("\\s*(?i:plant)\\s*\\[?\\s*(\\d+)\\s+(\\d+)\\s*\\]?\\s*$");
         //work
-        pattern5 = Pattern.compile("\\s*(?i:work)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
+        pattern5 = Pattern.compile("\\s*(?i:work)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w*)\\s*\\]?\\s*$");
         //cage x y
         pattern6 = Pattern.compile("\\s*(?i:cage)\\s*\\[?\\s*(\\d+)\\s+(\\d+)\\s*\\]?\\s*$");
         //turn
         pattern7 = Pattern.compile("\\s*(?i:turn)\\s*\\[?\\s*(\\d+)\\s*\\]?\\s*$");
         //truck load
-        pattern8 = Pattern.compile("\\s*(?i:truck)\\s*(?i:load)\\[?\\s*(\\w+)\\s*\\]?\\s*$");
+        pattern8 = Pattern.compile("\\s*(?i:truck)\\s*(?i:load)\\s*\\[?\\s*(\\w*\\s*\\w+)\\s*\\]?\\s*$");
         //truck unload
-        pattern9 = Pattern.compile("\\s*(?i:truck)\\s*(?i:unload)\\[?\\s*(\\w+)\\s*\\]?\\s*$");
+        pattern9 = Pattern.compile("\\s*(?i:truck)\\s*(?i:unload)\\s*\\[?\\s*(\\w*\\s*\\w+)\\s*\\]?\\s*$");
         //truck go
         pattern10 = Pattern.compile("\\s*(?i:truck)\\s*(?i:go)\\s*$");
         ////exit
@@ -92,11 +92,11 @@ public class Regex {
         ///inquiry
         pattern12 = Pattern.compile("\\s*(?i:inquiry)\\s*$");
         ///upgrade
-        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*(\\w+)\\s*$");
+        pattern13 = Pattern.compile("\\s*(?i:upgrade)\\s*(.*)\\s*$");
         ///build factory
-        pattern14 = Pattern.compile("\\s*(?i:build)\\s*(\\w+)\\s*$");
+        pattern14 = Pattern.compile("\\s*(?i:build)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
         ///work with two commodity
-        pattern15 = Pattern.compile("\\s*(?i:work\\s*upgraded)\\s*\\[?\\s*(\\w+)\\s*\\]?\\s*$");
+        pattern15 = Pattern.compile("\\s*(?i:work\\s*upgraded)\\s*\\[?\\s*(\\w*\\s*\\w*\\s*\\w+)\\s*\\]?\\s*$");
         /////////////////////////////////////////////////////////////
         matcher1 =  pattern1.matcher(input);
         matcher2 =  pattern2.matcher(input);
