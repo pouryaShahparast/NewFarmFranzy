@@ -332,7 +332,7 @@ public class Regex {
 
             } else {
 
-                System.out.println(ConsoleColors.RED + "INVALID INPUT (coordinate out of range)" + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "INVALID INPUT " + ConsoleColors.RESET);
 
             }
 
@@ -993,6 +993,7 @@ pickUpTruck.reStoreMilkFromTruck(storeroom);
        else if(matcher13.find())
         {
                 String factoryName = matcher13.group(1);
+
                 if (factoryName.equalsIgnoreCase("bakery")) {
                     boolean found = false;
 
