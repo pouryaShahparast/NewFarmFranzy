@@ -80,7 +80,6 @@ public class Entrance {
             signUp();
             return;
         }
-
         else {
             System.out.println("wrong input");
             LoggingToFile.logToFile("wrong input in menu", "warning");
