@@ -53,7 +53,7 @@ public class GUIEntrance {
         jFrame.revalidate();
         jFrame.repaint();
         try {
-            Thread.sleep(1500);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -61,7 +61,7 @@ public class GUIEntrance {
         jLabel2.setFont(new Font("Mv boli",Font.BOLD,32));
 
         try {
-            Thread.sleep(700);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -75,6 +75,9 @@ public class GUIEntrance {
         jFrame.remove(jLabel2);
         jFrame.revalidate();
         jFrame.repaint();
+
+
+       new GUIAuthentication();
 
 
     }

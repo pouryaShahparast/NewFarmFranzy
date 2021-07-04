@@ -20,7 +20,7 @@ public class Entrance {
     {
         System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
 
-        File file=new File("levels.txt");
+         File file=new File("levels.txt");
          level=new Level();
 
         if(!file.exists()) {
@@ -77,8 +77,7 @@ public class Entrance {
         if(input==2)
         {
             LoggingToFile.logToFile("user signed up","info");
-            signUp();
-            return;
+
         }
         else {
             System.out.println("wrong input");
@@ -117,19 +116,15 @@ return;
 
 
     }
-    public void signUp()
+    public static void signUp( String userName,String password)
     {
 
-        String userName="",password="";
-        System.out.println("Enter USERNAME");
-        Scanner scanner=new Scanner(System.in);
-        userName=scanner.nextLine();
+
         if(checkIfUserExists(userName))
         {
             System.out.println(ConsoleColors.RED+"Already Taken"+ConsoleColors.RESET);
             LoggingToFile.logToFile("username has already been token","warning");
-            signUp();
-            return;
+
 
         }
 
@@ -146,7 +141,7 @@ return;
             }
 
         }
-        scanner=null;
+        Scanner scanner;
 
         try {
             scanner=new Scanner(userNameAndPasswords);
@@ -156,9 +151,6 @@ return;
         }
         try {
             FileWriter fileWriter=new FileWriter(userNameAndPasswords,true);
-            scanner=new Scanner(System.in);
-            System.out.println("Enter your password ");
-            password=scanner.nextLine();
             fileWriter.write("_"+userName+"\n"+password+"\n");
             fileWriter.close();
 
@@ -190,12 +182,11 @@ return;
             e.printStackTrace();
         }
 
-        logIn();
-        return;
+
 
     }
 
-    public boolean checkIfUserExists(String userName)
+    public static boolean checkIfUserExists(String userName)
     {
         File userNameAndPasswords=new File("password.txt");
         if(!userNameAndPasswords.exists())
@@ -246,7 +237,7 @@ return;
 
 
     }
-    public boolean checkIfPasswordIsCorrect(String userName,String password)
+    public  static boolean checkIfPasswordIsCorrect(String userName,String password)
     {
         File userNameAndPasswords=new File("password.txt");
         if(!userNameAndPasswords.exists())
