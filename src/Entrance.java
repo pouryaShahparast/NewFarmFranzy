@@ -267,6 +267,9 @@ return;
         while(scanner.hasNextLine())
         {
             temp1=scanner.nextLine();
+            if(temp1.length()==0)
+                  continue;
+
             if(temp1.charAt(0)=='_') {
                 temp1=temp1.substring(1);
                 if (temp1.equals(userName)) {

@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.runtime.regexp.joni.exception.JOniException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -94,7 +96,7 @@ public class UserPassController implements ActionListener {
             if(username.equalsIgnoreCase("")||(password.equalsIgnoreCase("")))
             {
                 JOptionPane.showConfirmDialog(null,"enter your user name and password please","warning",JOptionPane.PLAIN_MESSAGE);
-
+                return;
 
 
             }
@@ -102,7 +104,7 @@ public class UserPassController implements ActionListener {
 
 
 
-           else if(i==1)
+            if(i==1)
             {
 
                 if(Entrance.checkIfUserExists(username))
@@ -119,7 +121,8 @@ public class UserPassController implements ActionListener {
                     JOptionPane.showConfirmDialog(null, "your sign up was successful", "info", JOptionPane.PLAIN_MESSAGE);
                     Entrance.signUp(username, password);
                     GUIEntrance.jFrame.remove(jPanel);
-
+                    GUIEntrance.jFrame.repaint();
+                    new GUIMenu();
 
                 }
 
@@ -131,9 +134,18 @@ public class UserPassController implements ActionListener {
 
                 if(!Entrance.checkIfUserExists(username))
                 {
-                    JOptionPane.showConfirmDialog(null," sign up first ","warning",JOptionPane.WARNING_MESSAGE);
+                   int Q= JOptionPane.showConfirmDialog(null," sign up first ","warning",JOptionPane.WARNING_MESSAGE);
 
-                    i=1;
+                   if(Q==0)
+                          i=1;
+
+                  else if(Q==2)
+                   {
+                          i=2;
+                   }
+
+
+
 
 
                 }
@@ -147,13 +159,13 @@ public class UserPassController implements ActionListener {
 
                         GUIEntrance.jFrame.remove(jPanel);
                         GUIEntrance.jFrame.repaint();
-
+                        new GUIMenu();
 
 
                     }
                     else
                     {
-                        JOptionPane.showConfirmDialog(null," wrong password ","warning",JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showConfirmDialog(null," wrong password ","warning",JOptionPane.PLAIN_MESSAGE);
 
                     }
 
