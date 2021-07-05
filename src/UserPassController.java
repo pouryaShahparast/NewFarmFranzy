@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 public class UserPassController implements ActionListener {
 
     JPanel jPanel;
-    JFrame jFrame;
     JTextField jTextField1,jTextField2;
     JButton jButton;
     int i;
@@ -20,12 +19,31 @@ public class UserPassController implements ActionListener {
 
         jPanel=new JPanel();
         jPanel.setLayout(null);
-        jPanel.setBounds(150,100,500,500);
+        jPanel.setBounds(250,50,500,500);
+        //
+        JTextField usernameField=new JTextField("username");
+        usernameField.setBounds(40,150,100,50);
+        usernameField.setEditable(false);
+        usernameField.setBackground(Color.green);
+        usernameField.setFont(new Font("Consalas",Font.PLAIN,19));
 
-        jTextField1=new JTextField("username");
-        jTextField2=new JTextField("password");
-        jTextField1.setBounds(70,150,150,50);
-        jTextField2.setBounds(70,220,150,50);
+        JTextField passwordField=new JTextField("password");
+        passwordField.setBounds(40,220,100,50);
+        passwordField.setEditable(false);
+        passwordField.setBackground(Color.green);
+        passwordField.setFont(new Font("Consalas",Font.PLAIN,19));
+
+
+
+
+
+        jPanel.add(usernameField);
+        jPanel.add(passwordField);
+
+        jTextField1=new JTextField("");
+        jTextField2=new JTextField("");
+        jTextField1.setBounds(190,150,150,50);
+        jTextField2.setBounds(190,220,150,50);
         jPanel.add(jTextField1);
         jPanel.add(jTextField2);
         jTextField1.setForeground(new Color(63,45,223));
@@ -36,11 +54,13 @@ public class UserPassController implements ActionListener {
         jTextField2.setFont(new Font("Italic",2,19));
 
         jButton=new JButton("submit");
-        jButton.setBounds(100,290,80,40);
+        jButton.setBounds(210,290,100,40);
         jButton.setBackground(Color.orange);
         jPanel.add(jButton);
         jButton.addActionListener(this);
         jButton.setFocusable(false);
+
+        jButton.setFont(new Font("Consolas",Font.PLAIN,18));
 
         jPanel.setVisible(true);
 
@@ -71,8 +91,18 @@ public class UserPassController implements ActionListener {
 
 
 
+            if(username.equalsIgnoreCase("")||(password.equalsIgnoreCase("")))
+            {
+                JOptionPane.showConfirmDialog(null,"enter your user name and password please","warning",JOptionPane.PLAIN_MESSAGE);
 
-            if(i==1)
+
+
+            }
+
+
+
+
+           else if(i==1)
             {
 
                 if(Entrance.checkIfUserExists(username))
