@@ -8,6 +8,7 @@ import java.awt.event.MouseMotionListener;
 public class GUIMenu implements ActionListener, MouseMotionListener {
 
     JPanel jPanel;
+    JPanel levelPanel;
     JButton exit,levels,coins;
     public GUIMenu(){
         GUIEntrance.jFrame.setLayout(null);
@@ -67,7 +68,10 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
         if(e.getSource()==levels)
         {
 
-            //todo
+            GUIEntrance.jFrame.remove(jPanel);
+            GUIEntrance.jFrame.add(new LevelPanel());
+
+
 
         }
 
@@ -144,11 +148,11 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
         }
 
 
-        if((e.getX()<=240)&&(e.getX()>=760)&&(e.getY()<=140)&&(e.getY()>=460))
+       else
         {
 
            exit.setFont(new Font("consolas",Font.BOLD,18));
-            levels.setFont(new Font("consolas",Font.BOLD,18));
+           levels.setFont(new Font("consolas",Font.BOLD,18));
            coins.setFont(new Font("consolas",Font.BOLD,18));
 
             levels.setBackground(Color.WHITE);

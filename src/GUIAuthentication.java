@@ -174,7 +174,7 @@ public class GUIAuthentication implements ActionListener, MouseMotionListener{
 
     if((e.getX()<=240)&&(e.getX()>=760)&&(e.getY()<=140)&&(e.getY()>=460))
     {
-        System.out.println(">=200");
+
         jButton1.setFont(new Font("consolas",Font.BOLD,18));
         jButton2.setFont(new Font("consolas",Font.BOLD,18));
         jButton3.setFont(new Font("consolas",Font.BOLD,18));
