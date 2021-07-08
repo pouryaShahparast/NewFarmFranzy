@@ -48,7 +48,7 @@ public class GUIEntrance implements ActionListener {
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 
         jLabel3=new JLabel();
-        jLabel3.setBounds(0,100,200,200);
+        jLabel3.setBounds(-200,100,200,200);
         jLabel3.setIcon(new ImageIcon(instance2));
         jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -125,7 +125,7 @@ public class GUIEntrance implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         x+=20;
-        jLabel3.setBounds( 0+x,100,200,200);
+        jLabel3.setBounds( -200+x,100,200,200);
         jLabel2.setForeground(new Color(random.nextInt(155)+100,random.nextInt(155)+100,random.nextInt(255)));
         GUIEntrance.jFrame.getContentPane().setBackground(new Color(x/15,x/15,255-(x/15)));
         GUIEntrance.jFrame.revalidate();

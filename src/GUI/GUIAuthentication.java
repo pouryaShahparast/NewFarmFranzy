@@ -72,6 +72,7 @@ public class GUIAuthentication implements ActionListener, MouseMotionListener{
 
         if(e.getSource()==jButton3)
         {
+            Entrance.saveUserInfo(UserPassController.user.name);
             System.exit(0);
 
         }

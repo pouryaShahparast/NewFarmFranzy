@@ -663,7 +663,7 @@ initializing tasks of levels
         return level;
     }
 
-    public void saveUserInfo(String userName)
+    public static void saveUserInfo(String userName)
     {
 
 

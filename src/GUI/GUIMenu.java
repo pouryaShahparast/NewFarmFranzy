@@ -2,6 +2,7 @@ package GUI;
 
 import GUI.GUIAuthentication;
 import GUI.GUIEntrance;
+import controller.Entrance;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,8 @@ import java.awt.event.*;
 
 public class GUIMenu implements ActionListener, MouseListener {
 
-    JPanel jPanel,coinPanel;
+    JPanel jPanel;
+    CoinPanel coinPanel;
     JButton exit,levels,coins,back,ok;
     public GUIMenu(){
         GUIEntrance.jFrame.setLayout(null);
@@ -18,22 +20,25 @@ public class GUIMenu implements ActionListener, MouseListener {
         jPanel.setBackground(Color.BLUE);
         jPanel.setOpaque(true);
 
-        coinPanel=new JPanel(null);
-        coinPanel.setBounds(250,150,500,300);
+        coinPanel=new CoinPanel();
         JLabel jLabel=new JLabel();
         jLabel.setIcon(new ImageIcon("coin.jpg"));
-        jLabel.setBounds(150,0,200,300);
-        jLabel.setText(UserPassController.user.name+" "+" you are at level "+Integer.toString(UserPassController.user.level)+" and you have "+Integer.toString(UserPassController.user.coins)+" coins");
+        jLabel.setBounds(175,0,400,400);
         jLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+        JLabel textLabel=new JLabel();
+        textLabel.setText(UserPassController.user.name+" "+" you are at level "+Integer.toString(Entrance.levelOfUser)+" and you have "+Integer.toString(Entrance.userInitialCoins)+" coins");
+        textLabel.setBounds(55,350,550,50);
+        textLabel.setFont(new Font("Mv boli",Font.BOLD,19));
+        textLabel.setBackground(Color.orange);
+        textLabel.setOpaque(true);
+        textLabel.setHorizontalAlignment(SwingConstants.CENTER);
         ok=new JButton("OK");
         ok.setFocusable(false);
-        ok.setBounds(200,250,100,50);
+        ok.setBounds(275,440,100,50);
         ok.addActionListener(this);
-
         coinPanel.add(ok);
-        coinPanel.add(jLabel);
-        coinPanel.setOpaque(true);
-        coinPanel.setBackground(Color.WHITE);
+        coinPanel.add(textLabel);
+
 
 
 
@@ -89,7 +94,7 @@ public class GUIMenu implements ActionListener, MouseListener {
         if(e.getSource()==exit)
         {
 
-            //todo
+            Entrance.saveUserInfo(UserPassController.user.name);
             System.exit(0);
 
 
