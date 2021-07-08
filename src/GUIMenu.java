@@ -1,11 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 
-public class GUIMenu implements ActionListener, MouseMotionListener {
+public class GUIMenu implements ActionListener, MouseListener {
 
     JPanel jPanel;
     JPanel levelPanel;
@@ -27,9 +24,9 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
         exit.setFont(new Font("consolas",Font.BOLD,18));
         coins.setFont(new Font("consolas",Font.BOLD,18));
         levels.setFont(new Font("consolas",Font.BOLD,18));
-        levels.addMouseMotionListener(this);
-        coins.addMouseMotionListener(this);
-        exit.addMouseMotionListener(this);
+        levels.addMouseListener(this);
+        coins.addMouseListener(this);
+        exit.addMouseListener(this);
 
 
         jPanel.add(levels);
@@ -69,6 +66,8 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
         {
 
             GUIEntrance.jFrame.remove(jPanel);
+            GUIEntrance.jFrame.revalidate();
+            GUIEntrance.jFrame.repaint();
             GUIEntrance.jFrame.add(new LevelPanel());
 
 
@@ -88,13 +87,25 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
 
     }
 
+
     @Override
-    public void mouseDragged(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {
 
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
         if(e.getSource()==levels)
         {
             levels.setFont(new Font("consolas",Font.BOLD,22));
@@ -148,24 +159,26 @@ public class GUIMenu implements ActionListener, MouseMotionListener {
         }
 
 
-       else
-        {
 
-           exit.setFont(new Font("consolas",Font.BOLD,18));
-           levels.setFont(new Font("consolas",Font.BOLD,18));
-           coins.setFont(new Font("consolas",Font.BOLD,18));
+
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+
+            System.out.println("im in else");
+            System.out.println("x "+e.getX()+" y "+e.getY());
+            exit.setFont(new Font("consolas",Font.BOLD,18));
+            levels.setFont(new Font("consolas",Font.BOLD,18));
+            coins.setFont(new Font("consolas",Font.BOLD,18));
 
             levels.setBackground(Color.WHITE);
             coins.setBackground(Color.WHITE);
             exit.setBackground(Color.WHITE);
             jPanel.revalidate();
             jPanel.repaint();
-        }
-
-
-
-
-
 
     }
 }
