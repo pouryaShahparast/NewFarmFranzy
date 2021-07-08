@@ -1,3 +1,7 @@
+package ETC;
+
+import controller.Entrance;
+
 public class ConsoleColors {
 
 

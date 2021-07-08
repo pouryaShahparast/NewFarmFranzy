@@ -1,6 +1,12 @@
+package ETC;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
+import ETC.Task1;
+import controller.Entrance;
 import controller.InGameManager;
 import model.*;
 import model.animals.*;

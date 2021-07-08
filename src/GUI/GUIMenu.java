@@ -1,16 +1,45 @@
+package GUI;
+
+import GUI.GUIAuthentication;
+import GUI.GUIEntrance;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class GUIMenu implements ActionListener, MouseListener {
 
-    JPanel jPanel;
-    JButton exit,levels,coins,back;
+    JPanel jPanel,coinPanel;
+    JButton exit,levels,coins,back,ok;
     public GUIMenu(){
         GUIEntrance.jFrame.setLayout(null);
+        //panels
         jPanel=new JPanel(new GridLayout(4,1,5,5));
         jPanel.setBackground(Color.BLUE);
         jPanel.setOpaque(true);
+
+        coinPanel=new JPanel(null);
+        coinPanel.setBounds(250,150,500,300);
+        JLabel jLabel=new JLabel();
+        jLabel.setIcon(new ImageIcon("coin.jpg"));
+        jLabel.setBounds(150,0,200,300);
+        jLabel.setText(UserPassController.user.name+" "+" you are at level "+Integer.toString(UserPassController.user.level)+" and you have "+Integer.toString(UserPassController.user.coins)+" coins");
+        jLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+        ok=new JButton("OK");
+        ok.setFocusable(false);
+        ok.setBounds(200,250,100,50);
+        ok.addActionListener(this);
+
+        coinPanel.add(ok);
+        coinPanel.add(jLabel);
+        coinPanel.setOpaque(true);
+        coinPanel.setBackground(Color.WHITE);
+
+
+
+
+
+
         exit=new JButton("exit");
         levels=new JButton("levels");
         coins=new JButton("coins");
@@ -81,7 +110,10 @@ public class GUIMenu implements ActionListener, MouseListener {
         if(e.getSource()==coins)
         {
 
-            //todo
+        GUIEntrance.jFrame.remove(jPanel);
+        GUIEntrance.jFrame.add(coinPanel);
+        GUIEntrance.jFrame.revalidate();
+        GUIEntrance.jFrame.repaint();
 
         }
 
@@ -99,7 +131,20 @@ public class GUIMenu implements ActionListener, MouseListener {
 
         }
 
+        if(e.getSource()==ok)
+        {
 
+            GUIEntrance.jFrame.remove(coinPanel);
+            GUIEntrance.jFrame.add(jPanel);
+            GUIEntrance.jFrame.revalidate();
+            GUIEntrance.jFrame.repaint();
+
+
+
+
+
+
+        }
 
     }
 

@@ -1,5 +1,8 @@
-import jdk.nashorn.internal.runtime.regexp.joni.exception.JOniException;
+package GUI;
 
+
+import ETC.User;
+import controller.Entrance;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +13,7 @@ public class UserPassController implements ActionListener {
     JTextField jTextField1,jTextField2;
     JButton jButton;
     int i;
-
+   public static User user;
     public UserPassController() {}
 
     public UserPassController(int i) {
@@ -120,6 +123,7 @@ public class UserPassController implements ActionListener {
                 else {
                     JOptionPane.showConfirmDialog(null, "your sign up was successful", "info", JOptionPane.PLAIN_MESSAGE);
                     Entrance.signUp(username, password);
+                    user=new User(username,200,1);
                     GUIEntrance.jFrame.remove(jPanel);
                     GUIEntrance.jFrame.repaint();
                     new GUIMenu();
@@ -155,8 +159,8 @@ public class UserPassController implements ActionListener {
                     {
 
 
-
-
+                        Entrance.initializeUserLevelAndCoins(username);
+                        user=new User(username,Entrance.userInitialCoins,Entrance.levelOfUser);
                         GUIEntrance.jFrame.remove(jPanel);
                         GUIEntrance.jFrame.repaint();
                         new GUIMenu();

@@ -1,3 +1,8 @@
+package GUI;
+
+import GUI.GUIEntrance;
+import GUI.GUIMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

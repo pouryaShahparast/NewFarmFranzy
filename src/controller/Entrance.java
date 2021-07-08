@@ -1,3 +1,5 @@
+package controller;
+
 import com.google.gson.Gson;
 import model.GameFieldStorage;
 
@@ -6,9 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
-
+import ETC.ConsoleColors;
+import ETC.Task1;
+import ETC.Level;
+import ETC.LoggingToFile;
+import ETC.Regex;
 public class Entrance {
 
     public static boolean isGameRunning=true;
@@ -18,7 +22,7 @@ public class Entrance {
     public Level level;
     public Entrance()
     {
-        System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ConsoleColors.RESET);
+        System.out.println(ConsoleColors.YELLOW+"*******************Welcome to the project******************\n\n"+ ConsoleColors.RESET);
 
          File file=new File("levels.txt");
          level=new Level();
@@ -38,7 +42,7 @@ public class Entrance {
         Gson gson1=new Gson();
         try(Reader r=new FileReader("levels.txt")){
 
-            level=gson1.fromJson(r,Level.class);
+            level=gson1.fromJson(r, Level.class);
             taskOfLevel1=level.taskOfLevel1;
             taskOfLevel2=level.taskOfLevel2;
             taskOfLevel3=level.taskOfLevel3;
@@ -56,7 +60,7 @@ public class Entrance {
     }
     public void menu()
     {
-        System.out.println(ConsoleColors.RED+"1-LOG IN\n2-SIGNUP\n"+ConsoleColors.RESET);
+        System.out.println(ConsoleColors.RED+"1-LOG IN\n2-SIGNUP\n"+ ConsoleColors.RESET);
         Scanner scanner=new Scanner(System.in);
 
         int input=0;
@@ -122,7 +126,7 @@ return;
 
         if(checkIfUserExists(userName))
         {
-            System.out.println(ConsoleColors.RED+"Already Taken"+ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED+"Already Taken"+ ConsoleColors.RESET);
             LoggingToFile.logToFile("username has already been token","warning");
 
 
@@ -283,7 +287,7 @@ return;
             }
         }
         LoggingToFile.logToFile("password is incorrect","info");
-        System.out.println(ConsoleColors.RED+"Wrong"+ConsoleColors.RESET);
+        System.out.println(ConsoleColors.RED+"Wrong"+ ConsoleColors.RESET);
         return false;
 
 
@@ -417,7 +421,7 @@ initializing tasks of levels
 
 
     }
-    public void initializeUserLevelAndCoins(String userName)
+    public static void initializeUserLevelAndCoins(String userName)
     {
         Scanner scanner;
         File userFile=new File(userName+".txt");
@@ -632,7 +636,7 @@ initializing tasks of levels
             }
            catch (Exception e)
            {
-               System.out.println(ConsoleColors.RED+"INVALID"+ConsoleColors.RESET);
+               System.out.println(ConsoleColors.RED+"INVALID"+ ConsoleColors.RESET);
 
                continue;
            }

@@ -1,9 +1,13 @@
+package ETC;
+
+import ETC.Task1;
+
 import java.util.ArrayList;
 
 public class Level {
 
     //level1
-   public  Task1 taskOfLevel1,taskOfLevel2,taskOfLevel3,taskOfLevel4,taskOfLevel5;
+   public Task1 taskOfLevel1,taskOfLevel2,taskOfLevel3,taskOfLevel4,taskOfLevel5;
 
 
 
