@@ -69,7 +69,8 @@ public class GUIMenu implements ActionListener, MouseListener {
             GUIEntrance.jFrame.revalidate();
             GUIEntrance.jFrame.repaint();
             GUIEntrance.jFrame.add(new LevelPanel());
-
+            GUIEntrance.jFrame.revalidate();
+            GUIEntrance.jFrame.repaint();
 
 
         }

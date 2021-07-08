@@ -1,12 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
-public class LevelPanel extends JPanel implements ActionListener, MouseMotionListener {
+public class LevelPanel extends JPanel implements ActionListener, MouseListener {
 
 
 
@@ -24,20 +21,12 @@ public class LevelPanel extends JPanel implements ActionListener, MouseMotionLis
             jButton.setFocusable(false);
             jButton.setBackground(Color.WHITE);
             jButton.addActionListener(this);
-            jButton.addMouseMotionListener(this);
+            jButton.addMouseListener(this);
             jButton.setFont(new Font("MV Boli",Font.BOLD,20));
             arr.add(jButton);
+            this.add(jButton);
 
         }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -72,14 +61,24 @@ public class LevelPanel extends JPanel implements ActionListener, MouseMotionLis
 
     }
 
+
     @Override
-    public void mouseDragged(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {
 
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
 
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
         for (JButton j :
                 arr) {
 
@@ -90,10 +89,10 @@ public class LevelPanel extends JPanel implements ActionListener, MouseMotionLis
                         arr) {
                     if(b!=j)
                     {
-                     b.setBackground(Color.WHITE);
-                     b.setFont(new Font("MV Boli",Font.BOLD,20));
-                     this.revalidate();
-                     this.repaint();
+                        b.setBackground(Color.WHITE);
+                        b.setFont(new Font("MV Boli",Font.BOLD,20));
+                        this.revalidate();
+                        this.repaint();
 
 
 
@@ -109,8 +108,9 @@ public class LevelPanel extends JPanel implements ActionListener, MouseMotionLis
                 }
 
 
-              j.setBackground(Color.cyan);
-              j.setFont(new Font("MV Boli",Font.BOLD,23));
+                j.setBackground(Color.cyan);
+                j.setFont(new Font("MV Boli",Font.BOLD,25));
+                j.setForeground(Color.red);
                 this.revalidate();
                 this.repaint();
 
@@ -121,26 +121,23 @@ public class LevelPanel extends JPanel implements ActionListener, MouseMotionLis
 
         }
 
-        if((e.getX()<200)||(e.getX()>800)||(e.getY()<100)||(e.getY()>500))
-        {
-            for (JButton j :
+
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+           for (JButton j :
                     arr) {
                 j.setBackground(Color.WHITE);
                 j.setFont(new Font("MV Boli",Font.BOLD,20));
+                j.setForeground(Color.black);
                 this.revalidate();
                 this.repaint();
 
 
 
             }
-
-
-
-
-
-
-        }
-
 
 
 
