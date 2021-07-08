@@ -5,11 +5,10 @@ import java.awt.event.*;
 public class GUIMenu implements ActionListener, MouseListener {
 
     JPanel jPanel;
-    JPanel levelPanel;
-    JButton exit,levels,coins;
+    JButton exit,levels,coins,back;
     public GUIMenu(){
         GUIEntrance.jFrame.setLayout(null);
-        jPanel=new JPanel(new GridLayout(3,1,5,5));
+        jPanel=new JPanel(new GridLayout(4,1,5,5));
         jPanel.setBackground(Color.BLUE);
         jPanel.setOpaque(true);
         exit=new JButton("exit");
@@ -28,12 +27,16 @@ public class GUIMenu implements ActionListener, MouseListener {
         coins.addMouseListener(this);
         exit.addMouseListener(this);
 
-
+        back=new JButton("back");
+        back.setFocusable(false);
+        back.setFont(new Font("consolas",Font.BOLD,18));
+        back.setBackground(Color.cyan);
         jPanel.add(levels);
         jPanel.add(coins);
         jPanel.add(exit);
-
-
+        jPanel.add(back);
+        back.addMouseListener(this);
+        back.addActionListener(this);
         jPanel.setBounds(250,150,500,300);
         GUIEntrance.jFrame.add(jPanel);
 
@@ -82,7 +85,19 @@ public class GUIMenu implements ActionListener, MouseListener {
 
         }
 
+        if(e.getSource()==back)
+        {
 
+            GUIEntrance.jFrame.remove(jPanel);
+            GUIEntrance.jFrame.revalidate();
+            GUIEntrance.jFrame.repaint();
+            new GUIAuthentication();
+
+
+
+
+
+        }
 
 
 
@@ -112,10 +127,11 @@ public class GUIMenu implements ActionListener, MouseListener {
             levels.setFont(new Font("consolas",Font.BOLD,22));
             coins.setFont(new Font("consolas",Font.BOLD,18));
             exit.setFont(new Font("consolas",Font.BOLD,18));
-
+            back.setFont(new Font("consolas",Font.BOLD,18));
             exit.setBackground(Color.WHITE);
             coins.setBackground(Color.WHITE);
             levels.setBackground(Color.green);
+            back.setBackground(Color.cyan);
             jPanel.revalidate();
             jPanel.repaint();
 
@@ -126,10 +142,11 @@ public class GUIMenu implements ActionListener, MouseListener {
             levels.setFont(new Font("consolas",Font.BOLD,18));
             coins.setFont(new Font("consolas",Font.BOLD,22));
             exit.setFont(new Font("consolas",Font.BOLD,18));
-
+            back.setFont(new Font("consolas",Font.BOLD,18));
             levels.setBackground(Color.WHITE);
             exit.setBackground(Color.WHITE);
             coins.setBackground(Color.ORANGE);
+            back.setBackground(Color.cyan);
             jPanel.revalidate();
             jPanel.repaint();
 
@@ -145,12 +162,34 @@ public class GUIMenu implements ActionListener, MouseListener {
             levels.setFont(new Font("consolas",Font.BOLD,18));
             coins.setFont(new Font("consolas",Font.BOLD,18));
             exit.setFont(new Font("consolas",Font.BOLD,22));
-
+            back.setFont(new Font("consolas",Font.BOLD,18));
             levels.setBackground(Color.WHITE);
             coins.setBackground(Color.WHITE);
             exit.setBackground(Color.PINK);
+            back.setBackground(Color.cyan);
             jPanel.revalidate();
             jPanel.repaint();
+
+
+
+
+
+
+        }
+        else if(e.getSource()==back)
+        {
+
+            levels.setFont(new Font("consolas",Font.BOLD,18));
+            coins.setFont(new Font("consolas",Font.BOLD,18));
+            exit.setFont(new Font("consolas",Font.BOLD,18));
+            back.setFont(new Font("consolas",Font.BOLD,22));
+            levels.setBackground(Color.WHITE);
+            coins.setBackground(Color.WHITE);
+            exit.setBackground(Color.WHITE);
+            back.setBackground(Color.RED);
+            jPanel.revalidate();
+            jPanel.repaint();
+
 
 
 
@@ -162,22 +201,21 @@ public class GUIMenu implements ActionListener, MouseListener {
 
 
 
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
 
 
-            System.out.println("im in else");
-            System.out.println("x "+e.getX()+" y "+e.getY());
+
             exit.setFont(new Font("consolas",Font.BOLD,18));
             levels.setFont(new Font("consolas",Font.BOLD,18));
             coins.setFont(new Font("consolas",Font.BOLD,18));
-
+            back.setFont(new Font("consolas",Font.BOLD,18));
             levels.setBackground(Color.WHITE);
             coins.setBackground(Color.WHITE);
             exit.setBackground(Color.WHITE);
+            back.setBackground(Color.CYAN);
             jPanel.revalidate();
             jPanel.repaint();
 

@@ -9,8 +9,9 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
 
     ArrayList<JButton>arr=new ArrayList<>();
+    JButton back;
     public LevelPanel(){
-       this.setLayout(new GridLayout(5,1,5,5));
+       this.setLayout(new GridLayout(6,1,5,5));
        this.setBackground(Color.BLUE);
        this.setOpaque(true);
        this.setBounds(200,100,600,400);
@@ -27,9 +28,13 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
             this.add(jButton);
 
         }
-
-
-
+        back=new JButton("menu");
+        back.setFocusable(false);
+        back.setBackground(Color.WHITE);
+        back.addActionListener(this);
+        back.addMouseListener(this);
+        back.setFont(new Font("MV Boli",Font.BOLD,20));
+        this.add(back);
 
 
 
@@ -49,6 +54,17 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
 
             }
+
+
+        }
+
+        if(e.getSource()==back)
+        {
+
+            GUIEntrance.jFrame.remove(this);
+            GUIEntrance.jFrame.revalidate();
+            GUIEntrance.jFrame.repaint();
+            new GUIMenu();
 
 
         }
@@ -120,6 +136,20 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
 
         }
+        if(e.getSource()==back)
+        {
+
+            back.setBackground(Color.cyan);
+            back.setFont(new Font("MV Boli",Font.BOLD,25));
+            back.setForeground(Color.red);
+            this.revalidate();
+            this.repaint(); 
+            
+            
+            
+            
+        }
+        
 
 
 
@@ -139,7 +169,11 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
             }
 
-
+        back.setBackground(Color.WHITE);
+        back.setFont(new Font("MV Boli",Font.BOLD,20));
+        back.setForeground(Color.black);
+        this.revalidate();
+        this.repaint();
 
 
 
