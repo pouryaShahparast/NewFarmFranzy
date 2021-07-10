@@ -34,7 +34,7 @@ public class GUIMenu implements ActionListener, MouseListener {
         textLabel.setHorizontalAlignment(SwingConstants.CENTER);
         ok=new JButton("OK");
         ok.setFocusable(false);
-        ok.setBounds(275,440,100,50);
+        ok.setBounds(300,440,100,50);
         ok.addActionListener(this);
         coinPanel.add(ok);
         coinPanel.add(textLabel);
