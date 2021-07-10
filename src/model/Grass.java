@@ -19,13 +19,5 @@ public class Grass {
         this.xCoordinate = xLocation;
         this.yCoordinate = yLocation;
     }
-    public ArrayList<DomesticatedAnimal> getDomesticatedAnimals(){
-        ArrayList<DomesticatedAnimal> domesticatedAnimalArrayList = new ArrayList<>();
-        for (DomesticatedAnimal domesticatedAnimal : GameFieldStorage.domesticatedAnimalHashSet) {
-            if((domesticatedAnimal.getXCoordinate() == xCoordinate) && (domesticatedAnimal.getYCoordinate() == yCoordinate)){
-                domesticatedAnimalArrayList.add(domesticatedAnimal);
-            }
-        }
-        return domesticatedAnimalArrayList;
-    }
+
 }

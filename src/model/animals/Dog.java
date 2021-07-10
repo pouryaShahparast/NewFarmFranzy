@@ -1,16 +1,18 @@
 package model.animals;
 
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 
-import java.util.Random;
+import java.awt.*;
 
 public class Dog extends Animal{
     public static final int DOG_PRICE = 100;
     public static int dogNumber = 0;
     public boolean attackWildAnimal(){
         for (WildAnimal wildAnimal : GameFieldStorage.wildAnimalHashSet) {
-            if((xCoordinate == wildAnimal.getXCoordinate()) && (yCoordinate == wildAnimal.getYCoordinate())){
+            if(checkForCollision(wildAnimal.getCollisionBounds())){
                 GameFieldStorage.wildAnimalHashSet.remove(wildAnimal);
                 return true;
             }
@@ -30,37 +32,7 @@ public class Dog extends Animal{
     }
     @Override
     public void move() {
-        Random random = new Random();
-        boolean canMove = false;
-        while (!canMove){
-            int a = random.nextInt(4);
-            switch (a){
-                case 0:
-                    if(xCoordinate - 1 >= 0){
-                        xCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 1:
-                    if(xCoordinate + 1 < 6){
-                        xCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-                case 2:
-                    if (yCoordinate - 1 >= 0){
-                        yCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 3:
-                    if (yCoordinate + 1 < 6){
-                        yCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-            }
-        }
+        randomMove();
     }
 
     @Override
@@ -72,5 +44,25 @@ public class Dog extends Animal{
         super();
         dogNumber++;
         animalName = "Dog" + dogNumber;
+        downAnimation = new Animation(300 , Assets.dogDown);
+        upAnimation = new Animation(300 , Assets.dogUp);
+        rightAnimation = new Animation(300 , Assets.dogRight);
+        leftAnimation = new Animation(300 , Assets.dogLeft);
+    }
+
+    @Override
+    public void shortTick() {
+        getCurrentAnimation().tick();
+        move();
+    }
+
+    @Override
+    public void longTick() {
+//  GameFieldStorage.dogHashSet.removeIf(Dog::attackWildAnimal);
+    }
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
     }
 }

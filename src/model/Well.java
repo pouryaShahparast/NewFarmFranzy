@@ -41,22 +41,16 @@ public class Well {
     public boolean checkIfTurnsReached(){
         return turns >= TURNS_NEEDED_TO_GET_WATER;
     }
-    public boolean makeGrass(int xLocation ,int yLocation){
-        if((xLocation >= 0) && (xLocation < 6) && (yLocation >= 0) && (yLocation < 6)) {
+    public boolean makeGrass(int xTile , int yTile) {
+        if ((xTile >= 0) && (xTile < 6) && (yTile >= 0) && (yTile < 6)) {
             if (bucketWater > 0) {
                 bucketWater--;
-                GameFieldStorage.grassHashSet.add(new Grass(xLocation , yLocation));
-                System.out.println("grass added , remaining water = " + bucketWater);
+                Cell.worldCells[xTile][yTile].addGrass();
                 return true;
-            }else {
-                System.err.println("you dont have enough water to make grass");
             }
-        }else {
-            System.err.println("Coordinates are not valid ");
         }
         return false;
     }
-
     public Well() {
         turns = 1;
         bucketWater = 0;

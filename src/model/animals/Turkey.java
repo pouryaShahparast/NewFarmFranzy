@@ -1,8 +1,12 @@
 package model.animals;
 
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Feather;
+
+import java.awt.*;
 
 public class Turkey extends DomesticatedAnimal{
     public static final int TURKEY_PRICE = 200;
@@ -13,6 +17,15 @@ public class Turkey extends DomesticatedAnimal{
         super();
         turkeyNumber++;
         animalName = "Turkey" + turkeyNumber;
+        downAnimation = new Animation(300 , Assets.turkeyDown);
+        upAnimation = new Animation(300 , Assets.turkeyUp);
+        rightAnimation = new Animation(300 , Assets.turkeyRight);
+        leftAnimation = new Animation(300 , Assets.turkeyLeft);
+    }
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
     }
 
     @Override

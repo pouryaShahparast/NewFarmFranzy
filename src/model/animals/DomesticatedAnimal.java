@@ -1,9 +1,11 @@
 package model.animals;
 
+import model.Cell;
 import model.GameFieldStorage;
 import model.Grass;
 import model.commodities.PrimitiveCommodity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -15,6 +17,18 @@ public abstract class DomesticatedAnimal extends Animal {
         super();
         health = 100;
         turns = 1;
+    }
+    @Override
+    public void shortTick() {
+        getCurrentAnimation().tick();
+        move();
+    }
+
+    @Override
+    public void longTick() {
+        reduceHealth();
+//    GameFieldStorage.domesticatedAnimalHashSet.removeIf(domesticatedAnimal -> domesticatedAnimal.getHealth() <= 0);
+        ProduceWithTurns();
     }
 
     abstract PrimitiveCommodity produce();
@@ -49,7 +63,7 @@ public abstract class DomesticatedAnimal extends Animal {
         health-= 10;
     }
 
-    public boolean eat(Grass grass){
+    public boolean eat(){
         if(health < 50) {
             health = 100;
             return true;
@@ -57,35 +71,37 @@ public abstract class DomesticatedAnimal extends Animal {
         return false;
     }
     void normalMove(){
-        Random random = new Random();
-        boolean canMove = false;
-        while (!canMove){
-            int a = random.nextInt(4);
-            switch (a){
-                case 0:
-                    if(xCoordinate - 1 >= 0){
-                        xCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 1:
-                    if(xCoordinate + 1 < 6){
-                        xCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-                case 2:
-                    if (yCoordinate - 1 >= 0){
-                        yCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 3:
-                    if (yCoordinate + 1 < 6){
-                        yCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
+        randomMove();
+    }
+
+    protected void findDirection(Grass grass){
+        if ((xInRang(grass.getXCoordinate()))&& (!yInRang(grass.getYCoordinate()))) {
+            if (grass.getYCoordinate() > yCoordinate) {
+                direction = MOVE_DIRECTIONS.DOWN;
+            } else {
+                direction = MOVE_DIRECTIONS.UP;
+            }
+        } else if ((!xInRang(grass.getXCoordinate())) && (yInRang(grass.getYCoordinate()))) {
+            if (grass.getXCoordinate() > xCoordinate) {
+                direction = MOVE_DIRECTIONS.RIGHT;
+            } else {
+                direction = MOVE_DIRECTIONS.LEFT;
+            }
+        } else if ((!xInRang(grass.getXCoordinate())) && (!yInRang(grass.getYCoordinate()))) {
+            Random random = new Random();
+            int a = random.nextInt(100);
+            if (a > 50) {
+                if (grass.getYCoordinate() > yCoordinate) {
+                    direction = MOVE_DIRECTIONS.DOWN;
+                } else {
+                    direction = MOVE_DIRECTIONS.UP;
+                }
+            } else {
+                if (grass.getXCoordinate() > xCoordinate) {
+                    direction = MOVE_DIRECTIONS.RIGHT;
+                } else {
+                    direction = MOVE_DIRECTIONS.LEFT;
+                }
             }
         }
     }
@@ -94,34 +110,8 @@ public abstract class DomesticatedAnimal extends Animal {
         if((grass == null) || (health >50)){
             normalMove();
         }else {
-            if ((grass.getXCoordinate() == xCoordinate) && (grass.getYCoordinate() != yCoordinate)) {
-                if (grass.getYCoordinate() > yCoordinate) {
-                    yCoordinate++;
-                } else {
-                    yCoordinate--;
-                }
-            } else if ((grass.getXCoordinate() != xCoordinate) && (grass.getYCoordinate() == yCoordinate)) {
-                if (grass.getXCoordinate() > xCoordinate) {
-                    xCoordinate++;
-                } else {
-                    xCoordinate--;
-                }
-            } else if ((grass.getXCoordinate() != xCoordinate) && (grass.getYCoordinate() != yCoordinate)) {
-                Random random = new Random();
-                if (random.nextBoolean()) {
-                    if (grass.getYCoordinate() > yCoordinate) {
-                        yCoordinate++;
-                    } else {
-                        yCoordinate--;
-                    }
-                } else {
-                    if (grass.getXCoordinate() > xCoordinate) {
-                        xCoordinate++;
-                    } else {
-                        xCoordinate--;
-                    }
-                }
-            }
+            findDirection(grass);
+            moving();
         }
     }
     Grass findNearestGrass(HashSet<Grass> grassHashSet) {
@@ -131,12 +121,10 @@ public abstract class DomesticatedAnimal extends Animal {
             return null;
         }
         for (Grass grass1 : grassHashSet) {
-            if((grass1.getYCoordinate()>=0)&&(grass1.getYCoordinate()<6)&&(grass1.getXCoordinate()>=0)&&(grass1.getXCoordinate()<6)) {
-                double distance = Math.sqrt(Math.pow(xCoordinate - grass1.getXCoordinate(), 2) + Math.pow(yCoordinate - grass1.getYCoordinate(), 2));
-                if ((minDistance == -1) || (minDistance > distance)) {
-                    minDistance = distance;
-                    grass = grass1;
-                }
+            double distance = Math.sqrt(Math.pow(xCoordinate - grass1.getXCoordinate(), 2) + Math.pow(yCoordinate - grass1.getYCoordinate(), 2));
+            if ((minDistance == -1) || (minDistance > distance)) {
+                minDistance = distance;
+                grass = grass1;
             }
         }
         return grass;
@@ -145,5 +133,37 @@ public abstract class DomesticatedAnimal extends Animal {
     @Override
     public String toString() {
         return animalName + " " + health + " " + "[" + (xCoordinate + 1) + " " + (yCoordinate + 1) +"]";
+    }
+
+    //statics
+
+    public static void domesticatedAnimalEat(){
+        for (int i = 0; i < Cell.worldCells.length; i++) {
+            for (int i1 = 0; i1 < Cell.worldCells[i].length; i1++) {
+                DomesticatedAnimal domesticatedAnimal = whichAnimalEats(Cell.worldCells[i][i1].getDomesticatedAnimals());
+                if(domesticatedAnimal != null){
+                    if(domesticatedAnimal.eat()){
+                        Cell.worldCells[i][i1].removeGrass();
+                    }
+                }
+            }
+        }
+
+    }
+    private static DomesticatedAnimal whichAnimalEats(ArrayList<DomesticatedAnimal> domesticatedAnimalArrayList){
+        if(!domesticatedAnimalArrayList.isEmpty()){
+            int tern = 0;
+            int health = domesticatedAnimalArrayList.get(0).getHealth();
+            for (int i = 0; i < domesticatedAnimalArrayList.size(); i++) {
+                if(domesticatedAnimalArrayList.get(i).getHealth() < health){
+                    tern = i;
+                    health = domesticatedAnimalArrayList.get(i).getHealth();
+                }
+            }
+            if(health < 50) {
+                return domesticatedAnimalArrayList.get(tern);
+            }
+        }
+        return null;
     }
 }

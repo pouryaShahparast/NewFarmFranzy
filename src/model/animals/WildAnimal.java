@@ -26,10 +26,26 @@ public abstract class WildAnimal extends Animal {
         yCoordinate = -1;
         currentCageNumber = -1;
     }
+
+    @Override
+    public void shortTick() {
+        getCurrentAnimation().tick();
+        attackDomesticatedAnimals();
+        attackCommodities();
+        move();
+    }
+    @Override
+    public void longTick() {
+        removeCage();
+        addTurnsAfterCaged();
+//        GameFieldStorage.wildAnimalHashSet.removeIf(WildAnimal::maxTurnsInfieldReached);
+        setIsCagedInThisRoundAtEndOfTheRound();
+    }
+
     public void attackDomesticatedAnimals(){
         HashSet<DomesticatedAnimal> removedDomesticatedAnimals = new HashSet<>();
         for (DomesticatedAnimal domesticatedAnimal : GameFieldStorage.domesticatedAnimalHashSet) {
-            if((xCoordinate == domesticatedAnimal.getXCoordinate()) && (yCoordinate == domesticatedAnimal.getYCoordinate())){
+            if(checkForCollision(domesticatedAnimal.getCollisionBounds())){
                 removedDomesticatedAnimals.add(domesticatedAnimal);
             }
         }
@@ -40,7 +56,7 @@ public abstract class WildAnimal extends Animal {
     public void attackCommodities(){
         HashSet<Commodity> removedCommodities = new HashSet<>();
         for (Commodity commodity : GameFieldStorage.commodityHashSet) {
-            if((xCoordinate == commodity.getXCoordinate()) && (yCoordinate == commodity.getYCoordinate())){
+            if(checkForCollision(commodity.getBounds())){
                 removedCommodities.add(commodity);
             }
         }
@@ -77,7 +93,11 @@ public abstract class WildAnimal extends Animal {
     public void setIsCagedInThisRoundAtEndOfTheRound() {
         isCagedInThisRound = false;
     }
-    abstract public void move();
+    public void move(){
+        if(!isCaged) {
+            randomMove();
+        }
+    }
     public boolean addTurnsAfterCaged(){
         if(isCaged && turnsAfterCaged >= 0 ){
             turnsAfterCaged++;

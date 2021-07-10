@@ -9,4 +9,9 @@ public abstract class IntermediaryCommodity extends Commodity{
     public IntermediaryCommodity(int xCoordinate, int yCoordinate) {
         super(xCoordinate, yCoordinate);
     }
+
+    @Override
+    public void tick() {
+
+    }
 }

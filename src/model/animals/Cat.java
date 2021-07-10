@@ -1,59 +1,55 @@
 package model.animals;
 
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 import model.Storeroom;
 import model.commodities.Commodity;
 
+import java.awt.*;
 import java.util.HashSet;
 import java.util.Random;
 
 public class Cat extends Animal{
     public static final int CAT_PRICE = 150;
     public static int catNumber = 0;
-    private void normalMove(){
-        Random random = new Random();
-        boolean canMove = false;
-        while (!canMove){
-            int a = random.nextInt(4);
-            switch (a){
-                case 0:
-                    if(xCoordinate - 1 >= 0){
-                        xCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 1:
-                    if(xCoordinate + 1 < 6){
-                        xCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-                case 2:
-                    if (yCoordinate - 1 >= 0){
-                        yCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 3:
-                    if (yCoordinate + 1 < 6){
-                        yCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-            }
-        }
-    }
+
 
     public Cat() {
         super();
         catNumber++;
         animalName = "Cat" + catNumber;
+        downAnimation = new Animation(300 , Assets.catDown);
+        upAnimation = new Animation(300 , Assets.catUp);
+        rightAnimation = new Animation(300 , Assets.catRight);
+        leftAnimation = new Animation(300 , Assets.catLeft);
     }
+
+
+    @Override
+    public void shortTick() {
+        getCurrentAnimation().tick();
+        move();
+//        for (Cat cat : GameFieldStorage.catHashSet) {
+//            cat.pickupCommodity(storeroom);
+//        }
+    }
+
+    @Override
+    public void longTick() {
+
+    }
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
+    }
+
     public void pickupCommodity(Storeroom storeroom){
         HashSet<Commodity> removedCommodities = new HashSet<>();
         for (Commodity commodity : GameFieldStorage.commodityHashSet) {
-            if((xCoordinate == commodity.getXCoordinate()) && (yCoordinate == commodity.getYCoordinate())){
+            if(checkForCollision(commodity.getBounds())){
                 removedCommodities.add(commodity);
             }
         }
@@ -83,40 +79,49 @@ public class Cat extends Animal{
         }
         return false;
     }
+    protected void findDirection(Commodity commodity){
+        if ((xInRang(commodity.getXCoordinate()))&& (!yInRang(commodity.getYCoordinate()))) {
+            if (commodity.getYCoordinate() > yCoordinate) {
+                direction = MOVE_DIRECTIONS.DOWN;
+            } else {
+                direction = MOVE_DIRECTIONS.UP;
+            }
+        } else if ((!xInRang(commodity.getXCoordinate())) && (yInRang(commodity.getYCoordinate()))) {
+            if (commodity.getXCoordinate() > xCoordinate) {
+                direction = MOVE_DIRECTIONS.RIGHT;
+            } else {
+                direction = MOVE_DIRECTIONS.LEFT;
+            }
+        } else if ((!xInRang(commodity.getXCoordinate())) && (!yInRang(commodity.getYCoordinate()))) {
+            Random random = new Random();
+            int a = random.nextInt(100);
+            if (a > 50) {
+                if (commodity.getYCoordinate() > yCoordinate) {
+                    direction = MOVE_DIRECTIONS.DOWN;
+                } else {
+                    direction = MOVE_DIRECTIONS.UP;
+                }
+            } else {
+                if (commodity.getXCoordinate() > xCoordinate) {
+                    direction = MOVE_DIRECTIONS.RIGHT;
+                } else {
+                    direction = MOVE_DIRECTIONS.LEFT;
+                }
+            }
+        }
+    }
+
+    private void normalMove(){
+        randomMove();
+    }
     @Override
     public void move() {
         Commodity commodity = findNearestCommodity(GameFieldStorage.commodityHashSet);
         if(commodity == null){
             normalMove();
         }else {
-            if ((commodity.getXCoordinate() == xCoordinate) && (commodity.getYCoordinate() != yCoordinate)) {
-                if (commodity.getYCoordinate() > yCoordinate) {
-                    yCoordinate++;
-                } else {
-                    yCoordinate--;
-                }
-            } else if ((commodity.getXCoordinate() != xCoordinate) && (commodity.getYCoordinate() == yCoordinate)) {
-                if (commodity.getXCoordinate() > xCoordinate) {
-                    xCoordinate++;
-                } else {
-                    xCoordinate--;
-                }
-            } else if ((commodity.getXCoordinate() != xCoordinate) && (commodity.getYCoordinate() != yCoordinate)) {
-                Random random = new Random();
-                if (random.nextBoolean()) {
-                    if (commodity.getYCoordinate() > yCoordinate) {
-                        yCoordinate++;
-                    } else {
-                        yCoordinate--;
-                    }
-                } else {
-                    if (commodity.getXCoordinate() > xCoordinate) {
-                        xCoordinate++;
-                    } else {
-                        xCoordinate--;
-                    }
-                }
-            }
+            findDirection(commodity);
+            moving();
         }
     }
 
@@ -132,7 +137,7 @@ public class Cat extends Animal{
             return null;
         }
         for (Commodity commodity1 : commodityHashSet) {
-            if((commodity1.getYCoordinate()>=0)&&(commodity1.getYCoordinate()<6)&&(commodity1.getXCoordinate()>=0)&&(commodity1.getXCoordinate()<6)) {
+            if((commodity1.getYCoordinate()>=0)&&(commodity1.getYCoordinate()<=600)&&(commodity1.getXCoordinate()>=0)&&(commodity1.getXCoordinate()<=600)) {
                 double distance = Math.sqrt(Math.pow(xCoordinate - commodity1.getXCoordinate(), 2) + Math.pow(yCoordinate - commodity1.getYCoordinate(), 2));
                 if ((minDistance == -1) || (minDistance > distance)) {
                     minDistance = distance;

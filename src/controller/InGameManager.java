@@ -84,18 +84,17 @@ public class InGameManager {
         }
     }
     private void domesticatedAnimalEat(){
-        HashSet<Grass> eatenGrassHashSet = new HashSet<>();
-        for (Grass grass : GameFieldStorage.grassHashSet) {
-            DomesticatedAnimal domesticatedAnimal = whichAnimalEats(grass.getDomesticatedAnimals());
-            if(domesticatedAnimal != null){
-                if(domesticatedAnimal.eat(grass)){
-                    eatenGrassHashSet.add(grass);
+        for (int i = 0; i < Cell.worldCells.length; i++) {
+            for (int i1 = 0; i1 < Cell.worldCells[i].length; i1++) {
+                DomesticatedAnimal domesticatedAnimal = whichAnimalEats(Cell.worldCells[i][i1].getDomesticatedAnimals());
+                if(domesticatedAnimal != null){
+                    if(domesticatedAnimal.eat()){
+                        Cell.worldCells[i][i1].removeGrass();
+                    }
                 }
             }
         }
-        for (Grass grass : eatenGrassHashSet) {
-            GameFieldStorage.grassHashSet.remove(grass);
-        }
+
     }
     private void domesticatedAnimalWorks(){
         domesticatedAnimalEat();

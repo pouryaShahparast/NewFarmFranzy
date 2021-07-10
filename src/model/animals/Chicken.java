@@ -1,8 +1,12 @@
 package model.animals;
 
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Egg;
+
+import java.awt.*;
 
 public class Chicken extends DomesticatedAnimal {
     public static final int CHICKEN_PRICE = 100;
@@ -13,6 +17,17 @@ public class Chicken extends DomesticatedAnimal {
         super();
         chickenNumber++;
         animalName = "Chicken" + chickenNumber;
+        downAnimation = new Animation(300 , Assets.chickenDown);
+        upAnimation = new Animation(300 , Assets.chickenUp);
+        rightAnimation = new Animation(300 , Assets.chickenRight);
+        leftAnimation = new Animation(300 , Assets.chickenLeft);
+    }
+
+
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
     }
 
     @Override

@@ -1,8 +1,12 @@
 package model.animals;
 
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Milk;
+
+import java.awt.*;
 
 public class Buffalo extends DomesticatedAnimal{
     public static final int BUFFALO_PRICE = 400;
@@ -13,6 +17,15 @@ public class Buffalo extends DomesticatedAnimal{
         super();
         buffaloNumber++;
         animalName = "Buffalo" + buffaloNumber;
+        downAnimation = new Animation(300 , Assets.buffaloDown);
+        upAnimation = new Animation(300 , Assets.buffaloUp);
+        rightAnimation = new Animation(300 , Assets.buffaloRight);
+        leftAnimation = new Animation(300 , Assets.buffaloLeft);
+    }
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
     }
 
     @Override

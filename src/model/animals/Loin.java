@@ -1,6 +1,9 @@
 package model.animals;
 
-import java.util.Random;
+import inGamGraphics.Animation;
+import inGamGraphics.Assets;
+
+import java.awt.*;
 
 public class Loin extends WildAnimal {
     public static final int LOIN_CAGES_NEEDED = 3;
@@ -11,6 +14,16 @@ public class Loin extends WildAnimal {
         super();
         loinNumber++;
         animalName = "Loin" + loinNumber;
+        downAnimation = new Animation(300 , Assets.lionDown);
+        upAnimation = new Animation(300 , Assets.lionUp);
+        rightAnimation = new Animation(300 , Assets.lionRight);
+        leftAnimation = new Animation(300 , Assets.lionLeft);
+    }
+
+
+    @Override
+    public void render(Graphics graphics) {
+        graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
     }
 
     @Override
@@ -24,48 +37,12 @@ public class Loin extends WildAnimal {
             isCagedInThisRound = true;
             return true;
         }else {
-            System.err.println(animalName +" is already caged");
+            System.err.println("this " + animalName +" is already caged");
         }
 
         return false;
     }
 
-    public void move() {
-        if(isCaged){
-            return;
-        }
-        Random random = new Random();
-        boolean canMove = false;
-        while (!canMove){
-            int a = random.nextInt(4);
-            switch (a){
-                case 0:
-                    if(xCoordinate - 1 >= 0){
-                        xCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 1:
-                    if(xCoordinate + 1 < 6){
-                        xCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-                case 2:
-                    if (yCoordinate - 1 >= 0){
-                        yCoordinate -= 1;
-                        canMove = true;
-                    }
-                    break;
-                case 3:
-                    if (yCoordinate + 1 < 6){
-                        yCoordinate += 1;
-                        canMove = true;
-                    }
-                    break;
-            }
-        }
-    }
 
     @Override
     public String toString() {
