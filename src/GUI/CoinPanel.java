@@ -11,9 +11,7 @@ public class CoinPanel extends JPanel {
         this.setOpaque(true);
         this.setBackground(Color.WHITE);
         this.setLayout(null);
-        this.setBounds(175,50,650,500);
-       new ImageIcon("coin.jpg").getImage().getScaledInstance(100,100,Image.SCALE_SMOOTH);
-
+        this.setBounds(150,50,700,500);
 
 
     }
@@ -22,7 +20,7 @@ public class CoinPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d= (Graphics2D) g;
         super.paintComponent(g2d);
-        g2d.drawImage(new ImageIcon("coin.jpeg").getImage()
+        g2d.drawImage(new ImageIcon("coin.jpg").getImage()
 ,0,0,null);
 
     }
