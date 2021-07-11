@@ -1,6 +1,4 @@
 package GUI;
-
-
 import ETC.User;
 import controller.Entrance;
 import javax.swing.*;
