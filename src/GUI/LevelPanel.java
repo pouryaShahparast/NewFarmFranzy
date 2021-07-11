@@ -1,8 +1,5 @@
 package GUI;
-
-import GUI.GUIEntrance;
-import GUI.GUIMenu;
-
+import controller.Entrance;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,6 +12,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
     ArrayList<JButton>arr=new ArrayList<>();
     JButton back;
+    Entrance entrance=new Entrance();
     public LevelPanel(){
        this.setLayout(new GridLayout(6,1,5,5));
        this.setBackground(Color.BLUE);
@@ -49,12 +47,41 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+
+
         for (JButton j :
                 arr) {
 
             if(e.getSource()==j)
             {
 
+                GUIEntrance.jFrame.remove(this);
+                GUIEntrance.jFrame.revalidate();
+                GUIEntrance.jFrame.repaint();
+
+              switch (j.getText())
+              {
+                  case "1":
+                      new Game(entrance.taskOfLevel1);
+
+                  case "2":
+                      new Game(entrance.taskOfLevel2);
+                  case "3":
+                      new Game(entrance.taskOfLevel3);
+
+                  case "4":
+                      new Game(entrance.taskOfLevel4);
+                  case "5":
+                      new Game(entrance.taskOfLevel5);
+
+
+
+
+
+
+
+
+              }
 
 
 
