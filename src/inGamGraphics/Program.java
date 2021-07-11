@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Program implements Runnable{
-    private graphics.Display display;
+    private Display display;
 
     Coin coin;
     Well well;
@@ -32,7 +32,7 @@ public class Program implements Runnable{
     }
 
     private void init(){
-        display = new graphics.Display(title , width , height);
+        display = new Display(title , width , height);
         Assets.init();
         Cell.init();
         //

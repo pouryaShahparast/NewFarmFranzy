@@ -22,7 +22,7 @@ public abstract class State {
     }
     public static boolean isInMenuState(){
         if(currentState != null){
-            if(currentState instanceof graphics.MenuState){
+            if(currentState instanceof MenuState){
                 return true;
             }
         }
