@@ -48,8 +48,9 @@ public class MouseInput implements MouseListener  {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        farmWorks(e);
-        System.out.println(1);
+        if(State.isInGameState()) {
+            farmWorks(e);
+        }
     }
 
     @Override

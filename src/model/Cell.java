@@ -56,6 +56,13 @@ public class Cell {
             }
         }
     }
+    public static void tickWorld(){
+        for (int i = 0; i < worldCells.length; i++) {
+            for (int i1 = 0; i1 < worldCells[i].length; i1++) {
+                worldCells[i][i1].tick();
+            }
+        }
+    }
     public ArrayList<DomesticatedAnimal> getDomesticatedAnimals(){
         ArrayList<DomesticatedAnimal> domesticatedAnimalArrayList = new ArrayList<>();
         if(!grasses.isEmpty()) {
