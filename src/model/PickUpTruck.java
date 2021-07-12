@@ -67,7 +67,7 @@ public class PickUpTruck {
                     truckSpaceTaken += WildAnimal.WILD_ANIMAL_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println("truck space taken :" + truckSpaceTaken);
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -77,7 +77,7 @@ public class PickUpTruck {
                     truckSpaceTaken += PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println("truck space taken :" + truckSpaceTaken);
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -87,7 +87,7 @@ public class PickUpTruck {
                     truckSpaceTaken += IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println("truck space taken :" + truckSpaceTaken);
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -97,7 +97,7 @@ public class PickUpTruck {
                     truckSpaceTaken += FinalCommodity.FINAL_COMMODITY_SIZE;
                     pickUpTruckHashset.add(object);
                     System.out.println("loaded");
-                    System.out.println("truck space taken :" + truckSpaceTaken);
+                    System.out.println(truckSpaceTaken);
                     return true;
                 }else {
                     System.err.println("there is not enough room");
@@ -373,5 +373,116 @@ public class PickUpTruck {
             }
         }
         return false;
+    }
+
+    //
+    public int numberOfBears(){
+        int a = 0;
+        for (Object wildAnimal : pickUpTruckHashset) {
+            if(wildAnimal instanceof Bear){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfTigers(){
+        int a = 0;
+        for (Object wildAnimal : pickUpTruckHashset) {
+
+            if(wildAnimal instanceof Tiger){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfLoins(){
+        int a = 0;
+        for (Object wildAnimal : pickUpTruckHashset) {
+            if(wildAnimal instanceof Loin){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfBreads(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Bread){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfCloths(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Cloth){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfEggs(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Egg){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfFabrics(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Fabric){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfFeathers(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Feather){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfIceCreams(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof IceCream){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfFlours(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Flour){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfMilks(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof Milk){
+                a++;
+            }
+        }
+        return a;
+    }
+    public int numberOfPocketMilks(){
+        int a = 0;
+        for (Object commodity : pickUpTruckHashset) {
+            if(commodity instanceof PocketMilk){
+                a++;
+            }
+        }
+        return a;
     }
 }

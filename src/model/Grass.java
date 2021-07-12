@@ -18,6 +18,6 @@ public class Grass {
     public Grass(int xLocation, int yLocation) {
         this.xCoordinate = xLocation;
         this.yCoordinate = yLocation;
+        GameFieldStorage.grassHashSet.add(this);
     }
-
 }

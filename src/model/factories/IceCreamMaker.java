@@ -48,7 +48,7 @@ public class IceCreamMaker extends SecondaryFactory{
     @Override
     public void make() {
         Random random = new Random();
-        IceCream iceCream = new IceCream(random.nextInt(6) , random.nextInt(6));
+        IceCream iceCream = new IceCream(random.nextInt(550) , random.nextInt(550));
         GameFieldStorage.commodityHashSet.add(iceCream);
     }
     @Override

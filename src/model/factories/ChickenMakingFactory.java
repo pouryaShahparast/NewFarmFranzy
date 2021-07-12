@@ -3,56 +3,56 @@ package model.factories;
 import model.Coin;
 import model.GameFieldStorage;
 import model.Storeroom;
+import model.animals.Chicken;
 import model.commodities.Egg;
-import model.commodities.Flour;
 
 import java.util.Random;
 
-public class Mill extends PrimitiveFactory{
-    public static final int MILL_CONSTRUCTION_PRICE = 150;
-    public static final int TIME_NEEDED_TO_MAKE_FLOUR_WITHOUT_UPGRADE = 4;
-    public static final int TIME_NEEDED_TO_MAKE_FLOUR_WITH_UPGRADE = 2;
-    public static final int MILL_UPGRADE_PRICE = 75;
-
-    public static boolean buildMill(Coin coin){
-        if(coin.hasEnoughCoins(MILL_CONSTRUCTION_PRICE)){
-            coin.reduceCoin(MILL_CONSTRUCTION_PRICE);
-            GameFieldStorage.factoryHashSet.add(new Mill());
-            System.out.println("Mill was bought");
+public class ChickenMakingFactory extends SecondaryFactory{
+    public static final int CHICKEN_MAKING_CONSTRUCTION_PRICE = 700;
+    public static final int TIME_NEEDED_TO_MAKE_CHICKEN_WITHOUT_UPGRADE = 8;
+    public static final int TIME_NEEDED_TO_MAKE_CHICKEN_WITH_UPGRADE = 4;
+    public static final int CHICKEN_MAKING_UPGRADE_PRICE = 350;
+    public static boolean buildChickenMakingFactory(Coin coin){
+        if(coin.hasEnoughCoins(CHICKEN_MAKING_CONSTRUCTION_PRICE)){
+            coin.reduceCoin(CHICKEN_MAKING_CONSTRUCTION_PRICE);
+            GameFieldStorage.factoryHashSet.add(new ChickenMakingFactory());
+            System.out.println("Bakery was bought");
             return true;
         }else {
-            System.err.println("you need " + (MILL_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Mill");
+            System.err.println("you need " + (CHICKEN_MAKING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery");
         }
         return false;
     }
-
     @Override
     public boolean upgrade(Coin coin) {
         if (!upgraded) {
-            if (coin.hasEnoughCoins(MILL_UPGRADE_PRICE)) {
-                coin.reduceCoin(MILL_UPGRADE_PRICE);
+            if (coin.hasEnoughCoins(CHICKEN_MAKING_UPGRADE_PRICE)) {
+                coin.reduceCoin(CHICKEN_MAKING_UPGRADE_PRICE);
                 upgraded = true;
                 if(working){
                     workingWhileUpgrade = true;
                 }
-                System.out.println(factoryName + " was upgraded");
+                System.out.println("Bakery was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (MILL_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
+                System.err.println("you need " + (CHICKEN_MAKING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery");
             }
         }else {
             System.err.println(factoryName + "is already upgraded");
         }
         return false;
     }
+
     @Override
     public void make() {
         Random random = new Random();
-        Flour flour = new Flour(random.nextInt(550) , random.nextInt(550));
-        GameFieldStorage.commodityHashSet.add(flour);
+        Chicken chicken = new Chicken();
+        GameFieldStorage.domesticatedAnimalHashSet.add(chicken);
     }
+
     @Override
-    public boolean startWorkingOneCommodity(Storeroom storeroom){
+    public boolean startWorkingOneCommodity(Storeroom storeroom) {
         if(!working){
             Egg egg = storeroom.takeEgg();
             if (egg != null) {
@@ -68,10 +68,11 @@ public class Mill extends PrimitiveFactory{
         }
         return false;
     }
+
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two Flours at the same time because " + factoryName + " is not upgraded");
+            System.err.println("you can't make two Breads at the same time because " + factoryName + " is not upgraded");
             return false;
         }
         if (!working) {
@@ -92,20 +93,21 @@ public class Mill extends PrimitiveFactory{
         }
         return false;
     }
+
     @Override
     public boolean checkIfTurnsReachedUpgraded() {
         if(upgraded){
-            return turns >= TIME_NEEDED_TO_MAKE_FLOUR_WITH_UPGRADE;
+            return turns >= TIME_NEEDED_TO_MAKE_CHICKEN_WITH_UPGRADE;
         }
         return false;
     }
+
     @Override
     public boolean checkIfTurnsReachedNotUpgraded() {
-        return turns >= TIME_NEEDED_TO_MAKE_FLOUR_WITHOUT_UPGRADE;
+        return turns >= TIME_NEEDED_TO_MAKE_CHICKEN_WITHOUT_UPGRADE;
     }
-
-    public Mill() {
+    public ChickenMakingFactory() {
         super();
-        factoryName = "Mill";
+        factoryName = "ChickenMakingFactory";
     }
 }

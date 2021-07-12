@@ -48,7 +48,7 @@ public class FabricProduction extends PrimitiveFactory{
     @Override
     public void make() {
         Random random = new Random();
-        Fabric fabric = new Fabric(random.nextInt(6) , random.nextInt(6));
+        Fabric fabric = new Fabric(random.nextInt(550) , random.nextInt(550));
         GameFieldStorage.commodityHashSet.add(fabric);
     }
     @Override

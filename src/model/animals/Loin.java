@@ -24,6 +24,9 @@ public class Loin extends WildAnimal {
     @Override
     public void render(Graphics graphics) {
         graphics.drawImage(getCurrentFrame() , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
+        if(currentCageNumber > 0){
+            graphics.drawImage(Assets.cage , xCoordinate , yCoordinate , ANIMAL_WIDTH , ANIMAL_HEIGHT , null);
+        }
     }
 
     @Override

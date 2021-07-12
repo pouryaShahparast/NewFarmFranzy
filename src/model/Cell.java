@@ -27,12 +27,12 @@ public class Cell {
         }
     }
     public void addGrass(){
-        Grass grass = new Grass(x,y);
+        Grass grass = new Grass(x * WIDTH + WIDTH/4,y * HEIGHT + HEIGHT/4);
         grasses.add(grass);
     }
     public void removeGrass(){
         if(!grasses.isEmpty()){
-            grasses.remove(0);
+            GameFieldStorage.grassHashSet.remove(grasses.remove(0));
         }
     }
     public void tick(){

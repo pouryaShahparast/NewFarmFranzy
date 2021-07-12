@@ -10,18 +10,20 @@ import model.factories.Factory;
 
 import java.awt.*;
 
-public class GameState extends State {
+public class GameState extends State{
     public static GameState gameState;
     Coin coin;
     Well well;
     PickUpTruck pickUpTruck;
     Storeroom storeroom;
     int turn = 0;
-    public GameState(Coin coin, Well well, PickUpTruck pickUpTruck, Storeroom storeroom) {
-        this.coin = coin;
-        this.well = well;
-        this.pickUpTruck = pickUpTruck;
-        this.storeroom = storeroom;
+
+
+    public GameState() {
+        this.coin = GameFieldStorage.coin;
+        this.well = GameFieldStorage.well;
+        this.pickUpTruck = GameFieldStorage.pickUpTruck;
+        this.storeroom = GameFieldStorage.storeroom;
     }
 
     @Override
@@ -32,6 +34,12 @@ public class GameState extends State {
             longTick();
             turn = 0;
         }
+    }
+    public void init(){
+//     GameFieldStorage.domesticatedAnimalHashSet.add(new Buffalo());
+//     GameFieldStorage.domesticatedAnimalHashSet.add(new Chicken());
+//     GameFieldStorage.catHashSet.add(new Cat());
+//     GameFieldStorage.wildAnimalHashSet.add(new Bear());
     }
     private void shortTick(){
         Cell.tickWorld();

@@ -48,7 +48,7 @@ public class Tailoring extends SecondaryFactory{
     @Override
     public void make() {
         Random random = new Random();
-        Cloth cloth = new Cloth(random.nextInt(6) , random.nextInt(6));
+        Cloth cloth = new Cloth(random.nextInt(550) , random.nextInt(550));
         GameFieldStorage.commodityHashSet.add(cloth);
     }
     @Override

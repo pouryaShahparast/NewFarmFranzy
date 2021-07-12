@@ -48,7 +48,7 @@ public class Bakery extends SecondaryFactory{
     @Override
     public void make() {
         Random random = new Random();
-        Bread bread = new Bread(random.nextInt(6) , random.nextInt(6));
+        Bread bread = new Bread(random.nextInt(550) , random.nextInt(550));
         GameFieldStorage.commodityHashSet.add(bread);
     }
     @Override

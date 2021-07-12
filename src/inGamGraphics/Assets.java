@@ -6,6 +6,7 @@ public class Assets {
     public static BufferedImage ground;
     public static BufferedImage grass;
 
+    public static BufferedImage cage;
     public static BufferedImage bread;
     public static BufferedImage cloth;
     public static BufferedImage commodity;
@@ -70,6 +71,7 @@ public class Assets {
         iceCream = ImageLoader.loadImage("/res/textures/commodities/iceCream/iceCream.png");
         milk = ImageLoader.loadImage("/res/textures/commodities/milk/milk.png");
         pocketMilk = ImageLoader.loadImage("/res/textures/commodities/pocketMilk/pocketMilk.png");
+        cage = ImageLoader.loadImage("/res/textures/animals/cage.png");
 
         SpriteSheet bearSheet = new SpriteSheet(ImageLoader.loadImage("/res/textures/animals/bear/bear.png"));
         bearSheet.cropAnimals(bearUp , bearDown , bearLeft , bearRight);

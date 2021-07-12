@@ -14,9 +14,9 @@ import java.awt.event.MouseListener;
 public class MouseInput implements MouseListener  {
     Storeroom storeroom;
     Well well;
-    public MouseInput(Storeroom storeroom , Well well) {
-        this.storeroom = storeroom;
-        this.well = well;
+    public MouseInput() {
+        this.storeroom = GameFieldStorage.storeroom;
+        this.well = GameFieldStorage.well;
     }
 
     public void farmWorks(MouseEvent e){
@@ -26,8 +26,10 @@ public class MouseInput implements MouseListener  {
         if(x >=0 && x <600 && y >=0 && y < 600){
             for (WildAnimal wildAnimal : GameFieldStorage.wildAnimalHashSet) {
                 if(wildAnimal.checkForCollision(rectangle)){
-                    wildAnimal.addCage();
-                    return;
+                    if(!wildAnimal.isCaged()) {
+                        wildAnimal.addCage();
+                        return;
+                    }
                 }
             }
             for (WildAnimal wildAnimal : GameFieldStorage.wildAnimalHashSet) {
@@ -50,6 +52,7 @@ public class MouseInput implements MouseListener  {
     public void mouseClicked(MouseEvent e) {
         if(State.isInGameState()) {
             farmWorks(e);
+            // System.out.println(1);
         }
     }
 

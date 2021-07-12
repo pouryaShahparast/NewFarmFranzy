@@ -10,6 +10,7 @@ abstract class Animal {
     int speed;
 
     static final int ANIMAL_WIDTH = 100;
+    static final int BORDER_WIDTH = 10;
     static final int DEFAULT_SPEED = 4;
     static final int ANIMAL_HEIGHT = 100;
     String animalName;
@@ -131,7 +132,7 @@ abstract class Animal {
     }
     protected boolean canMoveDown(){
 
-        boolean b = yCoordinate + bounds.height + speed <= 600;
+        boolean b = yCoordinate + bounds.height + speed <= 600 - BORDER_WIDTH;
         if(!b){
             direction = notDown();
         }
@@ -152,7 +153,7 @@ abstract class Animal {
 
     }
     protected boolean canMoveRight(){
-        boolean b =  xCoordinate + bounds.width + speed <= 600;
+        boolean b =  xCoordinate + bounds.width + speed <= 600 - BORDER_WIDTH;
         if(!b){
             direction = notRight();
         }

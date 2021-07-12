@@ -56,4 +56,7 @@ public class Well {
         bucketWater = 0;
         gettingWater = false;
     }
+    public void setBucketWater(int a){
+        bucketWater = a;
+    }
 }

@@ -48,7 +48,7 @@ public class MilkPocketingProduction extends PrimitiveFactory{
     @Override
     public void make() {
         Random random = new Random();
-        PocketMilk pocketMilk = new PocketMilk(random.nextInt(6) , random.nextInt(6));
+        PocketMilk pocketMilk = new PocketMilk(random.nextInt(550) , random.nextInt(550));
         GameFieldStorage.commodityHashSet.add(pocketMilk);
     }
     @Override

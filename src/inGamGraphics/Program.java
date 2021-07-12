@@ -1,28 +1,32 @@
 package inGamGraphics;
 
+import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
+import inGamGraphics.panels.rest.ActionPanels;
+import inGamGraphics.panels.storageAndTruckPanels.StorageAndTruckCombinedPanel;
 import model.*;
 import model.animals.Chicken;
 import model.animals.Turkey;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Program implements Runnable{
     private Display display;
 
-    Coin coin;
-    Well well;
-    PickUpTruck pickUpTruck;
-    Storeroom storeroom;
     private int width;
     private int height;
     private String title;
+    private JFrame jFrame;
+    private StorageAndTruckCombinedPanel storageAndTruckCombinedPanel;
+    private FactoriesCombinedPanel factoriesCombinedPanel;
+    private ActionPanels actionPanels;
 
     private BufferStrategy bufferStrategy;
     private Graphics graphic;
 
     private boolean running = false;
-
+    private boolean stop = false;
     private Thread thread;
 
     public Program(int width, int height, String title) {
@@ -31,29 +35,54 @@ public class Program implements Runnable{
         this.title = title;
     }
 
+    public Program(int width, int height, JFrame jFrame) {
+        this.width = width;
+        this.height = height;
+        this.jFrame = jFrame;
+    }
+
     private void init(){
-        display = new Display(title , width , height);
+        //   display = new Display(title , width , height, 600 ,600 , 0 ,0);
+        display = new Display(jFrame , width , height , 600 , 600 , 0 ,0);
         Assets.init();
         Cell.init();
         //
-        coin = new Coin(200);
+        GameFieldStorage.init(1000);
         //
-        well = new Well();
-        pickUpTruck = new PickUpTruck();
-        storeroom = new Storeroom();
-        MouseInput mouseInput = new MouseInput(storeroom , well);
-        GameState.gameState = new GameState(coin , well , pickUpTruck , storeroom);
+
+
+        storageAndTruckCombinedPanel = new StorageAndTruckCombinedPanel(0,600);
+        storageAndTruckCombinedPanel.init();
+        display.getFrame().add(storageAndTruckCombinedPanel.getCombinedPanel());
+
+        factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
+        factoriesCombinedPanel.init();
+        display.getFrame().add(factoriesCombinedPanel.getCombinedPanel());
+
+        actionPanels = new ActionPanels(1300 , 600 , this);
+        actionPanels.init();
+        display.getFrame().add(actionPanels.getPanel());
+
+        MouseInput mouseInput = new MouseInput();
+        GameState.gameState = new GameState();
+
+        GameState.gameState.init();
+
         State.setCurrentState(GameState.gameState);
-        display.getFrame().addMouseListener(mouseInput);
+
+        display.getPanel().addMouseListener(mouseInput);
         display.getCanvas().addMouseListener(mouseInput);
-        GameFieldStorage.domesticatedAnimalHashSet.add(new Chicken());
-        GameFieldStorage.domesticatedAnimalHashSet.add(new Turkey());
+
+        display.getFrame().setVisible(true);
     }
     private void tick(){
         if(State.getCurrentState() != null){
             //
             State.getCurrentState().tick();
             //
+            storageAndTruckCombinedPanel.tick();
+            factoriesCombinedPanel.tick();
+            actionPanels.tick();
         }
     }
     private void render(){
@@ -88,14 +117,16 @@ public class Program implements Runnable{
         init();
         gameLoopTimerInit();
         while (running){
-            if(checkGameLoopTimer()) {
-                tick();
-                render();
+            if (checkGameLoopTimer()) {
+                if(!stop) {
+                    tick();
+                    render();
+                }
                 ticks++;
                 delta--;
             }
-            if(timer >= 1_000_000_000){
-            //    System.out.println(ticks);
+            if (timer >= 1_000_000_000) {
+                //    System.out.println(ticks);
                 ticks = 0;
                 timer = 0;
             }
@@ -103,7 +134,7 @@ public class Program implements Runnable{
         stop();
     }
     private void gameLoopTimerInit(){
-        fps = 50;
+        fps = 30;
         timePerTick = (double) 1_000_000_000 / fps;
         delta = 0;
         lastTime = System.nanoTime();
@@ -135,5 +166,26 @@ public class Program implements Runnable{
             }
         }
     }
+    //
 
+
+    public boolean getRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public boolean getStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
 }
