@@ -6,6 +6,7 @@ import model.animals.Tiger;
 import model.animals.WildAnimal;
 import model.commodities.*;
 
+import javax.swing.*;
 import java.util.HashSet;
 
 public class PickUpTruck {
@@ -17,11 +18,15 @@ public class PickUpTruck {
     int turns;
     public boolean startTraveling(){
         if(traveling){
-            System.err.println("Truck is already traveling");
+            JOptionPane.showMessageDialog(null,"Truck is already traveling","warning",JOptionPane.ERROR_MESSAGE);
+
+            //System.err.println("Truck is already traveling");
             return false;
         }
         if(pickUpTruckHashset.isEmpty()){
-            System.err.println("Truck is empty");
+            JOptionPane.showMessageDialog(null,"Truck is empty","warning",JOptionPane.ERROR_MESSAGE);
+
+            //System.err.println("Truck is empty");
             return false;
         }
         traveling = true;
@@ -70,7 +75,9 @@ public class PickUpTruck {
                     System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
-                    System.err.println("there is not enough room");
+                    JOptionPane.showMessageDialog(null,"there is not enough room","warning",JOptionPane.ERROR_MESSAGE);
+
+                    //System.err.println("there is not enough room");
                 }
             } else if (object instanceof PrimitiveCommodity) {
                 if (canPick(PrimitiveCommodity.PRIMITIVE_COMMODITY_SIZE)) {
@@ -80,7 +87,10 @@ public class PickUpTruck {
                     System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
-                    System.err.println("there is not enough room");
+                    JOptionPane.showMessageDialog(null,"there is not enough room","warning",JOptionPane.ERROR_MESSAGE);
+
+
+                  //  System.err.println("there is not enough room");
                 }
             } else if (object instanceof IntermediaryCommodity) {
                 if (canPick(IntermediaryCommodity.INTERMEDIARY_COMMODITY_SIZE)) {
@@ -90,7 +100,10 @@ public class PickUpTruck {
                     System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
-                    System.err.println("there is not enough room");
+                    JOptionPane.showMessageDialog(null,"there is not enough room","warning",JOptionPane.ERROR_MESSAGE);
+
+
+                   // System.err.println("there is not enough room");
                 }
             } else if (object instanceof FinalCommodity) {
                 if (canPick(FinalCommodity.FINAL_COMMODITY_SIZE)) {
@@ -100,11 +113,17 @@ public class PickUpTruck {
                     System.out.println("truck space taken :" + truckSpaceTaken);
                     return true;
                 }else {
-                    System.err.println("there is not enough room");
+                    JOptionPane.showMessageDialog(null,"there is not enough room","warning",JOptionPane.ERROR_MESSAGE);
+
+
+                    //System.err.println("there is not enough room");
                 }
             }
         }else {
-            System.err.println("can't pickup because Truck is currently traveling");
+            JOptionPane.showMessageDialog(null,"can't pickup because Truck is currently traveling","warning",JOptionPane.ERROR_MESSAGE);
+
+
+            //System.err.println("can't pickup because Truck is currently traveling");
         }
         return false;
     }
