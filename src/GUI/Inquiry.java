@@ -42,7 +42,9 @@ public Inquiry(Task1 task){
     for (String s :
             task.neededCommodity.keySet()) {
         MyTextField jTextField=new MyTextField(s);
-         arr.add(jTextField);
+        jTextField.setFont(new Font("consalas",Font.BOLD,19));
+        jTextField.setEditable(false);
+        arr.add(jTextField);
 
 
     }
@@ -58,7 +60,6 @@ public Inquiry(Task1 task){
     GUIEntrance.jFrame.add(this);
     GUIEntrance.jFrame.revalidate();
     GUIEntrance.jFrame.repaint();
-
 
 
 }
@@ -101,12 +102,12 @@ public Inquiry(Task1 task){
                 }
                 if (amountExisting >= amountNeeded) {
                     myTextField.setText("amount of Bread is complete");
-                    //System.out.println();
+
                     System.out.println("Bread " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
                     f1 = true;
                 } else {
                     myTextField.setText("Bread "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
-                    //System.out.println("Bread " + ConsoleColors.BLUE + amountExisting  + ConsoleColors.RESET);
+
                     f1 = false;
 
                 }
@@ -115,6 +116,20 @@ public Inquiry(Task1 task){
 
 
             if (string.equalsIgnoreCase("cloth")) {
+
+
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("cloth"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
                 f2 = true;
                 int amountNeeded = task.neededCommodity.get("cloth");
                 int amountExisting = 0;
@@ -124,17 +139,31 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Cloth is complete");
-                    System.out.println("Cloth " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                  myTextField.setText("amount of Cloth is complete");
                     f2 = true;
                 } else {
-                    System.out.println("Cloth "+ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                    f2 = false;
+                    myTextField.setText("cloth "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
+                     f2 = false;
 
                 }
 
             }
             if (string.equalsIgnoreCase("egg")) {
+
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("egg"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
+
                 f2 = true;
                 int amountNeeded = task.neededCommodity.get("egg");
                 int amountExisting = 0;
@@ -144,16 +173,28 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Egg is complete");
-                    System.out.println("Egg " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("amount of Egg is complete");
                     f2 = true;
                 } else {
-                    System.out.println("Egg " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                    f2 = false;
+                    myTextField.setText("Egg "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
+                      f2 = false;
 
                 }
             }
             if (string.equalsIgnoreCase("fabric")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("fabric"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
                 f3 = true;
                 int amountNeeded = task.neededCommodity.get("fabric");
                 int amountExisting = 0;
@@ -163,17 +204,30 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Fabric is complete");
-                    System.out.println("Fabric " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                    f3 = true;
+                    myTextField.setText("amount of Fabric is complete");
+                        f3 = true;
                 } else {
-                    System.out.println("Fabric " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                    f3 = false;
+                    myTextField.setText("fabric "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
+                       f3 = false;
 
                 }
             }
 
             if (string.equalsIgnoreCase("feather")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("feather"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
+
                 f3 = true;
                 int amountNeeded = task.neededCommodity.get("feather");
                 int amountExisting = 0;
@@ -183,16 +237,28 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Feather is complete");
-                    System.out.println("Feather " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
-                    f3 = true;
+
+                    myTextField.setText("amount of feather is complete"); f3 = true;
                 } else {
-                    System.out.println("Feather " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("feather  "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
                     f3 = false;
 
                 }
             }
             if (string.equalsIgnoreCase("flour")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("flour"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
                 f4 = true;
                 int amountNeeded = task.neededCommodity.get("flour");
                 int amountExisting = 0;
@@ -202,16 +268,30 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Flour is complete");
-                    System.out.println("Flour " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("amount of flour is complete");
                     f4 = true;
                 } else {
-                    System.out.println("Flour " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("flour "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
                     f4 = false;
 
                 }
             }
             if (string.equalsIgnoreCase("ice cream")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("ice cream"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
+
+
                 f5 = true;
                 int amountNeeded = task.neededCommodity.get("ice cream");
                 int amountExisting = 0;
@@ -221,16 +301,28 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of ice cream is complete");
-                    System.out.println("ice cream " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("amount of ice cream is complete");
                     f5 = true;
                 } else {
-                    System.out.println("ice cream " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("ice cream "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
                     f5 = false;
 
                 }
             }
             if (string.equalsIgnoreCase("milk")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("milk"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
                 f6 = true;
                 int amountNeeded = task.neededCommodity.get("milk");
                 int amountExisting = 0;
@@ -240,16 +332,29 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Milk is complete");
-                    System.out.println("Milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("amount of milk is complete");
                     f6 = true;
                 } else {
-                    System.out.println("Milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("milk "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
                     f6 = false;
 
                 }
             }
             if (string.equalsIgnoreCase("pocket milk")) {
+                MyTextField myTextField=new MyTextField("");
+
+                for (MyTextField myTextField1 :
+                        arr) {
+                    if(myTextField1.name.equalsIgnoreCase("pocket milk"))
+                    {
+                        myTextField=myTextField1;
+
+                    }
+
+
+                }
+
                 f7 = true;
                 int amountNeeded = task.neededCommodity.get("pocket milk");
                 int amountExisting = 0;
@@ -259,11 +364,11 @@ public Inquiry(Task1 task){
                         amountExisting++;
                 }
                 if (amountExisting >= amountNeeded) {
-                    System.out.println("amount of Pocket milk is complete");
-                    System.out.println("Pocket milk " + ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("amount of milk is complete");
                     f7 = true;
                 } else {
-                    System.out.println("Pocket milk " +ConsoleColors.BLUE + amountExisting + "\\" + amountNeeded + ConsoleColors.RESET);
+                    myTextField.setText("milk "+Integer.toString(amountExisting )+ "\\" +Integer.toString(amountNeeded));
+
                     f7 = false;
 
                 }
@@ -272,6 +377,13 @@ public Inquiry(Task1 task){
 
         }
 
+        for (MyTextField m :
+                arr) {
+            m.revalidate();
+            m.repaint();
+        }
+        jPanel.revalidate();
+        jPanel.repaint();
         return (f1&&f2&&f3&&f4&&f5&&f6&&f7);
 
 
