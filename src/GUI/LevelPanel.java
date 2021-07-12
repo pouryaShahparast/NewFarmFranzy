@@ -62,17 +62,21 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
               switch (j.getText())
               {
                   case "1":
-                      new Game(entrance.taskOfLevel1);
-
+                      new Inquiry(entrance.taskOfLevel1);
+                      //new Game(entrance.taskOfLevel1);
+                      break;
                   case "2":
                       new Game(entrance.taskOfLevel2);
+                      break;
                   case "3":
                       new Game(entrance.taskOfLevel3);
-
+                      break;
                   case "4":
                       new Game(entrance.taskOfLevel4);
+                      break;
                   case "5":
                       new Game(entrance.taskOfLevel5);
+                      break;
 
 
 
