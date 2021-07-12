@@ -14,19 +14,19 @@ public class Inquiry extends JPanel {
     Storeroom storeroom;
     ArrayList<MyTextField>arr;
     JPanel jPanel;
-public Inquiry(Task1 task){
+public Inquiry(Task1 task,Storeroom storeroom,PickUpTruck pickUpTruck){
 
     this.task=task;
-    pickUpTruck = new PickUpTruck();
-    storeroom = new Storeroom();
+    this.pickUpTruck=pickUpTruck;
+    this.storeroom=storeroom;
 
 
 
 
 
 
-    jPanel=new JPanel(new GridLayout(5,1,5,5));
-    jPanel.setBounds(50,50,400,400);
+    jPanel=new JPanel(new GridLayout(1,5,5,5));
+    jPanel.setBounds(50,25,600,200);
     jPanel.setOpaque(true);
     jPanel.setBackground(Color.RED);
 
@@ -36,7 +36,7 @@ public Inquiry(Task1 task){
 
 
    this.setLayout(null);
-   this.setBounds(0,0,500,500);
+   this.setBounds(0,0,700,250);
    this.setOpaque(true);
    this.setBackground(Color.cyan);
     for (String s :
