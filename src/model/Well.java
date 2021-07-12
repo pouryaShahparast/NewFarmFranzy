@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.*;
+
 public class Well {
     static final int TURNS_NEEDED_TO_GET_WATER = 3;
     int bucketWater;
@@ -11,7 +13,10 @@ public class Well {
     }
     public boolean startGettingWater(){
         if(gettingWater){
-            System.err.println("well is already getting water");
+
+
+            JOptionPane.showMessageDialog(null,"well is already getting water","warning",JOptionPane.ERROR_MESSAGE);
+            //System.err.println("well is already getting water");
             return false;
         }else {
             gettingWater = true;

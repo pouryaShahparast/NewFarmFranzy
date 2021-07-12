@@ -6,6 +6,7 @@ import model.animals.Tiger;
 import model.animals.WildAnimal;
 import model.commodities.*;
 
+import javax.swing.*;
 import java.util.HashSet;
 
 public class Storeroom {
@@ -55,7 +56,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't store");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+       // System.err.println("can't store");
         return false;
     }
     private boolean storeIntermediaryCommodity(IntermediaryCommodity intermediaryCommodity){
@@ -68,7 +70,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't store");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+        //System.err.println("can't store");
         return false;
     }
     private boolean storePrimitiveCommodity(PrimitiveCommodity primitiveCommodity){
@@ -81,7 +84,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't store");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+       // System.err.println("can't store");
         return false;
     }
 
@@ -108,7 +112,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't restore");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+       // System.err.println("can't restore");
         return false;
     }
     private boolean reStoreFinalCommodityFromTruck(FinalCommodity finalCommodity , PickUpTruck pickUpTruck){
@@ -122,7 +127,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't restore");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+       // System.err.println("can't restore");
         return false;
     }
     private boolean reStoreIntermediaryCommodityFromTruck(IntermediaryCommodity intermediaryCommodity , PickUpTruck pickUpTruck){
@@ -136,7 +142,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't restore");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+        //System.err.println("can't restore");
         return false;
     }
     private boolean reStorePrimitiveCommodityFromTruck(PrimitiveCommodity primitiveCommodity , PickUpTruck pickUpTruck){
@@ -150,7 +157,8 @@ public class Storeroom {
                 return true;
             }
         }
-        System.err.println("can't restore");
+        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+        //System.err.println("can't restore");
         return false;
     }
     public Bear takeBear(){
