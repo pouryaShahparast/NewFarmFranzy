@@ -124,4 +124,8 @@ public class GameState extends State{
             commodity.render(graphics);
         }
     }
+
+    public int getTurn() {
+        return turn;
+    }
 }
