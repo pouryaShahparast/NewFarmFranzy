@@ -6,10 +6,12 @@ import model.animals.*;
 import model.commodities.*;
 import model.factories.Factory;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class GameState extends State{
     public static GameState gameState;
+    Program program;
     Coin coin;
     Well well;
     PickUpTruck pickUpTruck;
@@ -18,30 +20,29 @@ public class GameState extends State{
     int turn = 0;
 
 
-    public GameState() {
+    public GameState(Program program) {
         this.coin = GameFieldStorage.coin;
         this.well = GameFieldStorage.well;
         this.pickUpTruck = GameFieldStorage.pickUpTruck;
         this.storeroom = GameFieldStorage.storeroom;
-
+        this.program = program;
     }
 
     @Override
     public void tick() {
         a++;
         shortTick();
-        if(a % 100 == 0){
+        if(a % 30 == 0){
             turn++;
             addWildAnimals(turn);
             if(checkIfNeededIsPreparedReturnBoolean())
             {
                 //stop game
+                program.setRunning(false);
+                JOptionPane.showMessageDialog(null ,"game ended" , "game message" , JOptionPane.PLAIN_MESSAGE);
             }
 
-
-
-
-                        a = 0;
+            a = 0;
         }
     }
     public void init(){

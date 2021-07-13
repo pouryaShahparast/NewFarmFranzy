@@ -63,7 +63,7 @@ public class Program implements Runnable{
         display.getFrame().add(actionPanels.getPanel());
 
         MouseInput mouseInput = new MouseInput();
-        GameState.gameState = new GameState();
+        GameState.gameState = new GameState(this);
 
         GameState.gameState.init();
 
