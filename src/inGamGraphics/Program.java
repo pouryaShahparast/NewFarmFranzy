@@ -28,11 +28,11 @@ public class Program implements Runnable{
     private boolean stop = false;
     private Thread thread;
 
-    public Program(int width, int height, String title) {
-        this.width = width;
-        this.height = height;
-        this.title = title;
-    }
+//    public Program(int width, int height, String title) {
+//        this.width = width;
+//        this.height = height;
+//        this.title = title;
+//    }
 
     public Program(int width, int height, JFrame jFrame) {
         this.width = width;
