@@ -1,10 +1,8 @@
 package inGamGraphics;
 
+import GUI.Game;
 import model.*;
-import model.animals.Cat;
-import model.animals.Dog;
-import model.animals.DomesticatedAnimal;
-import model.animals.WildAnimal;
+import model.animals.*;
 import model.commodities.Commodity;
 import model.factories.Factory;
 
@@ -25,6 +23,7 @@ public class GameState extends State{
         this.well = GameFieldStorage.well;
         this.pickUpTruck = GameFieldStorage.pickUpTruck;
         this.storeroom = GameFieldStorage.storeroom;
+
     }
 
     @Override
@@ -33,6 +32,7 @@ public class GameState extends State{
         shortTick();
         if(a % 100 == 0){
             turn++;
+            addWildAnimals(turn);
             longTick();
             a = 0;
         }
@@ -68,6 +68,24 @@ public class GameState extends State{
     }
 
     private void longTick(){
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //cat
         for (Cat cat : GameFieldStorage.catHashSet) {
             cat.longTick();
@@ -128,4 +146,65 @@ public class GameState extends State{
     public int getTurn() {
         return turn;
     }
+    
+///add wildAnimal
+public void addWildAnimals(int time)
+{
+
+    for (String string :
+            Game.task.animalsAppearing.keySet()) {
+        if(string.equalsIgnoreCase("tiger"))
+        {
+            for (Integer integer :
+                    Game.task.animalsAppearing.get("tiger")) {
+                if(time==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Tiger());
+                }
+            }
+
+
+        }
+
+
+        if(string.equalsIgnoreCase("lion"))
+        {
+            for (Integer integer :
+                    Game.task.animalsAppearing.get("lion")) {
+                if(time==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Loin());
+                }
+            }
+
+
+        }
+        if(string.equalsIgnoreCase("bear"))
+        {
+            for (Integer integer :
+                    Game.task.animalsAppearing.get("bear")) {
+                if(time==integer)
+                {
+
+                    GameFieldStorage.wildAnimalHashSet.add(new Bear());
+                }
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+
+}
+    
+    
+    
+    
 }

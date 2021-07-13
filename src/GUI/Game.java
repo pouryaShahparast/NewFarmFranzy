@@ -1,79 +1,23 @@
 package GUI;
 import ETC.Task1;
-import controller.Entrance;
-import controller.InGameManager;
-import model.*;
-import model.animals.*;
 import model.commodities.*;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-
-public class Game implements ActionListener {
-
-    Timer timer;
-    int time=0;
-    JPanel panel;
-    Coin coin;
-    Well well;
-    PickUpTruck pickUpTruck;
-    Storeroom storeroom;
-    InGameManager inGameManager;
-    Task1 task;
-    public Game(Task1 task) {
-        this.task=task;
-        coin = new Coin(Entrance.userInitialCoins);
-        well = new Well();
-        pickUpTruck = new PickUpTruck();
-        storeroom = new Storeroom();
-        inGameManager = new InGameManager(storeroom, coin, well, pickUpTruck);
-
-
-         timer=new Timer(200,this);
-         panel=new JPanel(null);
-         panel.setBackground(new Color(164,98,70));
-         panel.setOpaque(true);
-         panel.setBounds(20,100,600,600);
-         GUIEntrance.jFrame.add(panel);
-         GUIEntrance.jFrame.revalidate();
-         GUIEntrance.jFrame.repaint();
-
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        time++;
-        addWildAnimals(time);
-        Entrance.userInitialCoins= coin.getCoin();
-        addWildAnimals(inGameManager.turnsPassed);
-        inGameManager.game();
-        inGameManager.turnsPassed += 1;
-
-        panel.revalidate();
-        panel.repaint();
-
-        if(checkIfNeededIsPreparedReturnBoolean())
-        {
-            timer.stop();
-            //wins the game
-        }
 
 
 
+public class Game {
 
 
-
-
+    public static Task1 task;
+    public Game(Task1 task1) {
+      task=task1;
     }
 
 
 
 
+
+/*
     public boolean checkIfNeededIsPreparedReturnBoolean()
     {
         boolean f1=true,f2=true,f3=true,f4=true,f5=true,f6=true,f7=true;
@@ -258,60 +202,7 @@ public class Game implements ActionListener {
 
 
     }
-    public void addWildAnimals(int time)
-    {
+    */
 
-        for (String string :
-                task.animalsAppearing.keySet()) {
-            if(string.equalsIgnoreCase("tiger"))
-            {
-                for (Integer integer :
-                        task.animalsAppearing.get("tiger")) {
-                    if(time==integer)
-                    {
-
-                        GameFieldStorage.wildAnimalHashSet.add(new Tiger());
-                    }
-                }
-
-
-            }
-
-
-            if(string.equalsIgnoreCase("lion"))
-            {
-                for (Integer integer :
-                        task.animalsAppearing.get("lion")) {
-                    if(time==integer)
-                    {
-
-                        GameFieldStorage.wildAnimalHashSet.add(new Loin());
-                    }
-                }
-
-
-            }
-            if(string.equalsIgnoreCase("bear"))
-            {
-                for (Integer integer :
-                        task.animalsAppearing.get("bear")) {
-                    if(time==integer)
-                    {
-
-                        GameFieldStorage.wildAnimalHashSet.add(new Bear());
-                    }
-                }
-
-
-            }
-
-
-        }
-
-
-
-
-
-    }
 
 }
