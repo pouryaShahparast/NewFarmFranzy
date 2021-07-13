@@ -130,7 +130,8 @@ public class Program implements Runnable{
                 timer = 0;
             }
         }
-        stop();
+        jFrame.getContentPane().removeAll();
+     //   stop();
     }
     private void gameLoopTimerInit(){
         fps = 30;
@@ -158,7 +159,7 @@ public class Program implements Runnable{
     public synchronized void stop(){
         if(!running){
             running = false;
-            jFrame.getContentPane().removeAll();
+
             try {
                 thread.join();
             } catch (InterruptedException e) {
