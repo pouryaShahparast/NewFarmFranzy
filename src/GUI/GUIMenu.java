@@ -1,9 +1,5 @@
 package GUI;
-
-import GUI.GUIAuthentication;
-import GUI.GUIEntrance;
 import controller.Entrance;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

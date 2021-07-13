@@ -1,5 +1,6 @@
 package inGamGraphics;
 
+import GUI.LevelPanel;
 import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
 import inGamGraphics.panels.rest.ActionPanels;
 import inGamGraphics.panels.storageAndTruckPanels.StorageAndTruckCombinedPanel;
@@ -171,6 +172,10 @@ public class Program implements Runnable{
 
     public void gameEnds(){
         jFrame.getContentPane().removeAll();
+        jFrame.add(new LevelPanel());
+        jFrame.revalidate();
+        jFrame.repaint();
+
     }
     //
 
