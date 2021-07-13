@@ -4,8 +4,7 @@ import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
 import inGamGraphics.panels.rest.ActionPanels;
 import inGamGraphics.panels.storageAndTruckPanels.StorageAndTruckCombinedPanel;
 import model.*;
-import model.animals.Chicken;
-import model.animals.Turkey;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -157,8 +156,9 @@ public class Program implements Runnable{
         }
     }
     public synchronized void stop(){
-        if(running){
+        if(!running){
             running = false;
+            jFrame.getContentPane().removeAll();
             try {
                 thread.join();
             } catch (InterruptedException e) {
