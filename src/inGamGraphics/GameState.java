@@ -16,6 +16,7 @@ public class GameState extends State{
     Well well;
     PickUpTruck pickUpTruck;
     Storeroom storeroom;
+    int a = 0;
     int turn = 0;
 
 
@@ -28,11 +29,12 @@ public class GameState extends State{
 
     @Override
     public void tick() {
-        turn++;
+        a++;
         shortTick();
-        if(turn % 100 == 0){
+        if(a % 100 == 0){
+            turn++;
             longTick();
-            turn = 0;
+            a = 0;
         }
     }
     public void init(){
