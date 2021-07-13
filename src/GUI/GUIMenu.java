@@ -94,7 +94,7 @@ public class GUIMenu implements ActionListener, MouseListener {
         if(e.getSource()==exit)
         {
 
-            Entrance.saveUserInfo(UserPassController.user.name);
+
             System.exit(0);
 
 
