@@ -38,6 +38,7 @@ public class Program implements Runnable{
         this.width = width;
         this.height = height;
         this.jFrame = jFrame;
+      //  jFrame.getContentPane().removeAll();
     }
 
     private void init(){
@@ -130,7 +131,7 @@ public class Program implements Runnable{
                 timer = 0;
             }
         }
-        jFrame.getContentPane().removeAll();
+        gameEnds();
      //   stop();
     }
     private void gameLoopTimerInit(){
@@ -166,6 +167,10 @@ public class Program implements Runnable{
                 e.printStackTrace();
             }
         }
+    }
+
+    public void gameEnds(){
+        jFrame.getContentPane().removeAll();
     }
     //
 

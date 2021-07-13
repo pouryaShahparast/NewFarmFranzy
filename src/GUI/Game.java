@@ -11,10 +11,10 @@ public class Game {
       task=task1;
         Program program=new Program(1600,850,GUIEntrance.jFrame);
         program.start();
-        while (program.getThread().isAlive())
-        {
-
-        }
+//        while (program.getThread().isAlive())
+//        {
+//
+//        }
 
     }
 

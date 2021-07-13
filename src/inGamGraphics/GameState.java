@@ -33,6 +33,7 @@ public class GameState extends State{
         a++;
         shortTick();
         if(a % 30 == 0){
+            longTick();
             turn++;
             addWildAnimals(turn);
             if(checkIfNeededIsPreparedReturnBoolean())
