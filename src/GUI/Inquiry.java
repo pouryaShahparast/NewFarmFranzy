@@ -26,7 +26,7 @@ public Inquiry(Task1 task,Storeroom storeroom,PickUpTruck pickUpTruck){
 
 
     jPanel=new JPanel(new GridLayout(1,5,5,5));
-    jPanel.setBounds(50,50,300,300);
+    jPanel.setBounds(50,50,300,500);
     jPanel.setOpaque(true);
     jPanel.setBackground(Color.RED);
 
@@ -36,7 +36,7 @@ public Inquiry(Task1 task,Storeroom storeroom,PickUpTruck pickUpTruck){
 
 
    this.setLayout(null);
-   this.setBounds(600,200,400,400);
+   this.setBounds(600,0,400,600);
    this.setOpaque(true);
    this.setBackground(Color.cyan);
     for (String s :
