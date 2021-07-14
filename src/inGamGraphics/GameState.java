@@ -50,7 +50,7 @@ public class GameState extends State{
                     UserPassController.user.level=LevelPanel.level;
 
                 }
-
+              Entrance.saveUserInfo(UserPassController.user.name);
 
 
 
