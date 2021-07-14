@@ -47,7 +47,9 @@ public class Program implements Runnable{
         display = new Display(jFrame , width , height , 600 , 600 , 0 ,0);
         Assets.init();
         Cell.init();
-        //
+
+
+        //initial coins
         GameFieldStorage.init(1000);
         //
 
@@ -180,6 +182,7 @@ public class Program implements Runnable{
         jFrame.revalidate();
         jFrame.repaint();
 
+        // getting coin number = GameFieldStorage.coin.getCoin();
     }
     //
 
