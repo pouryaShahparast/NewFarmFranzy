@@ -65,17 +65,51 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
                       new Game(entrance.taskOfLevel1);
                       break;
+
                   case "2":
-                      new Game(entrance.taskOfLevel2);
+                      if(UserPassController.user.level<2) {
+                          JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
+                          GUIEntrance.jFrame.add(new LevelPanel());
+                          GUIEntrance.jFrame.revalidate();
+                          GUIEntrance.jFrame.repaint();
+                      }
+                      else {
+                          new Game(entrance.taskOfLevel2);
+                      }
                       break;
                   case "3":
-                      new Game(entrance.taskOfLevel3);
+                      if(UserPassController.user.level<3) {
+                          JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
+                          GUIEntrance.jFrame.add(new LevelPanel());
+                          GUIEntrance.jFrame.revalidate();
+                          GUIEntrance.jFrame.repaint();
+                      }
+                      else {
+                          new Game(entrance.taskOfLevel3);
+                      }
                       break;
                   case "4":
-                      new Game(entrance.taskOfLevel4);
+
+                      if(UserPassController.user.level<4) {
+                          JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
+                          GUIEntrance.jFrame.add(new LevelPanel());
+                          GUIEntrance.jFrame.revalidate();
+                          GUIEntrance.jFrame.repaint();
+                      }
+                      else {
+                          new Game(entrance.taskOfLevel4);
+                      }
                       break;
                   case "5":
-                      new Game(entrance.taskOfLevel5);
+                      if(UserPassController.user.level<5) {
+                          JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
+                          GUIEntrance.jFrame.add(new LevelPanel());
+                          GUIEntrance.jFrame.revalidate();
+                          GUIEntrance.jFrame.repaint();
+                      }
+                      else {
+                          new Game(entrance.taskOfLevel5);
+                      }
                       break;
 
 
