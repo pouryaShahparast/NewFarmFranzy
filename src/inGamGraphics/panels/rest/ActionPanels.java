@@ -1,6 +1,7 @@
 package inGamGraphics.panels.rest;
 
 
+import GUI.Game;
 import GUI.Inquiry;
 import inGamGraphics.Program;
 import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
@@ -51,10 +52,17 @@ public class ActionPanels implements ActionListener {
         factoriesCombinedPanel.init();
         buyAnimalPanel = new BuyAnimalPanel(600 , 0);
         drawPanel(buyAnimalPanel.getPanel());
+        //inquiry
+       inquiry=new Inquiry(Game.task,GameFieldStorage.storeroom,GameFieldStorage.pickUpTruck);
+
+
+
+
     }
     public void tick(){
         storageAndTruckCombinedPanel.tick();
         factoriesCombinedPanel.tick();
+        inquiry.checkIfNeededIsPrepared();
     }
     public void firstInit(){
         wellButtonLauncher();
@@ -144,6 +152,9 @@ public class ActionPanels implements ActionListener {
             drawPanel(buyAnimalPanel.getPanel());
         }
         if(e.getSource() == inquiryButton){
+
+            drawPanel(inquiry);
+
 
         }
     }
