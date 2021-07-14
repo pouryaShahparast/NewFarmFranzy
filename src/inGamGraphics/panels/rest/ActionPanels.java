@@ -51,11 +51,10 @@ public class ActionPanels implements ActionListener {
         factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
         factoriesCombinedPanel.init();
         buyAnimalPanel = new BuyAnimalPanel(600 , 0);
-        drawPanel(buyAnimalPanel.getPanel());
         //inquiry
        inquiry=new Inquiry(Game.task,GameFieldStorage.storeroom,GameFieldStorage.pickUpTruck);
 
-
+        drawPanel(buyAnimalPanel.getPanel());
 
 
     }
@@ -162,6 +161,7 @@ public class ActionPanels implements ActionListener {
         program.getDisplay().getFrame().remove(storageAndTruckCombinedPanel.getCombinedPanel());
         program.getDisplay().getFrame().remove(factoriesCombinedPanel.getCombinedPanel());
         program.getDisplay().getFrame().remove(buyAnimalPanel.getPanel());
+        program.getDisplay().getFrame().remove(inquiry);
     }
     public boolean stopPane(){
         String[] responses = {"resume" , "exit"};
