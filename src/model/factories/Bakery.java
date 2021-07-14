@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.Bread;
 import model.commodities.Flour;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Bakery extends SecondaryFactory{
@@ -21,7 +22,8 @@ public class Bakery extends SecondaryFactory{
             System.out.println("Bakery was bought");
             return true;
         }else {
-            System.err.println("you need " + (BAKERY_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery");
+            JOptionPane.showMessageDialog(null,"you need " + (BAKERY_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -38,10 +40,12 @@ public class Bakery extends SecondaryFactory{
                 System.out.println("Bakery was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (BAKERY_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery");
+                JOptionPane.showMessageDialog(null,"you need " + (BAKERY_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + "is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +65,21 @@ public class Bakery extends SecondaryFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any flour in storeroom");
+                JOptionPane.showMessageDialog(null, "there isn't any flour in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null, factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
+
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two Breads at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null, "you can't make two Breads at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -85,10 +93,12 @@ public class Bakery extends SecondaryFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough flours in storeroom");
+                JOptionPane.showMessageDialog(null, "there aren't enough flours in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null, factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
