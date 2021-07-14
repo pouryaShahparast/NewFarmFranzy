@@ -9,7 +9,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
 
 
-
+    public static  int level;
     ArrayList<JButton>arr=new ArrayList<>();
     JButton back;
     Entrance entrance=new Entrance();
@@ -62,11 +62,12 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
               switch (j.getText())
               {
                   case "1":
-
+                     level=1;
                       new Game(entrance.taskOfLevel1);
                       break;
 
                   case "2":
+
                       if(UserPassController.user.level<2) {
                           JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
                           GUIEntrance.jFrame.add(new LevelPanel());
@@ -74,6 +75,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                           GUIEntrance.jFrame.repaint();
                       }
                       else {
+                          level=2;
                           new Game(entrance.taskOfLevel2);
                       }
                       break;
@@ -85,6 +87,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                           GUIEntrance.jFrame.repaint();
                       }
                       else {
+                          level=3;
                           new Game(entrance.taskOfLevel3);
                       }
                       break;
@@ -97,6 +100,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                           GUIEntrance.jFrame.repaint();
                       }
                       else {
+                          level=4;
                           new Game(entrance.taskOfLevel4);
                       }
                       break;
@@ -108,6 +112,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                           GUIEntrance.jFrame.repaint();
                       }
                       else {
+                          level=5;
                           new Game(entrance.taskOfLevel5);
                       }
                       break;

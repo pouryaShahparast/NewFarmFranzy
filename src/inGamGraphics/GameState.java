@@ -1,6 +1,9 @@
 package inGamGraphics;
 
 import GUI.Game;
+import GUI.LevelPanel;
+import GUI.UserPassController;
+import controller.Entrance;
 import model.*;
 import model.animals.*;
 import model.commodities.*;
@@ -41,6 +44,18 @@ public class GameState extends State{
                 //stop game
                 program.setRunning(false);
                 JOptionPane.showMessageDialog(null ,"game ended" , "game message" , JOptionPane.PLAIN_MESSAGE);
+                if(Entrance.levelOfUser<LevelPanel.level)
+                {
+                    Entrance.levelOfUser=LevelPanel.level;
+                    UserPassController.user.level=LevelPanel.level;
+
+                }
+
+
+
+
+
+
             }
 
             a = 0;

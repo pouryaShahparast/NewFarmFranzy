@@ -1,6 +1,7 @@
 package inGamGraphics;
 
 import GUI.LevelPanel;
+import controller.Entrance;
 import inGamGraphics.panels.rest.ActionPanels;
 import model.*;
 
@@ -48,7 +49,7 @@ public class Program implements Runnable{
 
 
         //initial coins
-        GameFieldStorage.init(1000);
+        GameFieldStorage.init(Entrance.userInitialCoins);
         //
 
 
