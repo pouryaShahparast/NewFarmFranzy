@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class BuyAnimalPanel implements ActionListener {
     public static final int PANEL_WIDTH = 400;
-    public static final int PANEL_HEIGHT = 700;
+    public static final int PANEL_HEIGHT = 600;
     Coin coin;
     JButton cat;
     JButton dog;

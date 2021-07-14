@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ActionPanels implements ActionListener {
-    public static final int PANEL_WIDTH = 600;
+    public static final int PANEL_WIDTH = 1000;
     public static final int PANEL_HEIGHT = 100;
     Well well;
     Program program;
@@ -70,45 +70,44 @@ public class ActionPanels implements ActionListener {
     private void wellButtonLauncher(){
         wellButton = new JButton();
         wellButton.setText("well");
-        wellButton.setBounds(10,20,70,40);
+        wellButton.setBounds(10,20,130,40);
         wellButton.addActionListener(this);
     }
     private void truckButtonLauncher(){
         truck = new JButton();
         truck.setText("truck");
-        truck.setBounds(90,20,70,40);
+        truck.setBounds(150,20,130,40);
         truck.addActionListener(this);
     }
-    private void stopButtonLauncher(){
-        stop = new JButton();
-        stop.setText("stop");
-        stop.setBounds(490,20,70,40);
-        stop.addActionListener(this);
-    }
-
     private void buyAnimalButtonLauncher(){
         buyAnimal = new JButton();
         buyAnimal.setText("buy animals");
-        buyAnimal.setBounds(170,20,70,40);
+        buyAnimal.setBounds(290,20,130,40);
         buyAnimal.addActionListener(this);
     }
     private void factoriesButtonLauncher(){
         factories = new JButton();
         factories.setText("factories");
-        factories.setBounds(250,20,70,40);
+        factories.setBounds(430,20,130,40);
         factories.addActionListener(this);
-    }
-    private void inquiryButtonLauncher(){
-        inquiryButton = new JButton();
-        inquiryButton.setText("inquiry");
-        inquiryButton.setBounds(410,20,70,40);
-        inquiryButton.addActionListener(this);
     }
     private void storageButtonLauncher(){
         storage = new JButton();
         storage.setText("storage");
-        storage.setBounds(330,20,70,40);
+        storage.setBounds(570,20,130,40);
         storage.addActionListener(this);
+    }
+    private void inquiryButtonLauncher(){
+        inquiryButton = new JButton();
+        inquiryButton.setText("inquiry");
+        inquiryButton.setBounds(710,20,130,40);
+        inquiryButton.addActionListener(this);
+    }
+    private void stopButtonLauncher(){
+        stop = new JButton();
+        stop.setText("stop");
+        stop.setBounds(850,20,130,40);
+        stop.addActionListener(this);
     }
     private void panelLauncher(){
         panel = new JPanel();
@@ -143,6 +142,9 @@ public class ActionPanels implements ActionListener {
         }
         if(e.getSource() == buyAnimal){
             drawPanel(buyAnimalPanel.getPanel());
+        }
+        if(e.getSource() == inquiryButton){
+
         }
     }
     private void removeFromFrame(){

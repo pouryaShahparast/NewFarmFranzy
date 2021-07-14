@@ -1,9 +1,7 @@
 package inGamGraphics;
 
 import GUI.LevelPanel;
-import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
 import inGamGraphics.panels.rest.ActionPanels;
-import inGamGraphics.panels.storageAndTruckPanels.StorageAndTruckCombinedPanel;
 import model.*;
 
 

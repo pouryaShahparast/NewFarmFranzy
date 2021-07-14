@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class FactoriesCombinedPanel {
     public static final int COMBINED_PANEL_WIDTH = 400;
-    public static final int COMBINED_PANEL_HEIGHT = 700;
+    public static final int COMBINED_PANEL_HEIGHT = 600;
     JPanel combinedPanel;
     //  JPanel buyPanel;
     AbstractFactoryPanel[] abstractFactoryPanels;
