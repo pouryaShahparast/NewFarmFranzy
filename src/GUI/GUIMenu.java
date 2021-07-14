@@ -90,7 +90,7 @@ public class GUIMenu implements ActionListener, MouseListener {
         if(e.getSource()==exit)
         {
 
-
+            Entrance.saveUserInfo(UserPassController.user.name);
             System.exit(0);
 
 
@@ -120,7 +120,7 @@ public class GUIMenu implements ActionListener, MouseListener {
 
         if(e.getSource()==back)
         {
-
+            Entrance.saveUserInfo(UserPassController.user.name);
             GUIEntrance.jFrame.remove(jPanel);
             GUIEntrance.jFrame.revalidate();
             GUIEntrance.jFrame.repaint();
