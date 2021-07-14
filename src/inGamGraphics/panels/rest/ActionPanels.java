@@ -1,7 +1,10 @@
 package inGamGraphics.panels.rest;
 
 
+import GUI.Inquiry;
 import inGamGraphics.Program;
+import inGamGraphics.panels.factoryPanels.FactoriesCombinedPanel;
+import inGamGraphics.panels.storageAndTruckPanels.StorageAndTruckCombinedPanel;
 import model.GameFieldStorage;
 import model.PickUpTruck;
 import model.Well;
@@ -11,15 +14,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ActionPanels implements ActionListener {
-    public static final int PANEL_WIDTH = 300;
-    public static final int PANEL_HEIGHT = 200;
+    public static final int PANEL_WIDTH = 600;
+    public static final int PANEL_HEIGHT = 100;
     Well well;
     Program program;
     PickUpTruck pickUpTruck;
     JButton stop;
     JButton wellButton;
     JButton truck;
+    JButton buyAnimal;
+    JButton inquiryButton;
+    JButton factories;
+    JButton storage;
     JPanel panel;
+    StorageAndTruckCombinedPanel storageAndTruckCombinedPanel;
+    FactoriesCombinedPanel factoriesCombinedPanel;
+    BuyAnimalPanel buyAnimalPanel;
+    Inquiry inquiry;
     public void setPossession(int x , int y){
         panel.setBounds(x,y,PANEL_WIDTH , PANEL_HEIGHT);
     }
@@ -33,35 +44,71 @@ public class ActionPanels implements ActionListener {
     }
 
     public void init(){
+        storageAndTruckCombinedPanel = new StorageAndTruckCombinedPanel(600,0);
+        storageAndTruckCombinedPanel.init();
 
+        factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
+        factoriesCombinedPanel.init();
+        buyAnimalPanel = new BuyAnimalPanel(600 , 0);
+        drawPanel(buyAnimalPanel.getPanel());
     }
     public void tick(){
-
+        storageAndTruckCombinedPanel.tick();
+        factoriesCombinedPanel.tick();
     }
     public void firstInit(){
         wellButtonLauncher();
         truckButtonLauncher();
         stopButtonLauncher();
+        buyAnimalButtonLauncher();
+        factoriesButtonLauncher();
+        inquiryButtonLauncher();
+        storageButtonLauncher();
         panelLauncher();
         addToPanel();
     }
     private void wellButtonLauncher(){
         wellButton = new JButton();
         wellButton.setText("well");
-        wellButton.setBounds(50,0,150,30);
+        wellButton.setBounds(10,20,70,40);
         wellButton.addActionListener(this);
     }
     private void truckButtonLauncher(){
         truck = new JButton();
         truck.setText("truck");
-        truck.setBounds(50,60,150,30);
+        truck.setBounds(90,20,70,40);
         truck.addActionListener(this);
     }
     private void stopButtonLauncher(){
         stop = new JButton();
         stop.setText("stop");
-        stop.setBounds(50,120,150,30);
+        stop.setBounds(490,20,70,40);
         stop.addActionListener(this);
+    }
+
+    private void buyAnimalButtonLauncher(){
+        buyAnimal = new JButton();
+        buyAnimal.setText("buy animals");
+        buyAnimal.setBounds(170,20,70,40);
+        buyAnimal.addActionListener(this);
+    }
+    private void factoriesButtonLauncher(){
+        factories = new JButton();
+        factories.setText("factories");
+        factories.setBounds(250,20,70,40);
+        factories.addActionListener(this);
+    }
+    private void inquiryButtonLauncher(){
+        inquiryButton = new JButton();
+        inquiryButton.setText("inquiry");
+        inquiryButton.setBounds(410,20,70,40);
+        inquiryButton.addActionListener(this);
+    }
+    private void storageButtonLauncher(){
+        storage = new JButton();
+        storage.setText("storage");
+        storage.setBounds(330,20,70,40);
+        storage.addActionListener(this);
     }
     private void panelLauncher(){
         panel = new JPanel();
@@ -71,6 +118,10 @@ public class ActionPanels implements ActionListener {
         panel.add(wellButton);
         panel.add(truck);
         panel.add(stop);
+        panel.add(buyAnimal);
+        panel.add(storage);
+        panel.add(factories);
+        panel.add(inquiryButton);
     }
 
     @Override
@@ -78,16 +129,47 @@ public class ActionPanels implements ActionListener {
         if(e.getSource() == wellButton){
             well.startGettingWater();
         }
+        if(e.getSource() == storage){
+            drawPanel(storageAndTruckCombinedPanel.getCombinedPanel());
+        }
         if(e.getSource() == truck){
             pickUpTruck.startTraveling();
         }
+        if(e.getSource() == factories){
+            drawPanel(factoriesCombinedPanel.getCombinedPanel());
+        }
         if(e.getSource() == stop){
-            //program.setStop(!program.getStop());
+            stopWorks();
+        }
+        if(e.getSource() == buyAnimal){
+            drawPanel(buyAnimalPanel.getPanel());
+        }
+    }
+    private void removeFromFrame(){
+        program.getDisplay().getFrame().remove(storageAndTruckCombinedPanel.getCombinedPanel());
+        program.getDisplay().getFrame().remove(factoriesCombinedPanel.getCombinedPanel());
+        program.getDisplay().getFrame().remove(buyAnimalPanel.getPanel());
+    }
+    public boolean stopPane(){
+        String[] responses = {"resume" , "exit"};
+        int a =JOptionPane.showOptionDialog(null, "paused", "paused", JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, responses, responses[0]);
+        return a == 1;
+    }
+    private void stopWorks(){
+        program.setStop(true);
+        if (!stopPane()) {
+            program.setStop(false);
+        } else {
             program.setRunning(false);
         }
     }
-
-
+    private void drawPanel(JPanel jPanel){
+        removeFromFrame();
+        program.getDisplay().getFrame().add(jPanel);
+        program.getDisplay().getFrame().revalidate();
+        program.getDisplay().getFrame().repaint();
+    }
+//
     public JPanel getPanel() {
         return panel;
     }

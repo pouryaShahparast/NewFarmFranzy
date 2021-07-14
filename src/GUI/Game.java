@@ -9,7 +9,7 @@ public class Game {
     public static Task1 task;
     public Game(Task1 task1) {
       task=task1;
-        Program program=new Program(1600,850,GUIEntrance.jFrame);
+        Program program=new Program(1000,700,GUIEntrance.jFrame);
         program.start();
 //        while (program.getThread().isAlive())
 //        {

@@ -1,4 +1,4 @@
-package inGamGraphics.panels.factoryPanels;
+package inGamGraphics.panels.rest;
 
 import model.Coin;
 import model.GameFieldStorage;
@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BuyAnimalPanel implements ActionListener {
-    public static final int PANEL_WIDTH = 250;
-    public static final int PANEL_HEIGHT = 200;
+    public static final int PANEL_WIDTH = 400;
+    public static final int PANEL_HEIGHT = 700;
     Coin coin;
     JButton cat;
     JButton dog;

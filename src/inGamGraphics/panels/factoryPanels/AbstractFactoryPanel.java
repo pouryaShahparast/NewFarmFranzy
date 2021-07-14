@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public abstract class AbstractFactoryPanel implements ActionListener {
-    public static final int PANEL_WIDTH = 250;
-    public static final int PANEL_HEIGHT = 200;
+    public static final int PANEL_WIDTH = 200;
+    public static final int PANEL_HEIGHT = 130;
     Coin coin;
     Storeroom storeroom;
     JLabel factoryNameOrImage;
@@ -50,34 +50,34 @@ public abstract class AbstractFactoryPanel implements ActionListener {
     }
     private void factoryNameOrImageLauncher(){
         factoryNameOrImage = new JLabel();
-        factoryNameOrImage.setBounds(10,10,240,100);
+        factoryNameOrImage.setBounds(10,10,190,60);
         factoryNameOrImage.setFont(new Font(Font.DIALOG , Font.PLAIN , 30));
     }
     private void buildButtonLauncher(){
         build = new JButton();
         build.setText("build");
-        build.setBounds(0,110,120,25);
+        build.setBounds(0,70,95,25);
         build.addActionListener(this);
         build.setEnabled(true);
     }
     private void updateButtonLauncher(){
         update = new JButton();
         update.setText("update");
-        update.setBounds(130,110,120,25);
+        update.setBounds(105,70,95,25);
         update.addActionListener(this);
         update.setEnabled(false);
     }
     private void workWithOneButtonLauncher(){
         workWithOne = new JButton();
         workWithOne.setText("one");
-        workWithOne.setBounds(0,145,120,25);
+        workWithOne.setBounds(0,105,95,25);
         workWithOne.addActionListener(this);
         workWithOne.setEnabled(false);
     }
     private void workWithTwoButtonLauncher(){
         workWithTwo = new JButton();
         workWithTwo.setText("two");
-        workWithTwo.setBounds(130,145,120,25);
+        workWithTwo.setBounds(105,105,95,25);
         workWithTwo.addActionListener(this);
         workWithTwo.setEnabled(false);
     }

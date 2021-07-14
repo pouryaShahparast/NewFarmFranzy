@@ -18,8 +18,8 @@ public class Program implements Runnable{
     private int height;
     private String title;
     private JFrame jFrame;
-    private StorageAndTruckCombinedPanel storageAndTruckCombinedPanel;
-    private FactoriesCombinedPanel factoriesCombinedPanel;
+  //  private StorageAndTruckCombinedPanel storageAndTruckCombinedPanel;
+  //  private FactoriesCombinedPanel factoriesCombinedPanel;
     private ActionPanels actionPanels;
 
     private BufferStrategy bufferStrategy;
@@ -52,17 +52,19 @@ public class Program implements Runnable{
         //
 
 
-        storageAndTruckCombinedPanel = new StorageAndTruckCombinedPanel(0,600);
-        storageAndTruckCombinedPanel.init();
-        display.getFrame().add(storageAndTruckCombinedPanel.getCombinedPanel());
+//        storageAndTruckCombinedPanel = new StorageAndTruckCombinedPanel(0,600);
+//        storageAndTruckCombinedPanel.init();
+//        display.getFrame().add(storageAndTruckCombinedPanel.getCombinedPanel());
+//
+//        factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
+//        factoriesCombinedPanel.init();
+//        display.getFrame().add(factoriesCombinedPanel.getCombinedPanel());
 
-        factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
-        factoriesCombinedPanel.init();
-        display.getFrame().add(factoriesCombinedPanel.getCombinedPanel());
-
-        actionPanels = new ActionPanels(1300 , 600 , this);
+        actionPanels = new ActionPanels(0 , 600 , this);
         actionPanels.init();
         display.getFrame().add(actionPanels.getPanel());
+
+
 
         MouseInput mouseInput = new MouseInput();
         GameState.gameState = new GameState(this);
@@ -74,15 +76,17 @@ public class Program implements Runnable{
         display.getPanel().addMouseListener(mouseInput);
         display.getCanvas().addMouseListener(mouseInput);
 
-        display.getFrame().setVisible(true);
+      //  display.getFrame().setVisible(true);
+        jFrame.revalidate();
+        jFrame.repaint();
     }
     private void tick(){
         if(State.getCurrentState() != null){
             //
             State.getCurrentState().tick();
             //
-            storageAndTruckCombinedPanel.tick();
-            factoriesCombinedPanel.tick();
+   //         storageAndTruckCombinedPanel.tick();
+ //           factoriesCombinedPanel.tick();
             actionPanels.tick();
         }
     }
@@ -198,5 +202,13 @@ public class Program implements Runnable{
 
     public Thread getThread() {
         return thread;
+    }
+
+    public Display getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
     }
 }
