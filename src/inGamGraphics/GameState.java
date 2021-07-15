@@ -43,18 +43,42 @@ public class GameState extends State{
             {
                 //stop game
                 program.setRunning(false);
-                JOptionPane.showMessageDialog(null ,"game ended" , "game message" , JOptionPane.PLAIN_MESSAGE);
-
                 Entrance.userInitialCoins=GameFieldStorage.coin.getCoin();
                 UserPassController.user.coins=GameFieldStorage.coin.getCoin();
+                if(turn<=Game.task.firstStandardTime)
+                {
+                    Entrance.userInitialCoins+=Game.task.firstBonus;
+                    UserPassController.user.coins+=Game.task.firstBonus;
+                    JOptionPane.showMessageDialog(null ,"game ended   Gold Medal" , "game message" , JOptionPane.PLAIN_MESSAGE);
+                }
+               else if(turn<=Game.task.secondStandardTime)
+                {
+                    Entrance.userInitialCoins+=Game.task.secondBonus;
+                    UserPassController.user.coins+=Game.task.secondBonus;
+                    JOptionPane.showMessageDialog(null ,"game ended   silver Medal" , "game message" , JOptionPane.PLAIN_MESSAGE);
+                }
+                else{
+
+                    JOptionPane.showMessageDialog(null ,"game ended" , "game message" , JOptionPane.PLAIN_MESSAGE);
+                }
+
+
+
+
+
                 if(Entrance.levelOfUser<=LevelPanel.level)
                 {
-                    System.out.println("hooooy");
+
                     Entrance.levelOfUser=LevelPanel.level+1;
-                    UserPassController.user.level=LevelPanel.level+1;
+                    UserPassController.user.level=LevelPanel.level+1 ;
 
                 }
               Entrance.saveUserInfo(UserPassController.user.name);
+
+
+
+
+
 
 
 
