@@ -53,13 +53,6 @@ public class Program implements Runnable{
         //
 
 
-//        storageAndTruckCombinedPanel = new StorageAndTruckCombinedPanel(0,600);
-//        storageAndTruckCombinedPanel.init();
-//        display.getFrame().add(storageAndTruckCombinedPanel.getCombinedPanel());
-//
-//        factoriesCombinedPanel = new FactoriesCombinedPanel(600 , 0);
-//        factoriesCombinedPanel.init();
-//        display.getFrame().add(factoriesCombinedPanel.getCombinedPanel());
 
         actionPanels = new ActionPanels(0 , 600 , this);
         actionPanels.init();
