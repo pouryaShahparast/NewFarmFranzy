@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.Fabric;
 import model.commodities.Feather;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class FabricProduction extends PrimitiveFactory{
@@ -21,7 +22,8 @@ public class FabricProduction extends PrimitiveFactory{
             System.out.println("FabricProduction was bought");
             return true;
         }else {
-            System.err.println("you need " + (FABRIC_PRODUCTION_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build FabricProduction");
+            JOptionPane.showMessageDialog(null,"you need " + (FABRIC_PRODUCTION_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build FabricProduction","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -41,7 +43,8 @@ public class FabricProduction extends PrimitiveFactory{
                 System.err.println("you need " + (FABRIC_PRODUCTION_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + "is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +64,20 @@ public class FabricProduction extends PrimitiveFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any feather in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any feather in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two Fabrics at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two Fabrics at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -85,10 +91,12 @@ public class FabricProduction extends PrimitiveFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough feathers in storeroom");
+                JOptionPane.showMessageDialog(null,"there aren't enough feathers in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }

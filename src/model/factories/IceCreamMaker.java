@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.IceCream;
 import model.commodities.PocketMilk;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class IceCreamMaker extends SecondaryFactory{
@@ -21,8 +22,9 @@ public class IceCreamMaker extends SecondaryFactory{
             System.out.println("IceCreamMaker was bought");
             return true;
         }else {
-            System.err.println("you need " + (ICE_CREAM_MAKER_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build IceCreamMaker");
-        }
+            JOptionPane.showMessageDialog(null,"you need " + (ICE_CREAM_MAKER_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build IceCreamMaker","warning",JOptionPane.WARNING_MESSAGE);
+
+                 }
         return false;
     }
 
@@ -38,10 +40,12 @@ public class IceCreamMaker extends SecondaryFactory{
                 System.out.println(factoryName + " was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (ICE_CREAM_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
+                JOptionPane.showMessageDialog(null,"you need " + (ICE_CREAM_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName,"warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + " is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +65,20 @@ public class IceCreamMaker extends SecondaryFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any pocketMilk in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any pocketMilk in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two IceCreams at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two IceCreams at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!working) {
@@ -85,10 +92,12 @@ public class IceCreamMaker extends SecondaryFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough pocketMilks in storeroom");
+                JOptionPane.showMessageDialog(null,"there aren't enough pocketMilks in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }

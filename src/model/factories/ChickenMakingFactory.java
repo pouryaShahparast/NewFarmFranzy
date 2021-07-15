@@ -21,7 +21,8 @@ public class ChickenMakingFactory extends SecondaryFactory{
             System.out.println("Bakery was bought");
             return true;
         }else {
-            System.err.println("you need " + (CHICKEN_MAKING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery");
+            JOptionPane.showMessageDialog(null,"you need " + (CHICKEN_MAKING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Bakery","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
