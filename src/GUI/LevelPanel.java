@@ -69,7 +69,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
 
                   case "2":
 
-                      if(UserPassController.user.level<2) {
+                      if(Entrance.levelOfUser<2) {
                           JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
                           GUIEntrance.jFrame.add(new LevelPanel());
                           GUIEntrance.jFrame.revalidate();
@@ -82,7 +82,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       break;
                   case "3":
-                      if(UserPassController.user.level<3) {
+                      if(Entrance.levelOfUser<3) {
                           JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
                           GUIEntrance.jFrame.add(new LevelPanel());
                           GUIEntrance.jFrame.revalidate();
@@ -96,7 +96,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       break;
                   case "4":
 
-                      if(UserPassController.user.level<4) {
+                      if(Entrance.levelOfUser<4) {
                           JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
                           GUIEntrance.jFrame.add(new LevelPanel());
                           GUIEntrance.jFrame.revalidate();
@@ -109,7 +109,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       break;
                   case "5":
-                      if(UserPassController.user.level<5) {
+                      if(Entrance.levelOfUser<5) {
                           JOptionPane.showMessageDialog(null, "you can't open this level", "warning", JOptionPane.WARNING_MESSAGE);
                           GUIEntrance.jFrame.add(new LevelPanel());
                           GUIEntrance.jFrame.revalidate();

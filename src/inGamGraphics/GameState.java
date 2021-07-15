@@ -47,10 +47,11 @@ public class GameState extends State{
 
                 Entrance.userInitialCoins=GameFieldStorage.coin.getCoin();
                 UserPassController.user.coins=GameFieldStorage.coin.getCoin();
-                if(Entrance.levelOfUser<LevelPanel.level)
+                if(Entrance.levelOfUser<=LevelPanel.level)
                 {
-                    Entrance.levelOfUser=LevelPanel.level;
-                    UserPassController.user.level=LevelPanel.level;
+                    System.out.println("hooooy");
+                    Entrance.levelOfUser=LevelPanel.level+1;
+                    UserPassController.user.level=LevelPanel.level+1;
 
                 }
               Entrance.saveUserInfo(UserPassController.user.name);
