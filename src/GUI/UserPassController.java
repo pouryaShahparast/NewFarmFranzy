@@ -121,6 +121,7 @@ public class UserPassController implements ActionListener {
                 else {
                     JOptionPane.showConfirmDialog(null, "your sign up was successful", "info", JOptionPane.PLAIN_MESSAGE);
                     Entrance.signUp(username, password);
+                    Entrance.initializeUserLevelAndCoins(username);
                     user=new User(username,200,1);
                     GUIEntrance.jFrame.remove(jPanel);
                     GUIEntrance.jFrame.repaint();
