@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.commodities.Commodity;
 import model.commodities.Fabric;
@@ -23,24 +25,17 @@ public class FabricPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        boolean found = false;
+        Fabric fabric = storeroom.takeFabric();
+        if (fabric == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-        for (Commodity commodity :
-                storeroom.commodityHashSet) {
-            if (commodity instanceof Fabric) {
-                found = true;
-                if(pickUpTruck.pickUp(commodity)) {
-                    storeroom.takeFabric();
 
-                }
-                break;
-            }
+        } else {
+
+            pickUpTruck.pickUp(fabric);
         }
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
-//            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
-//
-//        }
+
 
 
     }

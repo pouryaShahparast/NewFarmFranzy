@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.commodities.Commodity;
 import model.commodities.IceCream;
@@ -24,25 +26,16 @@ public class IceCreamPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        boolean found = false;
+        IceCream iceCream = storeroom.takeIceCream();
+        if (iceCream == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-        for (Commodity commodity :
-                storeroom.commodityHashSet) {
-            if (commodity instanceof IceCream) {
-                found = true;
-                if(pickUpTruck.pickUp(commodity)) {
-                    storeroom.takeIceCream();
 
-                }
-                break;
-            }
+        } else {
 
+            pickUpTruck.pickUp(iceCream);
         }
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
-//            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
-//
-//        }
 
 
     }

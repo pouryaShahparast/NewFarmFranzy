@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.animals.Bear;
 import model.animals.WildAnimal;
@@ -24,24 +26,16 @@ public class BearPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        boolean found = false;
+        Bear bear = storeroom.takeBear();
+        if (bear == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-        for (WildAnimal wildAnimal :
-                storeroom.wildAnimalHashSet) {
-            if (wildAnimal instanceof Bear) {
-                found = true;
-                if(pickUpTruck.pickUp(wildAnimal)) {
-                    storeroom.takeBear();
-                }
-                break;
-            }
+
+        } else {
+
+            pickUpTruck.pickUp(bear);
         }
-
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
-//            System.out.println(ConsoleColors.RED + "there is no animal with this name" + ConsoleColors.RESET);
-//
-//        }
     }
 
     @Override

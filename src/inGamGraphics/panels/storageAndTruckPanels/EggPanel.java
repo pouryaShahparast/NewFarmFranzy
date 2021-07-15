@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.commodities.Commodity;
 import model.commodities.Egg;
@@ -24,25 +26,18 @@ public class EggPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        boolean found = false;
 
-        for (Commodity commodity :
-                storeroom.commodityHashSet) {
-            if (commodity instanceof Egg) {
-                found = true;
-                if(pickUpTruck.pickUp(commodity)) {
-                    storeroom.takeEgg();
+        Egg egg = storeroom.takeEgg();
 
-                }
-                break;
-            }
+        if (egg == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+
+        } else {
+
+            pickUpTruck.pickUp(egg);
         }
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
-//            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
-//
-//        }
 
 
     }

@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.commodities.Commodity;
 import model.commodities.Milk;
@@ -24,26 +26,17 @@ public class MilkPanel extends TruckAndStoragePanels {
     @Override
     public void load() {
 
-        boolean found = false;
+        Milk milk = storeroom.takeMilk();
 
-        for (Commodity commodity :
-                storeroom.commodityHashSet) {
-            if (commodity instanceof Milk) {
-                found = true;
-                if (pickUpTruck.pickUp(commodity)) {
-                    storeroom.takeMilk();
+        if (milk == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-                }
-                break;
-            }
 
+        } else {
+
+            pickUpTruck.pickUp(milk);
         }
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
-//            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
-//
-//        }
-
 
     }
 

@@ -1,5 +1,7 @@
 package inGamGraphics.panels.storageAndTruckPanels;
 
+import ETC.ConsoleColors;
+import ETC.LoggingToFile;
 import model.GameFieldStorage;
 import model.commodities.Commodity;
 import model.commodities.Feather;
@@ -24,26 +26,19 @@ public class FeatherPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        boolean found = false;
 
-        for (Commodity commodity :
-                storeroom.commodityHashSet) {
-            if (commodity instanceof Feather) {
-                found = true;
-                if(pickUpTruck.pickUp(commodity)) {
-                    storeroom.takeFeather();
+        Feather feather = storeroom.takeFeather();
+        if (feather == null) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-                }
-                break;
-            }
+
+        } else {
+
+            pickUpTruck.pickUp(feather);
+
+
         }
-//        if (!found) {
-//            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
-//            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
-//
-//        }
-
-
     }
 
     @Override
