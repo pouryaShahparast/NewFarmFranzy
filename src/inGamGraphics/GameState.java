@@ -35,7 +35,7 @@ public class GameState extends State{
     public void tick() {
         a++;
         shortTick();
-        if(a % 30 == 0){
+        if(a % 45 == 0){
             longTick();
             turn++;
             addWildAnimals(turn);
