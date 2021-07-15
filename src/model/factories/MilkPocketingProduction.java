@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.Milk;
 import model.commodities.PocketMilk;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class MilkPocketingProduction extends PrimitiveFactory{
@@ -21,7 +22,8 @@ public class MilkPocketingProduction extends PrimitiveFactory{
             System.out.println("MilkPocketingProduction was bought");
             return true;
         }else {
-            System.err.println("you need " + (MILK_POCKETING_PRODUCTION_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build MilkPocketingProduction");
+            JOptionPane.showMessageDialog(null,"you need " + (MILK_POCKETING_PRODUCTION_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build MilkPocketingProduction","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -38,10 +40,13 @@ public class MilkPocketingProduction extends PrimitiveFactory{
                 System.out.println(factoryName + " was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (MILK_POCKETING_PRODUCTION_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
+                JOptionPane.showMessageDialog(null,"you need " + (MILK_POCKETING_PRODUCTION_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName,"warning",JOptionPane.WARNING_MESSAGE);
+
+
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + " is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +66,20 @@ public class MilkPocketingProduction extends PrimitiveFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any milk in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any milk in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two PocketMilks at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two PocketMilks at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -85,10 +93,12 @@ public class MilkPocketingProduction extends PrimitiveFactory{
                     return true;
                 }
             }else {
-                System.err.println("there isn't enough milk in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't enough milk in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
