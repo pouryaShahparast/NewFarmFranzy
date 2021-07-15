@@ -44,6 +44,9 @@ public class GameState extends State{
                 //stop game
                 program.setRunning(false);
                 JOptionPane.showMessageDialog(null ,"game ended" , "game message" , JOptionPane.PLAIN_MESSAGE);
+
+                Entrance.userInitialCoins=GameFieldStorage.coin.getCoin();
+                UserPassController.user.coins=GameFieldStorage.coin.getCoin();
                 if(Entrance.levelOfUser<LevelPanel.level)
                 {
                     Entrance.levelOfUser=LevelPanel.level;
