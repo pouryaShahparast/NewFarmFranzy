@@ -9,6 +9,14 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class SqlHandling {
+
+    public SqlHandling() {}
+
+
+    public static void main(String[] args) {
+        getconnection();
+    }
+
     public static void readData()
     {
 
@@ -45,7 +53,7 @@ public class SqlHandling {
     public static Connection getconnection()
     {
         String driver="com.mysql.jdbc.Driver";
-        String url="jdbc:mysql://localhost:3306/data1";
+        String url="jdbc:mysql://localhost:3306/farmfrenzy";
         String username="meiEEsam";
         String password="jicdqrzjicdqrz.2002";
         try {
