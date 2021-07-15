@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.Cloth;
 import model.commodities.Fabric;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Tailoring extends SecondaryFactory{
@@ -21,7 +22,8 @@ public class Tailoring extends SecondaryFactory{
             System.out.println("Tailoring was bought");
             return true;
         }else {
-            System.err.println("you need " + (TAILORING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Tailoring");
+            JOptionPane.showMessageDialog(null,"you need " + (TAILORING_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Tailoring","warning", JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -38,10 +40,12 @@ public class Tailoring extends SecondaryFactory{
                 System.out.println(factoryName + " was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (TAILORING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
+                JOptionPane.showMessageDialog(null,"you need " + (TAILORING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName,"warning", JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + "is already upgraded","warning", JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +65,19 @@ public class Tailoring extends SecondaryFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any fabric in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any fabric in storeroom","warning", JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning", JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two cloth at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two cloth at the same time because " + factoryName + " is not upgraded","warning", JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -85,10 +91,12 @@ public class Tailoring extends SecondaryFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough fabrics in storeroom");
+                JOptionPane.showMessageDialog(null,"there aren't enough fabrics in storeroom","warning", JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning", JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
