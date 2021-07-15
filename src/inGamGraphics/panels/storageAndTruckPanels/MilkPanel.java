@@ -26,17 +26,26 @@ public class MilkPanel extends TruckAndStoragePanels {
     @Override
     public void load() {
 
-        Milk milk = storeroom.takeMilk();
+        boolean found = false;
 
-        if (milk == null) {
-            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+        for (Commodity commodity :
+                storeroom.commodityHashSet) {
+            if (commodity instanceof Milk) {
+                found = true;
+                if (pickUpTruck.pickUp(commodity)) {
+                    storeroom.takeMilk();
+
+                }
+                break;
+            }
+
+        }
+        if (!found) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
             System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-
-        } else {
-
-            pickUpTruck.pickUp(milk);
         }
+
 
     }
 

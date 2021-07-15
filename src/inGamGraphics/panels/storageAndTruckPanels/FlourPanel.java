@@ -26,16 +26,27 @@ public class FlourPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        Flour flour = storeroom.takeFlour();
-        if (flour == null) {
-            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+
+        boolean found = false;
+
+        for (Commodity commodity :
+                storeroom.commodityHashSet) {
+            if (commodity instanceof Flour) {
+                found = true;
+                if(pickUpTruck.pickUp(commodity)) {
+                    storeroom.takeFlour();
+
+                }
+                break;
+            }
+
+        }
+        if (!found) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
             System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-
-        } else {
-
-            pickUpTruck.pickUp(flour);
         }
+
 
     }
 

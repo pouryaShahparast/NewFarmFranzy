@@ -25,21 +25,29 @@ public class ClothPanel extends TruckAndStoragePanels{
 
     @Override
     public void load() {
+        boolean found = false;
+
+        for (Commodity commodity :
+                storeroom.commodityHashSet) {
+            if (commodity instanceof Cloth) {
+                found = true;
+                if(pickUpTruck.pickUp(commodity)) {
+                    storeroom.takeCloth();
+
+                }
+                break;
 
 
-
-        Cloth cloth = storeroom.takeCloth();
-        if (cloth == null) {
-            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
-            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
+            }
 
 
-        } else {
-
-            pickUpTruck.pickUp(cloth);
         }
 
+        if (!found) {
+            LoggingToFile.logToFile( "there is no commodity with this name_matcher 8","info");
+            System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
+        }
     }
 
     @Override

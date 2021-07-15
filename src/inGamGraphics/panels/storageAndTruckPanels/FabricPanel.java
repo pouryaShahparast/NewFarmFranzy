@@ -25,15 +25,24 @@ public class FabricPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
-        Fabric fabric = storeroom.takeFabric();
-        if (fabric == null) {
-            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+
+        boolean found = false;
+
+        for (Commodity commodity :
+                storeroom.commodityHashSet) {
+            if (commodity instanceof Fabric) {
+                found = true;
+                if(pickUpTruck.pickUp(commodity)) {
+                    storeroom.takeFabric();
+
+                }
+                break;
+            }
+        }
+        if (!found) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8","info");
             System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-
-        } else {
-
-            pickUpTruck.pickUp(fabric);
         }
 
 

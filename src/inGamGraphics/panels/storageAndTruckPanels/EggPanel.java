@@ -26,19 +26,25 @@ public class EggPanel extends TruckAndStoragePanels{
     @Override
     public void load() {
 
+        boolean found = false;
 
-        Egg egg = storeroom.takeEgg();
+        for (Commodity commodity :
+                storeroom.commodityHashSet) {
+            if (commodity instanceof Egg) {
+                found = true;
+                if(pickUpTruck.pickUp(commodity)) {
+                    storeroom.takeEgg();
 
-        if (egg == null) {
-            LoggingToFile.logToFile("there is no commodity with this name_matcher 8", "info");
+                }
+                break;
+            }
+
+        }
+        if (!found) {
+            LoggingToFile.logToFile("there is no commodity with this name_matcher 8" ,"info");
             System.out.println(ConsoleColors.RED + "there is no commodity with this name" + ConsoleColors.RESET);
 
-
-        } else {
-
-            pickUpTruck.pickUp(egg);
         }
-
 
     }
 
