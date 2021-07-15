@@ -63,6 +63,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
               {
                   case "1":
                      level=1;
+                     Entrance.userInitialCoins+=entrance.taskOfLevel1.initialCoin;
                       new Game(entrance.taskOfLevel1);
                       break;
 
@@ -76,6 +77,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       else {
                           level=2;
+                          Entrance.userInitialCoins+=entrance.taskOfLevel2.initialCoin;
                           new Game(entrance.taskOfLevel2);
                       }
                       break;
@@ -88,6 +90,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       else {
                           level=3;
+                          Entrance.userInitialCoins+=entrance.taskOfLevel3.initialCoin;
                           new Game(entrance.taskOfLevel3);
                       }
                       break;
@@ -101,6 +104,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       else {
                           level=4;
+                          Entrance.userInitialCoins+=entrance.taskOfLevel4.initialCoin;
                           new Game(entrance.taskOfLevel4);
                       }
                       break;
@@ -113,6 +117,7 @@ public class LevelPanel extends JPanel implements ActionListener, MouseListener 
                       }
                       else {
                           level=5;
+                          Entrance.userInitialCoins+=entrance.taskOfLevel5.initialCoin;
                           new Game(entrance.taskOfLevel5);
                       }
                       break;
