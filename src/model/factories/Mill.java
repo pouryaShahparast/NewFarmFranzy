@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.commodities.Egg;
 import model.commodities.Flour;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Mill extends PrimitiveFactory{
@@ -21,7 +22,9 @@ public class Mill extends PrimitiveFactory{
             System.out.println("Mill was bought");
             return true;
         }else {
-            System.err.println("you need " + (MILL_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Mill");
+            JOptionPane.showMessageDialog(null,"you need " + (MILL_CONSTRUCTION_PRICE - coin.getCoin()) + " more coins to build Mill","warning",JOptionPane.WARNING_MESSAGE);
+
+
         }
         return false;
     }
@@ -38,10 +41,12 @@ public class Mill extends PrimitiveFactory{
                 System.out.println(factoryName + " was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (MILL_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName);
+                JOptionPane.showMessageDialog(null,"you need " + (MILL_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade " + factoryName,"warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + " is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -61,17 +66,21 @@ public class Mill extends PrimitiveFactory{
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any eggs in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any eggs in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
+
         }
         return false;
     }
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two Flours at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two Flours at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -85,10 +94,12 @@ public class Mill extends PrimitiveFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough eggs in storeroom");
+                JOptionPane.showMessageDialog(null,"there aren't enough eggs in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
