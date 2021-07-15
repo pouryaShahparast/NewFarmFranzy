@@ -6,6 +6,7 @@ import model.Storeroom;
 import model.animals.Chicken;
 import model.commodities.Egg;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class ChickenMakingFactory extends SecondaryFactory{
@@ -36,10 +37,13 @@ public class ChickenMakingFactory extends SecondaryFactory{
                 System.out.println("Bakery was upgraded");
                 return true;
             }else {
-                System.err.println("you need " + (CHICKEN_MAKING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery");
-            }
+                JOptionPane.showMessageDialog(null,"you need " + (CHICKEN_MAKING_UPGRADE_PRICE - coin.getCoin()) + " more coins to upgrade Bakery","warning",JOptionPane.WARNING_MESSAGE);
+                     }
         }else {
-            System.err.println(factoryName + "is already upgraded");
+            JOptionPane.showMessageDialog(null,factoryName + "is already upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
+
+
         }
         return false;
     }
@@ -58,13 +62,16 @@ public class ChickenMakingFactory extends SecondaryFactory{
             if (egg != null) {
                 working = true;
                 workingOneCommodity = true;
+
                 System.out.println(factoryName + " started to work");
                 return true;
             }else {
-                System.err.println("there isn't any eggs in storeroom");
+                JOptionPane.showMessageDialog(null,"there isn't any eggs in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
@@ -72,7 +79,8 @@ public class ChickenMakingFactory extends SecondaryFactory{
     @Override
     public boolean startWorkingTwoCommodities(Storeroom storeroom) {
         if(!upgraded){
-            System.err.println("you can't make two Breads at the same time because " + factoryName + " is not upgraded");
+            JOptionPane.showMessageDialog(null,"you can't make two Breads at the same time because " + factoryName + " is not upgraded","warning",JOptionPane.WARNING_MESSAGE);
+
             return false;
         }
         if (!working) {
@@ -86,10 +94,13 @@ public class ChickenMakingFactory extends SecondaryFactory{
                     return true;
                 }
             }else {
-                System.err.println("there aren't enough eggs in storeroom");
+                JOptionPane.showMessageDialog(null,"there aren't enough eggs in storeroom","warning",JOptionPane.WARNING_MESSAGE);
+
+
             }
         }else {
-            System.err.println(factoryName + " is already working");
+            JOptionPane.showMessageDialog(null,factoryName + " is already working","warning",JOptionPane.WARNING_MESSAGE);
+
         }
         return false;
     }
