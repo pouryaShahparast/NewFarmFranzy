@@ -6,6 +6,7 @@ import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Milk;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Buffalo extends DomesticatedAnimal{
@@ -52,7 +53,8 @@ public class Buffalo extends DomesticatedAnimal{
             System.out.println("Buffalo was bought");
             return true;
         }else {
-            System.err.println("you need " + (BUFFALO_PRICE - coin.getCoin()) + " more coins to buy Buffalo" );
+         //   System.err.println("you need " + (BUFFALO_PRICE - coin.getCoin()) + " more coins to buy Buffalo" );
+            JOptionPane.showMessageDialog(null,"you need " + (BUFFALO_PRICE - coin.getCoin()) + " more coins to buy Buffalo" ,"warning",JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }

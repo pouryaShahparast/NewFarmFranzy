@@ -6,6 +6,7 @@ import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Feather;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Turkey extends DomesticatedAnimal{
@@ -52,7 +53,8 @@ public class Turkey extends DomesticatedAnimal{
             System.out.println("Turkey was bought");
             return true;
         }else {
-            System.err.println("you need " + (TURKEY_PRICE - coin.getCoin()) + " more coins to buy Turkey");
+    //        System.err.println("you need " + (TURKEY_PRICE - coin.getCoin()) + " more coins to buy Turkey");
+            JOptionPane.showMessageDialog(null,"you need " + (TURKEY_PRICE - coin.getCoin()) + " more coins to buy Turkey","warning",JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }

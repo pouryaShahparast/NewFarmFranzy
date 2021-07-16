@@ -7,6 +7,7 @@ import model.GameFieldStorage;
 import model.Storeroom;
 import model.commodities.Commodity;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.HashSet;
 import java.util.Random;
@@ -75,7 +76,8 @@ public class Cat extends Animal{
             System.out.println("Cat was bought");
             return true;
         }else {
-            System.err.println("you need " + (CAT_PRICE - coin.getCoin()) + " more coins to buy Cat");
+    //        System.err.println("you need " + (CAT_PRICE - coin.getCoin()) + " more coins to buy Cat");
+            JOptionPane.showMessageDialog(null,"you need " + (CAT_PRICE - coin.getCoin()) + " more coins to buy Cat" ,"warning",JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }

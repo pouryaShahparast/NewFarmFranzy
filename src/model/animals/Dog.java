@@ -5,6 +5,7 @@ import inGamGraphics.Assets;
 import model.Coin;
 import model.GameFieldStorage;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Dog extends Animal{
@@ -26,7 +27,8 @@ public class Dog extends Animal{
             System.out.println("Dog was bought");
             return true;
         }else {
-            System.err.println("you need " + (DOG_PRICE - coin.getCoin()) + " more coins to buy Dog");
+   //         System.err.println("you need " + (DOG_PRICE - coin.getCoin()) + " more coins to buy Dog");
+            JOptionPane.showMessageDialog(null,"you need " + (DOG_PRICE - coin.getCoin()) + " more coins to buy Dog" ,"warning",JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }

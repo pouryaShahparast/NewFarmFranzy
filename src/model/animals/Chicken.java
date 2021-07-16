@@ -6,6 +6,7 @@ import model.Coin;
 import model.GameFieldStorage;
 import model.commodities.Egg;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Chicken extends DomesticatedAnimal {
@@ -54,7 +55,8 @@ public class Chicken extends DomesticatedAnimal {
             System.out.println("Chicken was bought");
             return true;
         }else {
-            System.err.println("you need " + (CHICKEN_PRICE - coin.getCoin()) + " more coins to buy Chicken");
+   //         System.err.println("you need " + (CHICKEN_PRICE - coin.getCoin()) + " more coins to buy Chicken");
+            JOptionPane.showMessageDialog(null,"you need " + (CHICKEN_PRICE - coin.getCoin()) + " more coins to buy Chicken" ,"warning",JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }
