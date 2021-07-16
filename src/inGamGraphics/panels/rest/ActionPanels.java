@@ -82,7 +82,7 @@ public class ActionPanels implements ActionListener {
     }
     private void truckButtonLauncher(){
         truck = new JButton();
-        truck.setText("truck");
+        truck.setText("truck go");
         truck.setBounds(150,20,130,40);
         truck.addActionListener(this);
     }
