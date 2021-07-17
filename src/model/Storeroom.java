@@ -56,7 +56,7 @@ public class Storeroom {
                 return true;
             }
         }
-        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+   //     JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
        // System.err.println("can't store");
         return false;
     }
@@ -70,7 +70,7 @@ public class Storeroom {
                 return true;
             }
         }
-        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+ //       JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
         //System.err.println("can't store");
         return false;
     }
@@ -84,7 +84,7 @@ public class Storeroom {
                 return true;
             }
         }
-        JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
+   //     JOptionPane.showMessageDialog(null,"can't store","warning",JOptionPane.ERROR_MESSAGE);
        // System.err.println("can't store");
         return false;
     }
