@@ -2,10 +2,7 @@ package ETC;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 
 public class SqlHandling {
@@ -19,6 +16,21 @@ public class SqlHandling {
 
     public static void readData()
     {
+
+        try {
+            Connection c=getconnection();
+            Statement statement=c.createStatement();
+            statement.executeUpdate("TRUNCATE  usernameAndPassword");
+            statement.executeUpdate("DELETE FROM usernameAndPassword");
+
+
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
 
         try {
             Scanner scanner=new Scanner(new File("password.txt"));
@@ -97,6 +109,8 @@ public class SqlHandling {
     public static void post(String username,String password)
     {
 
+
+
         try {
             Connection con = getconnection();
             PreparedStatement posted = con.prepareStatement("INSERT INTO usernameAndpassword (username,password) VALUES ('" + username + "','" + password + "')");
@@ -106,6 +120,18 @@ public class SqlHandling {
         {
             System.out.println(e);
         }
+
+
+    }
+
+    public  static void delete(){
+
+
+
+
+
+
+
 
 
     }
