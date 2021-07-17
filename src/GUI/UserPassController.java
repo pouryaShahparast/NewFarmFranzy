@@ -123,17 +123,18 @@ public class UserPassController implements ActionListener {
                     JOptionPane.showConfirmDialog(null, "your sign up was successful", "info", JOptionPane.PLAIN_MESSAGE);
 
 
-                   try {
-                       SqlHandling.readData();
-                   }
-                   catch (Exception ex){}
-
 
                     Entrance.signUp(username, password);
                     Entrance.initializeUserLevelAndCoins(username);
                     user=new User(username,200,1);
                     GUIEntrance.jFrame.remove(jPanel);
                     GUIEntrance.jFrame.repaint();
+
+                    try {
+                        SqlHandling.readData();
+                    }
+                    catch (Exception ex){}
+
                     new GUIMenu();
 
                 }
