@@ -314,7 +314,7 @@ initializing tasks of levels
         taskOfLevel1.animalsAppearing.put("bear",bearTimes1);
 
         taskOfLevel1.neededCommodity.put("egg",5);
-        taskOfLevel1.neededCommodity.put("turkey",2);
+
 
         //level2
         taskOfLevel2=new Task1(2,70,90,500,300,350);
@@ -328,9 +328,7 @@ initializing tasks of levels
         taskOfLevel2.animalsAppearing.put("tiger",tigerTimes2);
 
         taskOfLevel2.neededCommodity.put("egg",10);
-        taskOfLevel2.neededCommodity.put("turkey",5);
         taskOfLevel2.neededCommodity.put("bread",5);
-        taskOfLevel2.neededCommodity.put("cow",2);
         taskOfLevel2.neededCommodity.put("milk",2);
         //level3
         taskOfLevel3=new Task1(3,90,110,600,700,400);

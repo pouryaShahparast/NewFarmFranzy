@@ -14,7 +14,7 @@ public class GUIAuthentication implements ActionListener, MouseMotionListener{
     public GUIAuthentication() {
         //
         entrance=new Entrance();
-        entrance.initializeTasks();
+
         //
 
 
