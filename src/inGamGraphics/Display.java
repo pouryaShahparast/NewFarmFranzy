@@ -7,8 +7,6 @@ public class Display {
     private JFrame frame;
     private Canvas canvas;
     private JPanel panel;
-    private JButton button;
-    private JButton button2;
 
 
     private String frameTitle;
