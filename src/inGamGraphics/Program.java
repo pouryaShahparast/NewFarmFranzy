@@ -15,10 +15,7 @@ public class Program implements Runnable{
 
     private int width;
     private int height;
-    private String title;
     private JFrame jFrame;
-  //  private StorageAndTruckCombinedPanel storageAndTruckCombinedPanel;
-  //  private FactoriesCombinedPanel factoriesCombinedPanel;
     private ActionPanels actionPanels;
 
     private BufferStrategy bufferStrategy;
@@ -28,11 +25,6 @@ public class Program implements Runnable{
     private boolean stop = false;
     private Thread thread;
 
-//    public Program(int width, int height, String title) {
-//        this.width = width;
-//        this.height = height;
-//        this.title = title;
-//    }
 
     public Program(int width, int height, JFrame jFrame) {
         this.width = width;
@@ -42,7 +34,6 @@ public class Program implements Runnable{
     }
 
     private void init(){
-        //   display = new Display(title , width , height, 600 ,600 , 0 ,0);
         display = new Display(jFrame , width , height , 600 , 600 , 0 ,0);
         Assets.init();
         Cell.init();
@@ -70,7 +61,6 @@ public class Program implements Runnable{
         display.getPanel().addMouseListener(mouseInput);
         display.getCanvas().addMouseListener(mouseInput);
 
-      //  display.getFrame().setVisible(true);
         jFrame.revalidate();
         jFrame.repaint();
     }
@@ -79,8 +69,6 @@ public class Program implements Runnable{
             //
             State.getCurrentState().tick();
             //
-   //         storageAndTruckCombinedPanel.tick();
- //           factoriesCombinedPanel.tick();
             actionPanels.tick();
         }
     }
@@ -131,7 +119,6 @@ public class Program implements Runnable{
             }
         }
         gameEnds();
-     //   stop();
     }
     private void gameLoopTimerInit(){
         fps = 30;
@@ -156,25 +143,23 @@ public class Program implements Runnable{
             thread.start();
         }
     }
-    public synchronized void stop(){
-        if(!running){
-            running = false;
-
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+  //  public synchronized void stop(){
+   //     if(!running){
+     //       running = false;
+//
+  //          try {
+    //            thread.join();
+      //      } catch (InterruptedException e) {
+        //        e.printStackTrace();
+          //  }
+        //}
+    //}
 
     public void gameEnds(){
         jFrame.getContentPane().removeAll();
         jFrame.add(new LevelPanel());
         jFrame.revalidate();
         jFrame.repaint();
-
-        // getting coin number = GameFieldStorage.coin.getCoin();
     }
     //
 
